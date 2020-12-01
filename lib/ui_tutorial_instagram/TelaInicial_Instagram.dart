@@ -1,0 +1,527 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:material_splash_screen/entity/curso.dart';
+import 'package:material_splash_screen/entity/usuario.dart';
+import 'package:material_splash_screen/ui_menu/1_Menu.dart';
+import 'package:material_splash_screen/ui_menu/2_Aprendizado.dart';
+import 'package:material_splash_screen/ui_tutorial_instagram/ui_audio/BaixarApp_Audio_Instagram.dart';
+import 'package:material_splash_screen/ui_tutorial_instagram/ui_texto/1_BaixarApp_Texto_Instagram.dart';
+import 'package:material_splash_screen/ui_tutorial_instagram/ui_video/AdicionarApp_Instagram.dart';
+import 'package:material_splash_screen/ui_tutorial_instagram/ui_video/BaixarApp_Instagram.dart';
+import 'package:material_splash_screen/ui_tutorial_instagram/ui_video/CadastrarApp_Instagram.dart';
+import 'package:material_splash_screen/ui_tutorial_instagram/ui_video/EntrarApp_Instagram.dart';
+import 'package:material_splash_screen/ui_tutorial_instagram/ui_video/LoginApp_Instagram.dart';
+
+class TelaInstagram extends StatelessWidget {
+  final String tipo;
+  final int nome;
+
+  const TelaInstagram({Key key, this.tipo, this.nome}) : super(key: key);
+
+  bool testeCor(String text) {
+    if (tipo == text) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  String verificarIcone() {
+    if (tipo == "ASSISTINDO") {
+      return "images/movie.png";
+    } else if (tipo == "OUVINDO") {
+      return "images/audio.png";
+    } else {
+      return "images/book.png";
+    }
+  }
+
+  void verificarTela(context, String nome, int cont) {
+    if (cont == 1) {
+      if (tipo == "ASSISTINDO") {
+        Future.delayed(Duration(milliseconds: 200)).then((_) {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => BaixarAPP_Video_Instagram(
+                    cont,
+                    nome,
+                    "https://www.youtube.com/watch?v=GQBHvqvkakQ",
+                  )));
+        });
+      } else if (tipo == "OUVINDO") {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => BaixarAPP_Audio_Instagram(
+                  cont,
+                  nome,
+                  "https://www.youtube.com/watch?v=GQBHvqvkakQ",
+                )));
+      } else {
+        _alterandoPontuacaoTexto(nome);
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => BaixarApp_Texto_Instagram(
+                  cont,
+                  nome,
+                  "https://www.youtube.com/watch?v=GQBHvqvkakQ",
+                )));
+      }
+    } else if (cont == 2) {
+      Future.delayed(Duration(milliseconds: 200)).then((_) {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => EntrarAPP_Video_Instagram(
+                  cont,
+                  nome,
+                  "https://www.youtube.com/watch?v=GQBHvqvkakQ",
+                )));
+      });
+    } else if (cont == 3) {
+      Future.delayed(Duration(milliseconds: 200)).then((_) {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => CadastrarAPP_Video_Instagram(
+                  cont,
+                  nome,
+                  "https://www.youtube.com/watch?v=GQBHvqvkakQ",
+                )));
+      });
+    } else if (cont == 4) {
+      Future.delayed(Duration(milliseconds: 200)).then((_) {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => LoginAPP_Video_Instagram(
+                  cont,
+                  nome,
+                  "https://www.youtube.com/watch?v=GQBHvqvkakQ",
+                )));
+      });
+    } else if (cont == 5) {
+      Future.delayed(Duration(milliseconds: 200)).then((_) {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => AdicionarAPP_Video_Instagram(
+                  cont,
+                  nome,
+                  "https://www.youtube.com/watch?v=GQBHvqvkakQ",
+                )));
+      });
+    } else {
+      return null;
+    }
+  }
+
+  void _alterandoPontuacaoTexto(String nome) async {
+    Usuario usuario = await _recuperarDados();
+    Curso curso = await _recuperarCurso(usuario, nome);
+
+    Map<String, dynamic> toMap() {
+      if (curso == null) {
+        Map<String, dynamic> map = {
+          "cpf": usuario.cpf,
+          "pontuacao": 20,
+          "audio": false,
+          "texto": true,
+          "video": true
+        };
+        return map;
+      } else {
+        Map<String, dynamic> map = {
+          "cpf": usuario.cpf,
+          "pontuacao": 20,
+          "audio": curso.audio,
+          "texto": true,
+          "video": curso.video
+        };
+        return map;
+      }
+    }
+
+    salvar() async {
+      Firestore db = Firestore.instance;
+      await db
+          .collection("cursos")
+          .document("Facebook" + "_" + nome + "_" + usuario.cpf)
+          .setData(toMap());
+    }
+
+    salvar();
+    int total = await totalPontos(usuario);
+    updateDados(total);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var sizeWidth = MediaQuery.of(context).size.width;
+    var sizeHeight = MediaQuery.of(context).size.height;
+    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.14);
+    final _scrollController = ScrollController();
+
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(sizeHeight * 0.08),
+        child: AppBar(
+          elevation: 6,
+          backgroundColor: Color.fromARGB(255, 93, 30, 132),
+          title: Text(
+            "MENU",
+            style:
+                TextStyle(fontFamily: 'Open Sans', fontSize: sizeWidth * 0.08),
+          ),
+          leading: IconButton(
+            icon: Icon(
+              Icons.dehaze,
+              color: Colors.white,
+            ),
+            iconSize: sizeWidth * 0.10,
+            splashColor: Color(0xfffab611),
+            onPressed: () {},
+          ),
+          actions: [
+            Container(
+              decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.black38),
+                  borderRadius:
+                      const BorderRadius.all(const Radius.circular(30)),
+                  color: Colors.white),
+              margin: EdgeInsets.only(
+                  right: sizeWidth * 0.03,
+                  top: sizeHeight * 0.008,
+                  bottom: sizeHeight * 0.005),
+              child: IconButton(
+                onPressed: () {
+                  Future.delayed(Duration(milliseconds: 200)).then((_) {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => MenuInicial()));
+                  });
+                },
+                icon: Icon(
+                  Icons.home,
+                  color: Color.fromARGB(255, 93, 30, 132),
+                  size: sizeWidth * 0.11,
+                ),
+                splashColor: Color(0xfffab611),
+                padding: EdgeInsets.only(right: sizeWidth * 0.00001),
+              ),
+            )
+          ],
+        ),
+      ),
+      backgroundColor: Color.fromARGB(255, 242, 178, 42),
+      body: Column(
+        children: [
+          Container(
+            height: sizeCard,
+            decoration: BoxDecoration(
+                border: Border.all(width: 1, color: Colors.black38),
+                borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30)),
+                color: Colors.white),
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: sizeCard * 0.01),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      FlatButton(
+                        onPressed: () {
+                          Future.delayed(Duration(milliseconds: 200)).then((_) {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => TelaInstagram(
+                                    tipo: "ASSISTINDO", nome: nome)));
+                          });
+                        },
+                        child: Container(
+                          child: Text(
+                            "ASSISTIR",
+                            style: TextStyle(
+                              fontFamily: testeCor("ASSISTINDO")
+                                  ? 'Open Sans Extra Bold'
+                                  : 'Open Sans',
+                              fontSize: sizeWidth * 0.06,
+                              color: testeCor("ASSISTINDO")
+                                  ? Color.fromARGB(255, 48, 48, 48)
+                                  : Color.fromARGB(170, 48, 48, 48),
+                              decoration: TextDecoration.underline,
+                              decorationColor: testeCor("ASSISTINDO")
+                                  ? Colors.black
+                                  : Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                          left: sizeWidth * 0.025,
+                          right: sizeWidth * 0.025,
+                          bottom: sizeCard * 0.03,
+                        ),
+                        child: Text(
+                          ".",
+                          style: TextStyle(
+                              fontFamily: 'Open Sans',
+                              fontSize: sizeWidth * 0.08),
+                        ),
+                      ),
+                      FlatButton(
+                        onPressed: () {
+                          Future.delayed(Duration(milliseconds: 200)).then((_) {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => TelaInstagram(
+                                    tipo: "OUVINDO", nome: nome)));
+                          });
+                        },
+                        child: Container(
+                          child: Text(
+                            "OUVIR",
+                            style: TextStyle(
+                              fontFamily: testeCor("OUVINDO")
+                                  ? 'Open Sans Extra Bold'
+                                  : 'Open Sans',
+                              fontSize: sizeWidth * 0.06,
+                              color: testeCor("OUVINDO")
+                                  ? Color.fromARGB(255, 48, 48, 48)
+                                  : Color.fromARGB(170, 48, 48, 48),
+                              decoration: TextDecoration.underline,
+                              decorationColor: testeCor("OUVINDO")
+                                  ? Colors.black
+                                  : Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                          left: sizeWidth * 0.025,
+                          right: sizeWidth * 0.025,
+                          bottom: sizeCard * 0.03,
+                        ),
+                        child: Text(
+                          ".",
+                          style: TextStyle(
+                              fontFamily: 'Open Sans',
+                              fontSize: sizeWidth * 0.08),
+                        ),
+                      ),
+                      FlatButton(
+                        onPressed: () {
+                          Future.delayed(Duration(milliseconds: 200)).then((_) {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    TelaInstagram(tipo: "LENDO", nome: nome)));
+                          });
+                        },
+                        child: Container(
+                          child: Text(
+                            "LER",
+                            style: TextStyle(
+                              fontFamily: testeCor("LENDO")
+                                  ? 'Open Sans Extra Bold'
+                                  : 'Open Sans',
+                              fontSize: sizeWidth * 0.06,
+                              color: testeCor("LENDO")
+                                  ? Color.fromARGB(255, 48, 48, 48)
+                                  : Color.fromARGB(170, 48, 48, 48),
+                              decoration: TextDecoration.underline,
+                              decorationColor: testeCor("LENDO")
+                                  ? Colors.black
+                                  : Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: sizeCard * 0.005),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: sizeWidth * 0.04),
+                        height: 4,
+                        width: sizeWidth * 0.15,
+                        color: Colors.black,
+                      ),
+                      Text(
+                        "INSTAGRAM",
+                        style: TextStyle(
+                            fontFamily: 'Open Sans Extra Bold',
+                            color: Color.fromARGB(255, 93, 30, 132),
+                            fontStyle: FontStyle.italic,
+                            fontSize: sizeWidth * 0.1,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: sizeWidth * 0.04),
+                        height: 4,
+                        width: sizeWidth * 0.15,
+                        color: Colors.black,
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(
+                      top: sizeCard * 0.005,
+                      left: sizeWidth * 0.06,
+                      right: sizeWidth * 0.06),
+                  child: Scrollbar(
+                    controller: _scrollController,
+                    child: SingleChildScrollView(
+                      controller: _scrollController,
+                      child: Column(
+                        children: [
+                          buildRaiseButton(context, 1, verificarIcone(),
+                              "BAIXAR APP", sizeWidth, sizeHeight),
+                          buildRaiseButton(context, 2, verificarIcone(),
+                              "ENTRAR APP", sizeWidth, sizeHeight),
+                          buildRaiseButton(context, 3, verificarIcone(),
+                              "CADASTRO", sizeWidth, sizeHeight),
+                          buildRaiseButton(context, 4, verificarIcone(),
+                              "LOGIN", sizeWidth, sizeHeight),
+                          buildRaiseButton(context, 5, verificarIcone(),
+                              "ADICIONAR AMIGO", sizeWidth, sizeHeight)
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Row(
+            children: [
+              Padding(
+                  padding: EdgeInsets.only(
+                      left: sizeWidth * 0.06, top: sizeHeight * 0.025),
+                  child: Container(
+                    height: sizeHeight * 0.082,
+                    width: sizeWidth * 0.4,
+                    child: RaisedButton(
+                      textColor: Colors.white,
+                      splashColor: Color(0xfffab611),
+                      color: Color.fromARGB(255, 93, 30, 132),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                          side: BorderSide(color: Colors.black)),
+                      onPressed: () {
+                        Future.delayed(Duration(milliseconds: 200)).then((_) {
+                          Navigator.of(context).pop(MaterialPageRoute(
+                              builder: (context) => TelaAprendizado()));
+                        });
+                      },
+                      child: Text(
+                        "VOLTAR",
+                        style: TextStyle(
+                          fontFamily: 'Open Sans Extra Bold',
+                          fontSize: (sizeWidth * 0.35) * 0.18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  )),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildRaiseButton(context, int cont, String imagem, String nome,
+      double sizeWidth, double sizeHeight) {
+    return Row(
+      children: [
+        Container(
+            height: sizeWidth * 0.15,
+            width: sizeWidth * 0.15,
+            margin: EdgeInsets.only(top: sizeHeight * 0.024),
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage(imagem)),
+            )),
+        Expanded(
+          child: Container(
+            margin: EdgeInsets.only(top: sizeHeight * 0.024),
+            padding: EdgeInsets.only(left: sizeWidth * 0.02),
+            height: sizeWidth * 0.15,
+            child: RaisedButton(
+                textColor: Colors.white,
+                splashColor: Color(0xfffab611),
+                color: Color.fromARGB(255, 93, 30, 132),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    side: BorderSide(color: Colors.black)),
+                onPressed: () {
+                  verificarTela(context, nome, cont);
+                },
+                child: Text(
+                  nome,
+                  style: TextStyle(
+                    fontFamily: 'Open Sans Extra Bold',
+                    fontSize: (sizeWidth * 0.35) * 0.18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )),
+          ),
+        )
+      ],
+    );
+  }
+}
+
+Future<Usuario> _recuperarDados() async {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseUser usuarioAtual = await auth.currentUser();
+  Firestore db = Firestore.instance;
+
+  QuerySnapshot querySnapshot = await db
+      .collection("usuarios")
+      .where("email", isEqualTo: usuarioAtual.email)
+      .getDocuments();
+  for (DocumentSnapshot item in querySnapshot.documents) {
+    var dados = item.data;
+    Usuario usuario = new Usuario(false, dados["cpf"], dados["email"],
+        dados["nome"], 0, dados["senha"], dados["urlImagemPerfil"]);
+    return usuario;
+  }
+}
+
+Future<Curso> _recuperarCurso(Usuario usuario, String nome) async {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseUser usuarioAtual = await auth.currentUser();
+  Firestore db = Firestore.instance;
+
+  DocumentSnapshot snapshot = await db
+      .collection("cursos")
+      .document("Ifood" + "_" + nome + "_" + usuario.cpf)
+      .get();
+  var dados = snapshot.data;
+  if (dados != null) {
+    Curso curso = new Curso(dados["cpf"], dados["pontuacao"], dados["audio"],
+        dados["video"], dados["texto"]);
+    return curso;
+  } else {
+    return null;
+  }
+}
+
+Future<int> totalPontos(Usuario usuario) async {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseUser usuarioAtual = await auth.currentUser();
+  Firestore db = Firestore.instance;
+  int soma = 0;
+
+  QuerySnapshot querySnapshot = await db
+      .collection("cursos")
+      .where("cpf", isEqualTo: usuario.cpf)
+      .getDocuments();
+  for (DocumentSnapshot item in querySnapshot.documents) {
+    var dados = item.data;
+    soma += dados["pontuacao"];
+  }
+  return soma;
+}
+
+void updateDados(int pontuacao) async {
+  Usuario usuario = await _recuperarDados();
+  Map<String, dynamic> dadosAtualizar = {"pontuacao": pontuacao};
+  Firestore db = Firestore.instance;
+  db.collection("usuarios").document(usuario.cpf).updateData(dadosAtualizar);
+}
