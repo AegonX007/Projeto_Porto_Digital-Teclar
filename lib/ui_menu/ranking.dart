@@ -13,6 +13,7 @@ class Ranking extends StatefulWidget {
 class _RankingState extends State<Ranking> {
   final _scrollController = ScrollController();
   final _controller = StreamController<QuerySnapshot>.broadcast();
+  String emailUsuario;
   final Firestore db = Firestore.instance;
 
   bool diario = false;
@@ -56,6 +57,7 @@ class _RankingState extends State<Ranking> {
   _recuperarDadosUsuario() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     FirebaseUser usuarioLogado = await auth.currentUser();
+    emailUsuario = usuarioLogado.email;
 
     _adicionarDados();
   }
@@ -330,16 +332,31 @@ class _RankingState extends State<Ranking> {
                                             senha,
                                             urlImagem);
 
-                                        return Container(
-                                          child: buildRanking(
-                                              context,
-                                              urlImagem,
-                                              (indice + 1).toString() + "º",
-                                              firstName(nome),
-                                              pontuacao.toString(),
-                                              sizeWidth,
-                                              sizeCard2),
-                                        );
+                                        if (usuario.email == emailUsuario) {
+                                          return Container(
+                                            child: buildRanking(
+                                                context,
+                                                urlImagem,
+                                                (indice + 1).toString() + "º",
+                                                firstName(nome),
+                                                pontuacao.toString(),
+                                                sizeWidth,
+                                                sizeCard2,
+                                                true),
+                                          );
+                                        } else {
+                                          return Container(
+                                            child: buildRanking(
+                                                context,
+                                                urlImagem,
+                                                (indice + 1).toString() + "º",
+                                                firstName(nome),
+                                                pontuacao.toString(),
+                                                sizeWidth,
+                                                sizeCard2,
+                                                false),
+                                          );
+                                        }
                                       }),
                                 ])),
                           ),
@@ -395,7 +412,7 @@ class _RankingState extends State<Ranking> {
 }
 
 Widget buildRanking(context, String imagem, String pos, String firstName,
-    String pontuacao, double sizeWidth, double sizeCard) {
+    String pontuacao, double sizeWidth, double sizeCard, bool foco) {
   return Stack(
     children: [
       Column(
@@ -413,7 +430,7 @@ Widget buildRanking(context, String imagem, String pos, String firstName,
                   style: TextStyle(
                       fontFamily: 'Open Sans Extra Bold',
                       fontSize: sizeWidth * 0.06,
-                      color: Colors.white),
+                      color: foco ? Colors.green : Colors.white),
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: sizeWidth * 0.23),
@@ -433,7 +450,7 @@ Widget buildRanking(context, String imagem, String pos, String firstName,
             margin: EdgeInsets.only(
                 left: sizeWidth * 0.05, right: sizeWidth * 0.07),
             padding: EdgeInsets.only(right: sizeWidth * 0.02),
-            color: Colors.white,
+            color: foco ? Colors.green : Colors.white,
             alignment: Alignment.centerRight,
             child: Text(
               pontuacao,
@@ -452,7 +469,8 @@ Widget buildRanking(context, String imagem, String pos, String firstName,
         margin: EdgeInsets.only(top: sizeCard * 0.008, left: sizeWidth * 0.13),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          image: DecorationImage(image: NetworkImage(imagem), fit: BoxFit.fill),
+          image:
+              DecorationImage(image: NetworkImage(imagem), fit: BoxFit.contain),
         ),
       ),
     ],

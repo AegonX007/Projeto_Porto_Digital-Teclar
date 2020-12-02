@@ -59,7 +59,8 @@ class _UltimaTelaCadastroState extends State<UltimaTelaCadastro> {
                   Padding(
                     padding: EdgeInsets.only(top: sizeCard * 0.06),
                     child: Text(
-                      "Seu cadastro foi",
+                      "Seu cadastro foi\nrealizado com sucesso!",
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           fontFamily: 'Open Sans Extra Bold',
                           color: Color.fromARGB(255, 48, 48, 48),
@@ -68,17 +69,6 @@ class _UltimaTelaCadastroState extends State<UltimaTelaCadastro> {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Center(
-                    child: Text(
-                      "realizado com sucesso!",
-                      style: TextStyle(
-                          fontFamily: 'Open Sans Extra Bold',
-                          color: Color.fromARGB(255, 48, 48, 48),
-                          fontSize: sizeWidth * 0.065,
-                          fontStyle: FontStyle.italic,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  )
                 ],
               ),
             ),

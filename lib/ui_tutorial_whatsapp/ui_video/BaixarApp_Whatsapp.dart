@@ -236,7 +236,8 @@ class _BaixarAPP_Video_WhatsappState extends State<BaixarAPP_Video_Whatsapp> {
                                       "pontuacao": 20,
                                       "audio": false,
                                       "texto": false,
-                                      "video": true
+                                      "video": true,
+                                      "curso": "whatsapp"
                                     };
                                     return map;
                                   }

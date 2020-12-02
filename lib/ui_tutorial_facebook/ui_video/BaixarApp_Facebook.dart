@@ -236,7 +236,8 @@ class _BaixarAPP_Video_FacebookState extends State<BaixarAPP_Video_Facebook> {
                                       "pontuacao": 20,
                                       "audio": false,
                                       "texto": false,
-                                      "video": true
+                                      "video": true,
+                                      "curso": "facebook"
                                     };
                                     return map;
                                   }

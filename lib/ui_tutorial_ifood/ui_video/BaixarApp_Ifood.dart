@@ -236,7 +236,8 @@ class _BaixarAPP_Video_IfoodState extends State<BaixarAPP_Video_Ifood> {
                                       "pontuacao": 20,
                                       "audio": false,
                                       "texto": false,
-                                      "video": true
+                                      "video": true,
+                                      "curso": "ifood"
                                     };
                                     return map;
                                   }

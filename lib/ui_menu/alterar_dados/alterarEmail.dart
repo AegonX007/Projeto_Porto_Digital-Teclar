@@ -12,6 +12,7 @@ class AlterarEmail extends StatefulWidget {
 
 class _AlterarEmailState extends State<AlterarEmail> {
   TextEditingController emailController = TextEditingController();
+  Usuario usuarioLogado;
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -28,25 +29,37 @@ class _AlterarEmailState extends State<AlterarEmail> {
       var dados = item.data;
       Usuario usuario = new Usuario(false, dados["cpf"], dados["email"],
           dados["nome"], 0, dados["senha"], dados["urlImagemPerfil"]);
+
       return usuario;
     }
   }
 
-  void updateEmail(String n) async {
+  Future<Usuario> resetEmail(value) async {
+    var message;
     FirebaseAuth auth = FirebaseAuth.instance;
     FirebaseUser usuarioAtual = await auth.currentUser();
+    usuarioAtual
+        .updateEmail(value)
+        .then(
+          (value) => message = 'Success',
+        )
+        .catchError((onError) => message = 'error');
+    updateDados(value);
+    return message;
+  }
 
-    var credential;
-
-    usuarioAtual.reauthenticateWithCredential(credential).then((value) {});
-
-    usuarioAtual.updateEmail(n).then((value) {}).catchError((onError) {});
-
+  void updateDados(String email) async {
     Usuario usuario = await _recuperarDados();
-    Map<String, dynamic> dadosAtualizar = {"email": n};
+    Map<String, dynamic> dadosAtualizar = {"email": email};
     Firestore db = Firestore.instance;
     db.collection("usuarios").document(usuario.cpf).updateData(dadosAtualizar);
   }
+
+  /*@override
+  void initState() {
+    super.initState();
+    _recuperarDados();
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -173,7 +186,7 @@ class _AlterarEmailState extends State<AlterarEmail> {
                       child: RaisedButton(
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
-                            updateEmail(emailController.text);
+                            resetEmail(emailController.text);
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(

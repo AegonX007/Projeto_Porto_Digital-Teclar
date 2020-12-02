@@ -33,7 +33,14 @@ class _GavetaMenuState extends State<GavetaMenu> {
 
   String firstName(String n) {
     var sp = n.split(" ");
-    return sp[0];
+
+    if (sp[0].length >= 13) {
+      var repart = sp[0].substring(0, 11);
+      var repart2 = sp[0].substring(11, sp[0].length);
+      return repart + "-" + "\n" + repart2;
+    } else {
+      return sp[0];
+    }
   }
 
   _recuperarDadosUsuario() async {

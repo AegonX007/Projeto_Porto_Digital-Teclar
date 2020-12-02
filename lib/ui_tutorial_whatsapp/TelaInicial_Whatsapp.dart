@@ -109,34 +109,37 @@ class TelaWhatsapp extends StatelessWidget {
     Usuario usuario = await _recuperarDados();
     Curso curso = await _recuperarCurso(usuario, nome);
 
-    Map<String, dynamic> toMap() {
-      if (curso == null) {
-        Map<String, dynamic> map = {
-          "cpf": usuario.cpf,
-          "pontuacao": 20,
-          "audio": false,
-          "texto": true,
-          "video": true
-        };
-        return map;
-      } else {
-        Map<String, dynamic> map = {
-          "cpf": usuario.cpf,
-          "pontuacao": 20,
-          "audio": curso.audio,
-          "texto": true,
-          "video": curso.video
-        };
-        return map;
-      }
+    Map<String, dynamic> toMapNull() {
+      Map<String, dynamic> map = {
+        "cpf": usuario.cpf,
+        "pontuacao": 20,
+        "audio": false,
+        "texto": true,
+        "video": false,
+        "curso": "whatsapp"
+      };
+      return map;
+    }
+
+    Map<String, dynamic> toMapNotNull() {
+      Map<String, dynamic> map = {"texto": true};
+      return map;
     }
 
     salvar() async {
       Firestore db = Firestore.instance;
-      await db
-          .collection("cursos")
-          .document("Facebook" + "_" + nome + "_" + usuario.cpf)
-          .setData(toMap());
+      if (curso == null) {
+        await db
+            .collection("cursos")
+            .document("Whatsapp" + "_" + nome + "_" + usuario.cpf)
+            .setData(toMapNull());
+      } else {
+        Firestore db = Firestore.instance;
+        await db
+            .collection("cursos")
+            .document("Whatsapp" + "_" + nome + "_" + usuario.cpf)
+            .updateData(toMapNotNull());
+      }
     }
 
     salvar();

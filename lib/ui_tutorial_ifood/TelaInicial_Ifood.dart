@@ -127,7 +127,8 @@ class TelaIfood extends StatelessWidget {
           "pontuacao": 20,
           "audio": false,
           "texto": true,
-          "video": true
+          "video": false,
+          "curso": "ifood"
         };
         return map;
       } else {
@@ -136,7 +137,7 @@ class TelaIfood extends StatelessWidget {
           "pontuacao": 20,
           "audio": curso.audio,
           "texto": true,
-          "video": curso.video
+          "curso": "ifood"
         };
         return map;
       }

@@ -236,7 +236,8 @@ class _BaixarAPP_Video_InstagramState extends State<BaixarAPP_Video_Instagram> {
                                       "pontuacao": 20,
                                       "audio": false,
                                       "texto": false,
-                                      "video": true
+                                      "video": true,
+                                      "curso": "instagram"
                                     };
                                     return map;
                                   }

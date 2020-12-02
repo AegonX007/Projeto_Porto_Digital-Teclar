@@ -236,7 +236,8 @@ class _BaixarAPP_Video_UberState extends State<BaixarAPP_Video_Uber> {
                                       "pontuacao": 20,
                                       "audio": false,
                                       "texto": false,
-                                      "video": true
+                                      "video": true,
+                                      "curso": "uber"
                                     };
                                     return map;
                                   }
