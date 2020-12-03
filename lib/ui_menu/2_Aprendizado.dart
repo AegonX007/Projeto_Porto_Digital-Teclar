@@ -36,7 +36,7 @@ class TelaAprendizado extends StatelessWidget {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.14);
+    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.105);
 
     return Scaffold(
       appBar: PreferredSize(
@@ -100,30 +100,18 @@ class TelaAprendizado extends StatelessWidget {
                 color: Colors.white),
             child: Column(
               children: [
-                Padding(
-                  padding: EdgeInsets.only(top: sizeHeight * 0.05),
+                Container(
+                  margin: EdgeInsets.only(
+                      top: sizeHeight * 0.05, bottom: sizeHeight * 0.02),
                   child: Center(
                     child: Text(
-                      "Como você pretende",
+                      "Como você pretende aprender?",
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           fontFamily: 'Open Sans Extra Bold',
                           color: Color.fromARGB(255, 48, 48, 48),
                           fontStyle: FontStyle.italic,
-                          fontSize: sizeWidth * 0.08,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: sizeHeight * 0.02),
-                  child: Center(
-                    child: Text(
-                      "aprender?",
-                      style: TextStyle(
-                          fontFamily: 'Open Sans Extra Bold',
-                          color: Color.fromARGB(255, 48, 48, 48),
-                          fontStyle: FontStyle.italic,
-                          fontSize: sizeWidth * 0.08,
+                          fontSize: sizeWidth * 0.098,
                           fontWeight: FontWeight.bold),
                     ),
                   ),

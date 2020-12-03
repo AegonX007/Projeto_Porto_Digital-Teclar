@@ -137,6 +137,7 @@ class TelaIfood extends StatelessWidget {
           "pontuacao": 20,
           "audio": curso.audio,
           "texto": true,
+          "video": curso.video,
           "curso": "ifood"
         };
         return map;
@@ -160,8 +161,8 @@ class TelaIfood extends StatelessWidget {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.3148) - (sizeHeight * 0.14);
-    var sizeCard2 = (sizeHeight * 0.5022);
+    var sizeCard = (sizeHeight * 0.26048) - (sizeHeight * 0.10);
+    var sizeCard2 = (sizeHeight * 0.5522);
     final _scrollController = ScrollController();
 
     return Scaffold(
@@ -235,7 +236,7 @@ class TelaIfood extends StatelessWidget {
                             fontFamily: testeCor("ASSISTINDO")
                                 ? 'Open Sans Extra Bold'
                                 : 'Open Sans',
-                            fontSize: sizeWidth * 0.07,
+                            fontSize: sizeWidth * 0.076,
                             color: testeCor("ASSISTINDO")
                                 ? Color.fromARGB(255, 48, 48, 48)
                                 : Color.fromARGB(170, 48, 48, 48),
@@ -267,7 +268,7 @@ class TelaIfood extends StatelessWidget {
                             fontFamily: testeCor("OUVINDO")
                                 ? 'Open Sans Extra Bold'
                                 : 'Open Sans',
-                            fontSize: sizeWidth * 0.07,
+                            fontSize: sizeWidth * 0.076,
                             color: testeCor("OUVINDO")
                                 ? Color.fromARGB(255, 48, 48, 48)
                                 : Color.fromARGB(170, 48, 48, 48),
@@ -299,7 +300,7 @@ class TelaIfood extends StatelessWidget {
                             fontFamily: testeCor("LENDO")
                                 ? 'Open Sans Extra Bold'
                                 : 'Open Sans',
-                            fontSize: sizeWidth * 0.07,
+                            fontSize: sizeWidth * 0.076,
                             color: testeCor("LENDO")
                                 ? Color.fromARGB(255, 48, 48, 48)
                                 : Color.fromARGB(170, 48, 48, 48),
@@ -313,12 +314,14 @@ class TelaIfood extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(),
+                  margin: EdgeInsets.only(top: sizeCard * 0.04),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(right: sizeWidth * 0.04),
+                        margin: EdgeInsets.only(
+                          right: sizeWidth * 0.04,
+                        ),
                         height: 4,
                         width: sizeWidth * 0.2,
                         color: Colors.black,

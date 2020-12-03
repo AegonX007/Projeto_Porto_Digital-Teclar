@@ -65,41 +65,53 @@ class TelaInstagram extends StatelessWidget {
                 )));
       }
     } else if (cont == 2) {
-      Future.delayed(Duration(milliseconds: 200)).then((_) {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => EntrarAPP_Video_Instagram(
-                  cont,
-                  nome,
-                  "https://www.youtube.com/watch?v=GQBHvqvkakQ",
-                )));
-      });
+      if (tipo == "ASSISTINDO") {
+        Future.delayed(Duration(milliseconds: 200)).then((_) {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => EntrarAPP_Video_Instagram(
+                    cont,
+                    nome,
+                    "https://www.youtube.com/watch?v=GQBHvqvkakQ",
+                  )));
+        });
+      } else if (tipo == "OUVINDO") {
+      } else {}
     } else if (cont == 3) {
-      Future.delayed(Duration(milliseconds: 200)).then((_) {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => CadastrarAPP_Video_Instagram(
-                  cont,
-                  nome,
-                  "https://www.youtube.com/watch?v=GQBHvqvkakQ",
-                )));
-      });
+      if (tipo == "ASSISTINDO") {
+        Future.delayed(Duration(milliseconds: 200)).then((_) {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => CadastrarAPP_Video_Instagram(
+                    cont,
+                    nome,
+                    "https://www.youtube.com/watch?v=GQBHvqvkakQ",
+                  )));
+        });
+      } else if (tipo == "OUVINDO") {
+      } else {}
     } else if (cont == 4) {
-      Future.delayed(Duration(milliseconds: 200)).then((_) {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => LoginAPP_Video_Instagram(
-                  cont,
-                  nome,
-                  "https://www.youtube.com/watch?v=GQBHvqvkakQ",
-                )));
-      });
+      if (tipo == "ASSISTINDO") {
+        Future.delayed(Duration(milliseconds: 200)).then((_) {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => LoginAPP_Video_Instagram(
+                    cont,
+                    nome,
+                    "https://www.youtube.com/watch?v=GQBHvqvkakQ",
+                  )));
+        });
+      } else if (tipo == "OUVINDO") {
+      } else {}
     } else if (cont == 5) {
-      Future.delayed(Duration(milliseconds: 200)).then((_) {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => AdicionarAPP_Video_Instagram(
-                  cont,
-                  nome,
-                  "https://www.youtube.com/watch?v=GQBHvqvkakQ",
-                )));
-      });
+      if (tipo == "ASSISTINDO") {
+        Future.delayed(Duration(milliseconds: 200)).then((_) {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => AdicionarAPP_Video_Instagram(
+                    cont,
+                    nome,
+                    "https://www.youtube.com/watch?v=GQBHvqvkakQ",
+                  )));
+        });
+      } else if (tipo == "OUVINDO") {
+      } else {}
     } else {
       return null;
     }

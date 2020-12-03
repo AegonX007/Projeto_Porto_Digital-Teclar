@@ -88,7 +88,7 @@ class _LoginState extends State<Login> {
                                 Container(
                                   margin: EdgeInsets.only(top: sizeCard * 0.02),
                                   padding:
-                                      EdgeInsets.only(left: sizeCard * 0.02),
+                                      EdgeInsets.only(left: sizeWidth * 0.04),
                                   height: sizeCard * 0.1,
                                   width: sizeWidth * 0.656,
                                   child: TextFormField(
@@ -138,7 +138,7 @@ class _LoginState extends State<Login> {
                                 Container(
                                   margin: EdgeInsets.only(top: sizeCard * 0.02),
                                   padding:
-                                      EdgeInsets.only(left: sizeCard * 0.007),
+                                      EdgeInsets.only(left: sizeWidth * 0.020),
                                   height: sizeCard * 0.1,
                                   width: sizeWidth * 0.632,
                                   child: TextFormField(
@@ -203,7 +203,7 @@ class _LoginState extends State<Login> {
                                     style: TextStyle(
                                       fontFamily: 'Open Sans Extra Bold',
                                       color: Colors.white,
-                                      fontSize: sizeWidth * 0.06,
+                                      fontSize: (sizeWidth * 0.75) * 0.07,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),

@@ -116,7 +116,7 @@ class _BaixarApp_Texto_WhatsappState extends State<BaixarApp_Texto_Whatsapp> {
                 Center(
                   child: Container(
                     child: Text(
-                      "O APP FACEBOOK:",
+                      "O APP WHATSAPP:",
                       style: TextStyle(
                           fontFamily: 'Open Sans Extra Bold',
                           color: Color.fromARGB(255, 93, 30, 132),

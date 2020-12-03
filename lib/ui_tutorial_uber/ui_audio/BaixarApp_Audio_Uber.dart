@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:material_splash_screen/AudioPlayerObjeto.dart';
 import 'package:material_splash_screen/AudioPlayerController.dart';
+import 'package:material_splash_screen/entity/curso.dart';
+import 'package:material_splash_screen/entity/usuario.dart';
 
 class BaixarAPP_Audio_Uber extends StatefulWidget {
   int cont;
@@ -38,13 +42,54 @@ class _BaixarAPP_Audio_UberState extends State<BaixarAPP_Audio_Uber> {
     }
   }
 
+  void _alterandoPontuacaoAudio(String nome) async {
+    Usuario usuario = await _recuperarDados();
+    Curso curso = await _recuperarCurso(usuario, nome);
+
+    Map<String, dynamic> toMap() {
+      if (curso == null) {
+        Map<String, dynamic> map = {
+          "cpf": usuario.cpf,
+          "pontuacao": 20,
+          "audio": true,
+          "texto": false,
+          "video": false,
+          "curso": "uber"
+        };
+        return map;
+      } else {
+        Map<String, dynamic> map = {
+          "cpf": usuario.cpf,
+          "pontuacao": 20,
+          "audio": true,
+          "texto": curso.texto,
+          "video": curso.video,
+          "curso": "uber"
+        };
+        return map;
+      }
+    }
+
+    salvar() async {
+      Firestore db = Firestore.instance;
+      await db
+          .collection("cursos")
+          .document("Uber" + "_" + nome + "_" + usuario.cpf)
+          .setData(toMap());
+    }
+
+    salvar();
+    int total = await totalPontos(usuario);
+    updateDados(total);
+  }
+
   @override
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
     var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.14);
     bool x;
-
+    _alterandoPontuacaoAudio(nome);
     Widget _retornarTempoMusica(Duration position) {
       String segundos = (position.inMinutes >= 1
               ? ((position.inSeconds - position.inMinutes * 60))
@@ -223,7 +268,7 @@ class _BaixarAPP_Audio_UberState extends State<BaixarAPP_Audio_Uber> {
                 Center(
                   child: Container(
                     child: Text(
-                      "O APP IFOOD",
+                      "O APP UBER",
                       style: TextStyle(
                           fontFamily: 'Open Sans Extra Bold',
                           color: Color.fromARGB(255, 93, 30, 132),
@@ -276,5 +321,65 @@ class _BaixarAPP_Audio_UberState extends State<BaixarAPP_Audio_Uber> {
         ],
       ),
     );
+  }
+
+  Future<Usuario> _recuperarDados() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    FirebaseUser usuarioAtual = await auth.currentUser();
+    Firestore db = Firestore.instance;
+
+    QuerySnapshot querySnapshot = await db
+        .collection("usuarios")
+        .where("email", isEqualTo: usuarioAtual.email)
+        .getDocuments();
+    for (DocumentSnapshot item in querySnapshot.documents) {
+      var dados = item.data;
+      Usuario usuario = new Usuario(false, dados["cpf"], dados["email"],
+          dados["nome"], 0, dados["senha"], dados["urlImagemPerfil"]);
+      return usuario;
+    }
+  }
+
+  Future<Curso> _recuperarCurso(Usuario usuario, String nome) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    FirebaseUser usuarioAtual = await auth.currentUser();
+    Firestore db = Firestore.instance;
+
+    DocumentSnapshot snapshot = await db
+        .collection("cursos")
+        .document("Ifood" + "_" + nome + "_" + usuario.cpf)
+        .get();
+    var dados = snapshot.data;
+    if (dados != null) {
+      Curso curso = new Curso(dados["cpf"], dados["pontuacao"], dados["audio"],
+          dados["video"], dados["texto"]);
+      return curso;
+    } else {
+      return null;
+    }
+  }
+
+  Future<int> totalPontos(Usuario usuario) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    FirebaseUser usuarioAtual = await auth.currentUser();
+    Firestore db = Firestore.instance;
+    int soma = 0;
+
+    QuerySnapshot querySnapshot = await db
+        .collection("cursos")
+        .where("cpf", isEqualTo: usuario.cpf)
+        .getDocuments();
+    for (DocumentSnapshot item in querySnapshot.documents) {
+      var dados = item.data;
+      soma += dados["pontuacao"];
+    }
+    return soma;
+  }
+
+  void updateDados(int pontuacao) async {
+    Usuario usuario = await _recuperarDados();
+    Map<String, dynamic> dadosAtualizar = {"pontuacao": pontuacao};
+    Firestore db = Firestore.instance;
+    db.collection("usuarios").document(usuario.cpf).updateData(dadosAtualizar);
   }
 }

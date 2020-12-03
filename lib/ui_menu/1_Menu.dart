@@ -15,7 +15,7 @@ class _MenuInicialState extends State<MenuInicial> {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.3248) - (sizeHeight * 0.14);
+    var sizeCard = (sizeHeight * 0.3248) - (sizeHeight * 0.105);
     var sizeCard2 = (sizeHeight * 0.4922);
 
     return Scaffold(
@@ -83,21 +83,12 @@ class _MenuInicialState extends State<MenuInicial> {
                 Container(
                   margin: EdgeInsets.only(top: sizeCard * 0.21),
                   child: Text(
-                    "O que você deseja",
+                    "O que você deseja aprender hoje?",
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         fontFamily: 'Open Sans Extra Bold',
                         color: Color.fromARGB(255, 48, 48, 48),
-                        fontSize: sizeCard * 0.22,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Container(
-                  child: Text(
-                    "aprender hoje?",
-                    style: TextStyle(
-                        fontFamily: 'Open Sans Extra Bold',
-                        color: Color.fromARGB(255, 48, 48, 48),
-                        fontSize: sizeCard * 0.22,
+                        fontSize: sizeWidth * 0.098,
                         fontWeight: FontWeight.bold),
                   ),
                 ),

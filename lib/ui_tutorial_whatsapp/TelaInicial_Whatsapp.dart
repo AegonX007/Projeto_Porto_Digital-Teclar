@@ -65,41 +65,53 @@ class TelaWhatsapp extends StatelessWidget {
                 )));
       }
     } else if (cont == 2) {
-      Future.delayed(Duration(milliseconds: 200)).then((_) {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => EntrarAPP_Video_Whatsapp(
-                  cont,
-                  nome,
-                  "https://www.youtube.com/watch?v=zD9yPPrt1HM",
-                )));
-      });
+      if (tipo == "ASSISTINDO") {
+        Future.delayed(Duration(milliseconds: 200)).then((_) {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => EntrarAPP_Video_Whatsapp(
+                    cont,
+                    nome,
+                    "https://www.youtube.com/watch?v=zD9yPPrt1HM",
+                  )));
+        });
+      } else if (tipo == "OUVINDO") {
+      } else {}
     } else if (cont == 3) {
-      Future.delayed(Duration(milliseconds: 200)).then((_) {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => CadastrarAPP_Video_Whatsapp(
-                  cont,
-                  nome,
-                  "https://www.youtube.com/watch?v=zD9yPPrt1HM",
-                )));
-      });
+      if (tipo == "ASSISTINDO") {
+        Future.delayed(Duration(milliseconds: 200)).then((_) {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => CadastrarAPP_Video_Whatsapp(
+                    cont,
+                    nome,
+                    "https://www.youtube.com/watch?v=zD9yPPrt1HM",
+                  )));
+        });
+      } else if (tipo == "OUVINDO") {
+      } else {}
     } else if (cont == 4) {
-      Future.delayed(Duration(milliseconds: 200)).then((_) {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => LoginAPP_Video_Whatsapp(
-                  cont,
-                  nome,
-                  "https://www.youtube.com/watch?v=zD9yPPrt1HM",
-                )));
-      });
+      if (tipo == "ASSISTINDO") {
+        Future.delayed(Duration(milliseconds: 200)).then((_) {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => LoginAPP_Video_Whatsapp(
+                    cont,
+                    nome,
+                    "https://www.youtube.com/watch?v=zD9yPPrt1HM",
+                  )));
+        });
+      } else if (tipo == "OUVINDO") {
+      } else {}
     } else if (cont == 5) {
-      Future.delayed(Duration(milliseconds: 200)).then((_) {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => AdicionarAPP_Video_Whatsapp(
-                  cont,
-                  nome,
-                  "https://www.youtube.com/watch?v=zD9yPPrt1HM",
-                )));
-      });
+      if (tipo == "ASSISTINDO") {
+        Future.delayed(Duration(milliseconds: 200)).then((_) {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => AdicionarAPP_Video_Whatsapp(
+                    cont,
+                    nome,
+                    "https://www.youtube.com/watch?v=zD9yPPrt1HM",
+                  )));
+        });
+      } else if (tipo == "OUVINDO") {
+      } else {}
     } else {
       return null;
     }

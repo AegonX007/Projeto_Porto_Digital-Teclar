@@ -34,9 +34,9 @@ class _GavetaMenuState extends State<GavetaMenu> {
   String firstName(String n) {
     var sp = n.split(" ");
 
-    if (sp[0].length >= 13) {
-      var repart = sp[0].substring(0, 11);
-      var repart2 = sp[0].substring(11, sp[0].length);
+    if (sp[0].length >= 10) {
+      var repart = sp[0].substring(0, 10);
+      var repart2 = sp[0].substring(10, sp[0].length);
       return repart + "-" + "\n" + repart2;
     } else {
       return sp[0];
@@ -67,7 +67,7 @@ class _GavetaMenuState extends State<GavetaMenu> {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.14);
+    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.105);
 
     return Scaffold(
       appBar: PreferredSize(

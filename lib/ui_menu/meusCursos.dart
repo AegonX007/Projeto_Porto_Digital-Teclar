@@ -4,11 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:material_splash_screen/entity/usuario.dart';
-import 'package:material_splash_screen/ui_tutorial_facebook/TelaInicial_Facebook.dart';
-import 'package:material_splash_screen/ui_tutorial_ifood/TelaInicial_Ifood.dart';
-import 'package:material_splash_screen/ui_tutorial_instagram/TelaInicial_Instagram.dart';
-import 'package:material_splash_screen/ui_tutorial_uber/TelaInicial_Uber.dart';
-import 'package:material_splash_screen/ui_tutorial_whatsapp/TelaInicial_Whatsapp.dart';
+import 'package:material_splash_screen/ui_menu/2_Aprendizado.dart';
 
 class MeusCursos extends StatefulWidget {
   @override
@@ -25,20 +21,30 @@ class _MeusCursosState extends State<MeusCursos> {
 
   void verificarTela(context, int cont) {
     if (cont == 1) {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => TelaIfood()));
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => TelaAprendizado(
+                page: 1,
+              )));
     } else if (cont == 2) {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => TelaFacebook()));
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => TelaAprendizado(
+                page: 4,
+              )));
     } else if (cont == 3) {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => TelaWhatsapp()));
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => TelaAprendizado(
+                page: 3,
+              )));
     } else if (cont == 4) {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => TelaUber()));
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => TelaAprendizado(
+                page: 2,
+              )));
     } else if (cont == 5) {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => TelaInstagram()));
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => TelaAprendizado(
+                page: 5,
+              )));
     } else {
       return null;
     }
@@ -91,9 +97,8 @@ class _MeusCursosState extends State<MeusCursos> {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.2848) - (sizeHeight * 0.14);
-    var sizeCard2 = (sizeHeight * 0.5322);
-    var sizeCard3 = (sizeHeight * 0.867) - (sizeHeight * 0.14);
+    var sizeCard = (sizeHeight * 0.2148) - (sizeHeight * 0.10);
+    var sizeCard2 = (sizeHeight * 0.5942);
 
     return FutureBuilder(
         future: _recuperarDados(),
@@ -198,7 +203,7 @@ class _MeusCursosState extends State<MeusCursos> {
                                 Container(
                                   margin:
                                       EdgeInsets.only(left: sizeWidth * 0.04),
-                                  height: 4,
+                                  height: 2,
                                   width: sizeWidth * 0.13,
                                   color: Colors.black,
                                 ),
@@ -225,7 +230,7 @@ class _MeusCursosState extends State<MeusCursos> {
                                     Container(
                                       margin: EdgeInsets.only(
                                           left: sizeWidth * 0.06,
-                                          top: sizeCard2 * 0.02),
+                                          top: sizeCard2 * 0.04),
                                       padding: EdgeInsets.only(
                                           top: sizeCard2 * 0.01,
                                           bottom: sizeCard2 * 0.01,
@@ -260,35 +265,35 @@ class _MeusCursosState extends State<MeusCursos> {
                                     "images/ifood.png",
                                     "IFOOD",
                                     sizeWidth,
-                                    sizeCard3,
+                                    sizeCard2,
                                     contIfood),
                                 _testeCursoEmAndamento(
                                     "Instagram",
                                     "images/instagram.png",
                                     "INSTAGRAM",
                                     sizeWidth,
-                                    sizeCard3,
+                                    sizeCard2,
                                     contInstagram),
                                 _testeCursoEmAndamento(
                                     "Facebook",
                                     "images/facebook.png",
                                     "FACEBOOK",
                                     sizeWidth,
-                                    sizeCard3,
+                                    sizeCard2,
                                     contFacebook),
                                 _testeCursoEmAndamento(
                                     "Whatsapp",
                                     "images/whatsapp.png",
                                     "WHATSAPP",
                                     sizeWidth,
-                                    sizeCard3,
+                                    sizeCard2,
                                     contWhatsapp),
                                 _testeCursoEmAndamento(
                                     "Uber",
                                     "images/uber.png",
                                     "UBER",
                                     sizeWidth,
-                                    sizeCard3,
+                                    sizeCard2,
                                     contUber),
                                 Row(
                                   children: [
@@ -330,31 +335,31 @@ class _MeusCursosState extends State<MeusCursos> {
                                     "images/ifood.png",
                                     "IFOOD",
                                     sizeWidth,
-                                    sizeCard3,
+                                    sizeCard2,
                                     contIfood),
                                 _testeCursoConcluido(
                                     "Instagram",
                                     "images/instagram.png",
                                     "INSTAGRAM",
                                     sizeWidth,
-                                    sizeCard3,
+                                    sizeCard2,
                                     contInstagram),
                                 _testeCursoConcluido(
                                     "Facebook",
                                     "images/facebook.png",
                                     "FACEBOOK",
                                     sizeWidth,
-                                    sizeCard3,
+                                    sizeCard2,
                                     contFacebook),
                                 _testeCursoConcluido(
                                     "Whatsapp",
                                     "images/whatsapp.png",
                                     "WHATSAPP",
                                     sizeWidth,
-                                    sizeCard3,
+                                    sizeCard2,
                                     contWhatsapp),
                                 _testeCursoConcluido("Uber", "images/uber.png",
-                                    "UBER", sizeWidth, sizeCard3, contUber),
+                                    "UBER", sizeWidth, sizeCard2, contUber),
                               ],
                             )),
                       ),

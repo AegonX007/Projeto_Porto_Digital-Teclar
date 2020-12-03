@@ -30,7 +30,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
   String firstName(String n) {
     var sp = n.split(" ");
 
-    if (sp[0].length >= 13) {
+    if (sp[0].length >= 12) {
       var repart = sp[0].substring(0, 11);
       var repart2 = sp[0].substring(11, sp[0].length);
       return repart + "-" + "\n" + repart2;
@@ -40,9 +40,9 @@ class _MeuPerfilState extends State<MeuPerfil> {
   }
 
   String nomeCompletoAlt(String name) {
-    if (name.length > 28) {
-      var repart = name.substring(0, 28);
-      var repart2 = name.substring(28, name.length);
+    if (name.length > 27) {
+      var repart = name.substring(0, 27);
+      var repart2 = name.substring(27, name.length);
       return repart + " -" + "\n" + repart2;
     } else {
       return name;
@@ -50,7 +50,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
   }
 
   bool spaceName(String name) {
-    if (name.length > 28) {
+    if (name.length > 27) {
       return true;
     } else {
       return false;
@@ -81,7 +81,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.14);
+    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.105);
 
     return Scaffold(
       appBar: PreferredSize(
@@ -254,7 +254,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                                                       .italic,
                                                               fontSize:
                                                                   sizeWidth *
-                                                                      0.057,
+                                                                      0.063,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold),
@@ -320,7 +320,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                           ),
                                           Container(
                                             margin: EdgeInsets.only(
-                                                top: sizeCard * 0.06),
+                                                top: sizeCard * 0.04),
                                             height: 3,
                                             width: sizeWidth * 0.87,
                                             color:
@@ -332,8 +332,8 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                             padding: EdgeInsets.only(
                                                 left: sizeWidth * 0.06),
                                             height: spaceName(usuario.nome)
-                                                ? sizeWidth * 0.25
-                                                : sizeWidth * 0.18,
+                                                ? sizeCard * 0.15
+                                                : sizeCard * 0.12,
                                             child: Column(
                                               children: [
                                                 Row(
@@ -346,8 +346,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                                         fontFamily:
                                                             'Open Sans Extra Bold',
                                                         fontSize:
-                                                            (sizeCard * 0.22) *
-                                                                0.22,
+                                                            (sizeWidth * 0.07),
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -367,8 +366,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                                         fontFamily:
                                                             'Open Sans Extra Bold',
                                                         fontSize:
-                                                            (sizeCard * 0.19) *
-                                                                0.20,
+                                                            sizeWidth * 0.06,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -382,8 +380,8 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                             padding: EdgeInsets.only(
                                                 left: sizeWidth * 0.06),
                                             height: spaceName(usuario.email)
-                                                ? sizeWidth * 0.25
-                                                : sizeWidth * 0.18,
+                                                ? sizeCard * 0.15
+                                                : sizeCard * 0.12,
                                             child: Column(
                                               children: [
                                                 Row(
@@ -396,8 +394,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                                         fontFamily:
                                                             'Open Sans Extra Bold',
                                                         fontSize:
-                                                            (sizeCard * 0.22) *
-                                                                0.22,
+                                                            (sizeWidth * 0.07),
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -415,8 +412,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                                         fontFamily:
                                                             'Open Sans Extra Bold',
                                                         fontSize:
-                                                            (sizeCard * 0.19) *
-                                                                0.20,
+                                                            (sizeWidth * 0.06),
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -429,7 +425,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                           Container(
                                             padding: EdgeInsets.only(
                                                 left: sizeWidth * 0.06),
-                                            height: sizeWidth * 0.18,
+                                            height: sizeCard * 0.12,
                                             child: Column(
                                               children: [
                                                 Row(
@@ -442,8 +438,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                                         fontFamily:
                                                             'Open Sans Extra Bold',
                                                         fontSize:
-                                                            (sizeCard * 0.22) *
-                                                                0.22,
+                                                            (sizeWidth * 0.07),
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -460,8 +455,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                                         fontFamily:
                                                             'Open Sans Extra Bold',
                                                         fontSize:
-                                                            (sizeCard * 0.19) *
-                                                                0.20,
+                                                            (sizeWidth * 0.06),
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -474,21 +468,20 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                           Container(
                                             padding: EdgeInsets.only(
                                                 left: sizeWidth * 0.06),
-                                            height: sizeWidth * 0.18,
+                                            height: sizeCard * 0.12,
                                             child: Column(
                                               children: [
                                                 Row(
                                                   children: [
                                                     Text(
-                                                      "Pontuação",
+                                                      "PONTUAÇÃO",
                                                       style: TextStyle(
                                                         color: Color.fromARGB(
                                                             255, 93, 30, 132),
                                                         fontFamily:
                                                             'Open Sans Extra Bold',
                                                         fontSize:
-                                                            (sizeCard * 0.22) *
-                                                                0.22,
+                                                            (sizeWidth * 0.07),
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -507,8 +500,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                                         fontFamily:
                                                             'Open Sans Extra Bold',
                                                         fontSize:
-                                                            (sizeCard * 0.19) *
-                                                                0.20,
+                                                            (sizeWidth * 0.06),
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
