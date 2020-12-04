@@ -1,15 +1,28 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:material_splash_screen/ui_login/cadastroRealizado.dart';
-import 'package:material_splash_screen/ui_login/esqueceuSenha.dart';
+import 'package:material_splash_screen/entity/usuario.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class NovaSenha extends StatefulWidget {
+class TrocandoDeSenha extends StatefulWidget {
+  Usuario usuario;
+
+  TrocandoDeSenha(Usuario usuario) {
+    this.usuario;
+  }
   @override
-  _NovaSenhaState createState() => _NovaSenhaState();
+  _TrocandoDeSenhaState createState() => _TrocandoDeSenhaState(usuario);
 }
 
-class _NovaSenhaState extends State<NovaSenha> {
+class _TrocandoDeSenhaState extends State<TrocandoDeSenha> {
   bool _exibirSenha = false;
   bool _exibirSenha2 = false;
+  String senha;
+  Usuario usuario;
+
+  _TrocandoDeSenhaState(Usuario usuario) {
+    this.usuario;
+  }
 
   TextEditingController senhaController = TextEditingController();
   TextEditingController senha2Controller = TextEditingController();
@@ -23,6 +36,25 @@ class _NovaSenhaState extends State<NovaSenha> {
     } else {
       return false;
     }
+  }
+
+  Future<Usuario> resetSenha(value) async {
+    var message;
+    FirebaseAuth auth = FirebaseAuth.instance;
+    FirebaseUser usuarioAtual = await auth.currentUser();
+    usuarioAtual
+        .updatePassword(value)
+        .then(
+          (value) => message = 'Success',
+        )
+        .catchError((onError) => message = 'error');
+    return message;
+  }
+
+  void updateDados(Usuario usuario) {
+    Map<String, dynamic> dadosAtualizar = {"senha": senha2Controller.text};
+    Firestore db = Firestore.instance;
+    db.collection("usuarios").document(usuario.cpf).updateData(dadosAtualizar);
   }
 
   @override
@@ -61,7 +93,7 @@ class _NovaSenhaState extends State<NovaSenha> {
                     child: Padding(
                       padding: EdgeInsets.only(top: sizeCard * 0.04),
                       child: Text(
-                        "Digite sua nova",
+                        "Digite uma senha",
                         style: TextStyle(
                             fontFamily: 'Open Sans Extra Bold',
                             color: Color.fromARGB(255, 48, 48, 48),
@@ -73,7 +105,7 @@ class _NovaSenhaState extends State<NovaSenha> {
                   ),
                   Center(
                     child: Text(
-                      "senha 2 vezes:",
+                      "2 vezes",
                       style: TextStyle(
                           fontFamily: 'Open Sans Extra Bold',
                           color: Color.fromARGB(255, 48, 48, 48),
@@ -105,7 +137,7 @@ class _NovaSenhaState extends State<NovaSenha> {
                                   hintStyle: TextStyle(
                                       fontFamily: 'Open Sans',
                                       fontStyle: FontStyle.italic,
-                                      fontSize: sizeWidth * 0.04,
+                                      fontSize: sizeWidth * 0.046,
                                       color: Color.fromARGB(180, 48, 48, 48)),
                                   suffixIcon: GestureDetector(
                                     child: Icon(
@@ -123,7 +155,9 @@ class _NovaSenhaState extends State<NovaSenha> {
                               obscureText: _exibirSenha == false ? true : false,
                               validator: (value) {
                                 if (value.isEmpty) {
-                                  return 'Insira o seu cpf!';
+                                  return 'Insira uma senha!';
+                                } else if (value.length < 6) {
+                                  return 'Senha muito curta!';
                                 }
                               },
                             ),
@@ -141,7 +175,7 @@ class _NovaSenhaState extends State<NovaSenha> {
                                   hintText: "Digite aqui",
                                   hintStyle: TextStyle(
                                       fontFamily: 'Open Sans',
-                                      fontSize: sizeWidth * 0.04,
+                                      fontSize: sizeWidth * 0.046,
                                       color: Color.fromARGB(180, 48, 48, 48),
                                       fontStyle: FontStyle.italic),
                                   suffixIcon: GestureDetector(
@@ -164,6 +198,8 @@ class _NovaSenhaState extends State<NovaSenha> {
                                   return 'Insira o seu cpf!';
                                 } else if (teste() == false) {
                                   return 'As senhas não correspondem!';
+                                } else if (value.length < 6) {
+                                  return 'Senha muito curta!';
                                 }
                               },
                             ),
@@ -191,8 +227,7 @@ class _NovaSenhaState extends State<NovaSenha> {
                             borderRadius: BorderRadius.circular(15.0),
                             side: BorderSide(color: Colors.black)),
                         onPressed: () {
-                          Navigator.of(context).pop(MaterialPageRoute(
-                              builder: (context) => EsqueceuSenha()));
+                          Navigator.of(context).pop();
                         },
                         child: Text(
                           "VOLTAR",
@@ -211,10 +246,19 @@ class _NovaSenhaState extends State<NovaSenha> {
                       height: sizeHeight * 0.082,
                       width: sizeWidth * 0.4,
                       child: RaisedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (_formKey.currentState.validate()) {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => NovaSenhaCadastrada()));
+                            FirebaseAuth auth = FirebaseAuth.instance;
+                            auth
+                                .signInWithEmailAndPassword(
+                                    email: usuario.email,
+                                    password: usuario.senha)
+                                .then((firebaseUser) {
+                              resetSenha(senha2Controller.text);
+                              updateDados(usuario);
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => NovaSenhaCadastrada()));
+                            }).catchError((erro) {});
                           }
                         },
                         textColor: Colors.white,
@@ -227,7 +271,7 @@ class _NovaSenhaState extends State<NovaSenha> {
                           "AVANÇAR",
                           style: TextStyle(
                             fontFamily: 'Open Sans Extra Bold',
-                            fontSize: (sizeWidth * 0.35) * 0.18,
+                            fontSize: (sizeWidth * 0.35) * 0.17,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

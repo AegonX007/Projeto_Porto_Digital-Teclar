@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:material_splash_screen/ui_login/login.dart';
 
 class NovaSenhaCadastrada extends StatefulWidget {
   @override
@@ -79,8 +78,7 @@ class _NovaSenhaCadastradaState extends State<NovaSenhaCadastrada> {
               width: sizeWidth * 0.6,
               child: RaisedButton(
                 onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => Login()));
+                  Navigator.pushNamed(context, "/Menu");
                 },
                 textColor: Colors.white,
                 splashColor: Color(0xfffab611),

@@ -150,7 +150,9 @@ class _AlterarSenhaState extends State<AlterarSenha> {
                               obscureText: _exibirSenha == false ? true : false,
                               validator: (value) {
                                 if (value.isEmpty) {
-                                  return 'Insira o seu cpf!';
+                                  return 'Insira uma senha!';
+                                } else if (value.length < 6) {
+                                  return 'Senha muito curta!';
                                 }
                               },
                             ),
@@ -201,7 +203,9 @@ class _AlterarSenhaState extends State<AlterarSenha> {
                                   _exibirSenha2 == false ? true : false,
                               validator: (value) {
                                 if (value.isEmpty) {
-                                  return 'Insira o seu cpf!';
+                                  return 'Insira uma senha!';
+                                } else if (value.length < 6) {
+                                  return 'Senha muito curta!';
                                 }
                               },
                             ),

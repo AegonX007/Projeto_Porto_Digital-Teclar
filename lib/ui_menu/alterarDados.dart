@@ -27,9 +27,9 @@ class _AlterarDadosState extends State<AlterarDados> {
     } else if (cont == 3) {
       Navigator.pushNamed(context, "/AlterarCpf");
     } else if (cont == 4) {
-      //Navigator.pushNamed(context, "/AlterarEmail");
+      Navigator.pushNamed(context, "/AlterarEmail");
     } else if (cont == 5) {
-      //Navigator.pushNamed(context, "/AlterarSenha");
+      Navigator.pushNamed(context, "/AlterarSenha");
     }
   }
 
@@ -283,8 +283,7 @@ class _AlterarDadosState extends State<AlterarDados> {
                           borderRadius: BorderRadius.circular(15.0),
                           side: BorderSide(color: Colors.black)),
                       onPressed: () {
-                        Navigator.popUntil(
-                            context, ModalRoute.withName("/MeuPerfil"));
+                        Navigator.pushNamed(context, "/Menu");
                       },
                       child: Text(
                         "VOLTAR",
@@ -471,8 +470,7 @@ class _AlterarDadosState extends State<AlterarDados> {
                     side: BorderSide(color: Colors.black)),
                 onPressed: () async {
                   _recuperarImagem(context, true);
-                  Navigator.popUntil(
-                      context, ModalRoute.withName("/AlterarDados"));
+                  Navigator.pushNamed(context, "/Menu");
                 },
                 child: Text(
                   "Câmera",
@@ -499,8 +497,7 @@ class _AlterarDadosState extends State<AlterarDados> {
                     side: BorderSide(color: Colors.black)),
                 onPressed: () {
                   _recuperarImagem(context, false);
-                  Navigator.popUntil(
-                      context, ModalRoute.withName("/AlterarDados"));
+                  Navigator.pushNamed(context, "/Menu");
                 },
                 child: Text(
                   "Galeria",

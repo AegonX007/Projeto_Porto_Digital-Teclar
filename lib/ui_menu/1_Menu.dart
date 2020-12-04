@@ -93,7 +93,7 @@ class _MenuInicialState extends State<MenuInicial> {
             height: sizeCard2,
             width: sizeWidth,
             color: Colors.white,
-            padding: EdgeInsets.only(top: sizeCard2 * 0.04),
+            padding: EdgeInsets.only(top: sizeCard2 * 0.08),
             child: Scrollbar(
               thickness: sizeWidth * 0.02,
               controller: _scrollController,

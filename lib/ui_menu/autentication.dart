@@ -163,67 +163,54 @@ class _AutenticationState extends State<Autentication> {
                             },
                           ),
                         ),
-                        Row(
-                          children: <Widget>[
-                            Padding(
-                                padding: EdgeInsets.only(
-                                    left: sizeWidth * 0.240,
-                                    top: sizeHeight * 0.025),
-                                child: Container(
-                                  height: sizeHeight * 0.082,
-                                  width: sizeWidth * 0.4,
-                                  child: RaisedButton(
-                                    onPressed: () {
-                                      if (_formKey.currentState.validate()) {
-                                        email = emailController.text;
-                                        senha = senhaController.text;
-                                        FirebaseAuth auth =
-                                            FirebaseAuth.instance;
-                                        auth
-                                            .signInWithEmailAndPassword(
-                                                email: emailController.text,
-                                                password: senhaController.text)
-                                            .then((firebaseUser) {
-                                          print(
-                                              "Logar usuário: sucesso! email:" +
-                                                  firebaseUser.email);
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      AlterarDados()));
-                                        }).catchError((erro) {
-                                          showDialog(
-                                              context: context,
-                                              builder: (_) => janelaPopUp(
-                                                  sizeWidth, sizeHeight));
-                                        });
-                                      }
-                                    },
-                                    textColor: Colors.white,
-                                    splashColor: Color(0xfffab611),
-                                    color: Color.fromARGB(255, 93, 30, 132),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(15.0),
-                                        side: BorderSide(color: Colors.black)),
-                                    child: Text(
-                                      "ENTRAR",
-                                      style: TextStyle(
-                                        fontFamily: 'Open Sans Extra Bold',
-                                        fontSize: (sizeWidth * 0.35) * 0.18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ))
-                          ],
-                        ),
                       ],
                     ),
                   ),
                 ),
               ],
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                  margin: EdgeInsets.only(top: sizeCard * 0.0165),
+                  child: Container(
+                    height: sizeHeight * 0.082,
+                    width: sizeWidth * 0.6,
+                    child: RaisedButton(
+                      onPressed: () {
+                        if (_formKey.currentState.validate()) {
+                          email = emailController.text;
+                          senha = senhaController.text;
+                          FirebaseAuth auth = FirebaseAuth.instance;
+                          auth
+                              .signInWithEmailAndPassword(
+                                  email: emailController.text,
+                                  password: senhaController.text)
+                              .then((firebaseUser) {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => AlterarDados()));
+                          }).catchError((erro) {});
+                        }
+                      },
+                      textColor: Colors.white,
+                      splashColor: Color(0xfffab611),
+                      color: Color.fromARGB(255, 93, 30, 132),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                          side: BorderSide(color: Colors.black)),
+                      child: Text(
+                        "ENTRAR",
+                        style: TextStyle(
+                          fontFamily: 'Open Sans Extra Bold',
+                          fontSize: (sizeWidth * 0.35) * 0.18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ))
+            ],
           ),
         ],
       )),

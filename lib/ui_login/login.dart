@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:material_splash_screen/main.dart';
-import 'package:material_splash_screen/ui_login/esqueceuSenha.dart';
 import 'package:material_splash_screen/ui_menu/1_Menu.dart';
+import 'package:material_splash_screen/ui_login/esqueceuSenha.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Login extends StatefulWidget {
@@ -188,10 +188,10 @@ class _LoginState extends State<Login> {
                                 width: sizeWidth * 0.75,
                                 child: RaisedButton(
                                   onPressed: () {
-                                    /*Navigator.of(context).push(
+                                    Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                EsqueceuSenha()));*/
+                                                EsqueceuSenha()));
                                   },
                                   color: Color.fromARGB(255, 93, 30, 132),
                                   splashColor: Color(0xfffab611),

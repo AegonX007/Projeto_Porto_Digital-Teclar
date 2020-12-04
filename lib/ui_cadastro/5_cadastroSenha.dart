@@ -144,7 +144,9 @@ class _CadastrarSenhaState extends State<CadastrarSenha> {
                               obscureText: _exibirSenha == false ? true : false,
                               validator: (value) {
                                 if (value.isEmpty) {
-                                  return 'Insira o seu cpf!';
+                                  return 'Insira uma senha!';
+                                } else if (value.length < 6) {
+                                  return 'Senha muito curta!';
                                 }
                               },
                             ),
@@ -185,6 +187,8 @@ class _CadastrarSenhaState extends State<CadastrarSenha> {
                                   return 'Insira o seu cpf!';
                                 } else if (teste() == false) {
                                   return 'As senhas não correspondem!';
+                                } else if (value.length < 6) {
+                                  return 'Senha muito curta!';
                                 }
                               },
                             ),

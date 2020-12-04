@@ -345,7 +345,7 @@ class TelaFacebook extends StatelessWidget {
               child: SingleChildScrollView(
                 controller: _scrollController,
                 child: Container(
-                  margin: EdgeInsets.only(top: sizeCard2 * 0.03),
+                  margin: EdgeInsets.only(top: sizeCard2 * 0.06),
                   child: Column(
                     children: [
                       Container(

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:material_splash_screen/entity/usuario.dart';
-import 'package:material_splash_screen/ui_login/novaSenha.dart';
+import 'package:material_splash_screen/ui_login/trocandoDeSenha.dart';
 
 class EsqueceuSenha extends StatefulWidget {
   @override
@@ -24,10 +24,17 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha> {
         .getDocuments();
     for (DocumentSnapshot item in querySnapshot.documents) {
       var dados = item.data;
-      Usuario usuario = new Usuario(false, dados["cpf"], dados["email"],
-          dados["nome"], 0, dados["senha"], dados["urlImagemPerfil"]);
+      Usuario usuario = new Usuario(
+          false,
+          dados["cpf"],
+          dados["email"],
+          dados["nome"],
+          dados["pontuacao"],
+          dados["senha"],
+          dados["urlImagemPerfil"]);
       return usuario;
     }
+    return null;
   }
 
   @override
@@ -187,10 +194,19 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha> {
                       height: sizeHeight * 0.082,
                       width: sizeWidth * 0.4,
                       child: RaisedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (_formKey.currentState.validate()) {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => NovaSenha()));
+                            Usuario usuario = await _recuperarDados();
+                            if (usuario != null) {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      TrocandoDeSenha(usuario)));
+                            } else {
+                              showDialog(
+                                  context: context,
+                                  builder: (_) => janelaPopUp(
+                                      context, sizeWidth, sizeHeight));
+                            }
                           }
                         },
                         textColor: Colors.white,
@@ -214,6 +230,65 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha> {
           ],
         ),
       ),
+    );
+  }
+
+  AlertDialog janelaPopUp(context, double sizeWidth, double sizeHeight) {
+    return AlertDialog(
+      backgroundColor: Colors.white,
+      elevation: 24,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+          side: BorderSide(color: Colors.black)),
+      title: Text(
+        "Erro!",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Color.fromARGB(255, 93, 30, 132),
+          fontFamily: 'Open Sans Extra Bold',
+          fontSize: sizeWidth * 0.09,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      content: Text(
+        "Usuário não encotrado!",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.red,
+          fontFamily: 'Open Sans Extra Bold',
+          fontSize: sizeWidth * 0.06,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      actions: [
+        Container(
+          height: sizeHeight * 0.07,
+          width: sizeWidth * 0.65,
+          margin: EdgeInsets.only(
+              right: sizeWidth * 0.05, bottom: sizeHeight * 0.01),
+          child: Expanded(
+            child: RaisedButton(
+              splashColor: Color(0xfffab611),
+              color: Color.fromARGB(255, 93, 30, 132),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                  side: BorderSide(color: Colors.black)),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                "Entendi",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'Open Sans Extra Bold',
+                  fontSize: sizeWidth * 0.08,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
     );
   }
 }
