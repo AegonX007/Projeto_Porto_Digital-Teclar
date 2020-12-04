@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:material_splash_screen/ui_menu/gaveta.dart';
 import 'package:material_splash_screen/ui_tutorial_facebook/TelaInicial_Facebook.dart';
 import 'package:material_splash_screen/ui_tutorial_ifood/TelaInicial_Ifood.dart';
 import 'package:material_splash_screen/ui_tutorial_instagram/TelaInicial_Instagram.dart';
@@ -111,7 +110,7 @@ class TelaAprendizado extends StatelessWidget {
                           fontFamily: 'Open Sans Extra Bold',
                           color: Color.fromARGB(255, 48, 48, 48),
                           fontStyle: FontStyle.italic,
-                          fontSize: sizeWidth * 0.098,
+                          fontSize: sizeWidth * 0.09,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -119,6 +118,9 @@ class TelaAprendizado extends StatelessWidget {
                 SingleChildScrollView(
                   child: Column(
                     children: [
+                      Container(
+                        padding: EdgeInsets.only(top: sizeCard * 0.02),
+                      ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.05, right: sizeWidth * 0.05),

@@ -106,7 +106,7 @@ class _BaixarAPP_Video_WhatsappState extends State<BaixarAPP_Video_Whatsapp> {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.14);
+    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.105);
 
     return FutureBuilder<Usuario>(
         future: _recuperarDados(),

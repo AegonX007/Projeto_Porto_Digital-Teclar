@@ -182,7 +182,7 @@ class _CadastrarCPFState extends State<CadastrarCPF> {
                           "AVANÇAR",
                           style: TextStyle(
                             fontFamily: 'Open Sans Extra Bold',
-                            fontSize: (sizeWidth * 0.35) * 0.18,
+                            fontSize: (sizeWidth * 0.35) * 0.17,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

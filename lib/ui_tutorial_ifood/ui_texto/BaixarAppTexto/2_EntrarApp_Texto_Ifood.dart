@@ -33,7 +33,7 @@ class _EntrarApp_Texto_IfoodState extends State<EntrarApp_Texto_Ifood> {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.10);
+    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.105);
 
     return Scaffold(
       appBar: PreferredSize(

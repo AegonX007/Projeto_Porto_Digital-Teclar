@@ -163,7 +163,8 @@ class TelaInstagram extends StatelessWidget {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.14);
+    var sizeCard = (sizeHeight * 0.2588) - (sizeHeight * 0.105);
+    var sizeCard2 = (sizeHeight * 0.5560);
     final _scrollController = ScrollController();
 
     return Scaffold(
@@ -199,10 +200,8 @@ class TelaInstagram extends StatelessWidget {
                   bottom: sizeHeight * 0.005),
               child: IconButton(
                 onPressed: () {
-                  Future.delayed(Duration(milliseconds: 200)).then((_) {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => MenuInicial()));
-                  });
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => MenuInicial()));
                 },
                 icon: Icon(
                   Icons.home,
@@ -221,12 +220,7 @@ class TelaInstagram extends StatelessWidget {
         children: [
           Container(
             height: sizeCard,
-            decoration: BoxDecoration(
-                border: Border.all(width: 1, color: Colors.black38),
-                borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30)),
-                color: Colors.white),
+            color: Colors.white,
             child: Column(
               children: [
                 Container(
@@ -234,14 +228,7 @@ class TelaInstagram extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      FlatButton(
-                        onPressed: () {
-                          Future.delayed(Duration(milliseconds: 200)).then((_) {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => TelaInstagram(
-                                    tipo: "ASSISTINDO", nome: nome)));
-                          });
-                        },
+                      Container(
                         child: Container(
                           child: Text(
                             "ASSISTIR",
@@ -249,7 +236,7 @@ class TelaInstagram extends StatelessWidget {
                               fontFamily: testeCor("ASSISTINDO")
                                   ? 'Open Sans Extra Bold'
                                   : 'Open Sans',
-                              fontSize: sizeWidth * 0.06,
+                              fontSize: sizeWidth * 0.076,
                               color: testeCor("ASSISTINDO")
                                   ? Color.fromARGB(255, 48, 48, 48)
                                   : Color.fromARGB(170, 48, 48, 48),
@@ -263,81 +250,64 @@ class TelaInstagram extends StatelessWidget {
                       ),
                       Container(
                         margin: EdgeInsets.only(
-                          left: sizeWidth * 0.025,
-                          right: sizeWidth * 0.025,
-                          bottom: sizeCard * 0.03,
+                          left: sizeWidth * 0.032,
+                          right: sizeWidth * 0.032,
+                          bottom: sizeCard * 0.1,
                         ),
                         child: Text(
                           ".",
                           style: TextStyle(
+                              color: Color(0xfffab611),
                               fontFamily: 'Open Sans',
-                              fontSize: sizeWidth * 0.08),
+                              fontSize: sizeWidth * 0.1),
                         ),
                       ),
-                      FlatButton(
-                        onPressed: () {
-                          Future.delayed(Duration(milliseconds: 200)).then((_) {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => TelaInstagram(
-                                    tipo: "OUVINDO", nome: nome)));
-                          });
-                        },
-                        child: Container(
-                          child: Text(
-                            "OUVIR",
-                            style: TextStyle(
-                              fontFamily: testeCor("OUVINDO")
-                                  ? 'Open Sans Extra Bold'
-                                  : 'Open Sans',
-                              fontSize: sizeWidth * 0.06,
-                              color: testeCor("OUVINDO")
-                                  ? Color.fromARGB(255, 48, 48, 48)
-                                  : Color.fromARGB(170, 48, 48, 48),
-                              decoration: TextDecoration.underline,
-                              decorationColor: testeCor("OUVINDO")
-                                  ? Colors.black
-                                  : Colors.white,
-                            ),
+                      Container(
+                        child: Text(
+                          "OUVIR",
+                          style: TextStyle(
+                            fontFamily: testeCor("OUVINDO")
+                                ? 'Open Sans Extra Bold'
+                                : 'Open Sans',
+                            fontSize: sizeWidth * 0.076,
+                            color: testeCor("OUVINDO")
+                                ? Color.fromARGB(255, 48, 48, 48)
+                                : Color.fromARGB(170, 48, 48, 48),
+                            decoration: TextDecoration.underline,
+                            decorationColor: testeCor("OUVINDO")
+                                ? Colors.black
+                                : Colors.white,
                           ),
                         ),
                       ),
                       Container(
                         margin: EdgeInsets.only(
-                          left: sizeWidth * 0.025,
-                          right: sizeWidth * 0.025,
-                          bottom: sizeCard * 0.03,
+                          left: sizeWidth * 0.032,
+                          right: sizeWidth * 0.032,
+                          bottom: sizeCard * 0.1,
                         ),
                         child: Text(
                           ".",
                           style: TextStyle(
+                              color: Color(0xfffab611),
                               fontFamily: 'Open Sans',
-                              fontSize: sizeWidth * 0.08),
+                              fontSize: sizeWidth * 0.1),
                         ),
                       ),
-                      FlatButton(
-                        onPressed: () {
-                          Future.delayed(Duration(milliseconds: 200)).then((_) {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    TelaInstagram(tipo: "LENDO", nome: nome)));
-                          });
-                        },
-                        child: Container(
-                          child: Text(
-                            "LER",
-                            style: TextStyle(
-                              fontFamily: testeCor("LENDO")
-                                  ? 'Open Sans Extra Bold'
-                                  : 'Open Sans',
-                              fontSize: sizeWidth * 0.06,
-                              color: testeCor("LENDO")
-                                  ? Color.fromARGB(255, 48, 48, 48)
-                                  : Color.fromARGB(170, 48, 48, 48),
-                              decoration: TextDecoration.underline,
-                              decorationColor: testeCor("LENDO")
-                                  ? Colors.black
-                                  : Colors.white,
-                            ),
+                      Container(
+                        child: Text(
+                          "LER",
+                          style: TextStyle(
+                            fontFamily: testeCor("LENDO")
+                                ? 'Open Sans Extra Bold'
+                                : 'Open Sans',
+                            fontSize: sizeWidth * 0.076,
+                            color: testeCor("LENDO")
+                                ? Color.fromARGB(255, 48, 48, 48)
+                                : Color.fromARGB(170, 48, 48, 48),
+                            decoration: TextDecoration.underline,
+                            decorationColor:
+                                testeCor("LENDO") ? Colors.black : Colors.white,
                           ),
                         ),
                       ),
@@ -373,40 +343,74 @@ class TelaInstagram extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(
-                      top: sizeCard * 0.005,
-                      left: sizeWidth * 0.06,
-                      right: sizeWidth * 0.06),
-                  child: Scrollbar(
-                    controller: _scrollController,
-                    child: SingleChildScrollView(
-                      controller: _scrollController,
-                      child: Column(
-                        children: [
-                          buildRaiseButton(context, 1, verificarIcone(),
-                              "BAIXAR APP", sizeWidth, sizeHeight),
-                          buildRaiseButton(context, 2, verificarIcone(),
-                              "ENTRAR APP", sizeWidth, sizeHeight),
-                          buildRaiseButton(context, 3, verificarIcone(),
-                              "CADASTRO", sizeWidth, sizeHeight),
-                          buildRaiseButton(context, 4, verificarIcone(),
-                              "LOGIN", sizeWidth, sizeHeight),
-                          buildRaiseButton(context, 5, verificarIcone(),
-                              "ADICIONAR AMIGO", sizeWidth, sizeHeight)
-                        ],
-                      ),
-                    ),
-                  ),
-                )
               ],
             ),
+          ),
+          Container(
+            height: sizeCard2,
+            width: sizeWidth,
+            color: Colors.white,
+            child: Scrollbar(
+              isAlwaysShown: true,
+              thickness: sizeWidth * 0.02,
+              controller: _scrollController,
+              child: SingleChildScrollView(
+                controller: _scrollController,
+                child: Container(
+                  margin: EdgeInsets.only(top: sizeCard2 * 0.03),
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: sizeWidth * 0.06, right: sizeWidth * 0.06),
+                        child: buildRaiseButton(context, 1, verificarIcone(),
+                            "BAIXAR APP", sizeWidth, sizeCard2),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: sizeWidth * 0.06, right: sizeWidth * 0.06),
+                        child: buildRaiseButton(context, 2, verificarIcone(),
+                            "ENTRAR APP", sizeWidth, sizeCard2),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: sizeWidth * 0.06, right: sizeWidth * 0.06),
+                        child: buildRaiseButton(context, 3, verificarIcone(),
+                            "CADASTRO", sizeWidth, sizeCard2),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: sizeWidth * 0.06, right: sizeWidth * 0.06),
+                        child: buildRaiseButton(context, 4, verificarIcone(),
+                            "LOGIN", sizeWidth, sizeCard2),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: sizeWidth * 0.06, right: sizeWidth * 0.06),
+                        child: buildRaiseButton(context, 5, verificarIcone(),
+                            "ADICIONAR AMIGO", sizeWidth, sizeCard2),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            height: sizeCard2 * 0.09,
+            width: sizeWidth,
+            decoration: BoxDecoration(
+                border: Border.all(width: 1, color: Colors.transparent),
+                borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30)),
+                color: Colors.white),
           ),
           Row(
             children: [
               Padding(
                   padding: EdgeInsets.only(
-                      left: sizeWidth * 0.06, top: sizeHeight * 0.025),
+                      left: sizeWidth * 0.06, top: sizeHeight * 0.0165),
                   child: Container(
                     height: sizeHeight * 0.082,
                     width: sizeWidth * 0.4,
@@ -418,10 +422,8 @@ class TelaInstagram extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15.0),
                           side: BorderSide(color: Colors.black)),
                       onPressed: () {
-                        Future.delayed(Duration(milliseconds: 200)).then((_) {
-                          Navigator.of(context).pop(MaterialPageRoute(
-                              builder: (context) => TelaAprendizado()));
-                        });
+                        Navigator.of(context).pop(MaterialPageRoute(
+                            builder: (context) => TelaAprendizado()));
                       },
                       child: Text(
                         "VOLTAR",

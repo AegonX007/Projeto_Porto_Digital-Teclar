@@ -202,13 +202,17 @@ class _GavetaMenuState extends State<GavetaMenu> {
                                       return Row(
                                         children: [
                                           Container(
-                                            height: sizeCard * 0.2,
-                                            width: sizeWidth * 0.35,
+                                            height: sizeCard * 0.19,
+                                            width: sizeWidth * 0.32,
                                             margin: EdgeInsets.only(
                                                 top: sizeHeight * 0.024,
                                                 left: sizeWidth * 0.017),
                                             decoration: BoxDecoration(
                                               shape: BoxShape.circle,
+                                              border: Border.all(
+                                                  width: sizeWidth * 0.005,
+                                                  color: Color.fromARGB(
+                                                      255, 93, 30, 132)),
                                               image: DecorationImage(
                                                   image: NetworkImage(
                                                       usuario.urlImagemPerfil),
@@ -217,8 +221,8 @@ class _GavetaMenuState extends State<GavetaMenu> {
                                           ),
                                           Container(
                                             margin: EdgeInsets.only(
-                                              top: sizeHeight * 0.024,
-                                            ),
+                                                top: sizeHeight * 0.024,
+                                                left: sizeWidth * 0.05),
                                             child: Column(
                                               children: [
                                                 Container(

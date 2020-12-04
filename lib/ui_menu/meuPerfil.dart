@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:material_splash_screen/entity/usuario.dart';
+import 'package:material_splash_screen/ui_menu/autentication.dart';
 
 class MeuPerfil extends StatefulWidget {
   @override
@@ -208,8 +209,8 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                             child: Row(
                                               children: [
                                                 Container(
-                                                  height: sizeCard * 0.24,
-                                                  width: sizeWidth * 0.35,
+                                                  height: sizeCard * 0.23,
+                                                  width: sizeWidth * 0.33,
                                                   margin: EdgeInsets.only(
                                                       top: sizeHeight * 0.024,
                                                       left: sizeWidth * 0.04),
@@ -332,8 +333,8 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                             padding: EdgeInsets.only(
                                                 left: sizeWidth * 0.06),
                                             height: spaceName(usuario.nome)
-                                                ? sizeCard * 0.15
-                                                : sizeCard * 0.12,
+                                                ? sizeCard * 0.16
+                                                : sizeCard * 0.14,
                                             child: Column(
                                               children: [
                                                 Row(
@@ -366,7 +367,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                                         fontFamily:
                                                             'Open Sans Extra Bold',
                                                         fontSize:
-                                                            sizeWidth * 0.06,
+                                                            sizeWidth * 0.058,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -380,8 +381,8 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                             padding: EdgeInsets.only(
                                                 left: sizeWidth * 0.06),
                                             height: spaceName(usuario.email)
-                                                ? sizeCard * 0.15
-                                                : sizeCard * 0.12,
+                                                ? sizeCard * 0.16
+                                                : sizeCard * 0.14,
                                             child: Column(
                                               children: [
                                                 Row(
@@ -412,7 +413,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                                         fontFamily:
                                                             'Open Sans Extra Bold',
                                                         fontSize:
-                                                            (sizeWidth * 0.06),
+                                                            (sizeWidth * 0.058),
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -425,7 +426,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                           Container(
                                             padding: EdgeInsets.only(
                                                 left: sizeWidth * 0.06),
-                                            height: sizeCard * 0.12,
+                                            height: sizeCard * 0.14,
                                             child: Column(
                                               children: [
                                                 Row(
@@ -455,7 +456,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                                         fontFamily:
                                                             'Open Sans Extra Bold',
                                                         fontSize:
-                                                            (sizeWidth * 0.06),
+                                                            (sizeWidth * 0.058),
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -468,7 +469,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                           Container(
                                             padding: EdgeInsets.only(
                                                 left: sizeWidth * 0.06),
-                                            height: sizeCard * 0.12,
+                                            height: sizeCard * 0.14,
                                             child: Column(
                                               children: [
                                                 Row(
@@ -500,7 +501,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                                         fontFamily:
                                                             'Open Sans Extra Bold',
                                                         fontSize:
-                                                            (sizeWidth * 0.06),
+                                                            (sizeWidth * 0.058),
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -560,7 +561,10 @@ class _MeuPerfilState extends State<MeuPerfil> {
                     width: sizeWidth * 0.4,
                     child: RaisedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, "/AlterarDados");
+                        showDialog(
+                            context: context,
+                            builder: (_) =>
+                                janelaPopUp2(sizeWidth, sizeHeight));
                       },
                       textColor: Colors.white,
                       splashColor: Color(0xfffab611),
@@ -596,6 +600,95 @@ class _MeuPerfilState extends State<MeuPerfil> {
           ),
         ],
       ),
+    );
+  }
+
+  AlertDialog janelaPopUp2(double sizeWidth, double sizeHeight) {
+    return AlertDialog(
+      backgroundColor: Colors.white,
+      elevation: 24,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+          side: BorderSide(color: Colors.black)),
+      title: Text(
+        "Aviso!",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Color.fromARGB(255, 93, 30, 132),
+          fontFamily: 'Open Sans Extra Bold',
+          fontSize: sizeWidth * 0.09,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      content: Text(
+        "Para alterar os dados, você terá que relizar login novamente\n você tem certeza?",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Color.fromARGB(255, 48, 48, 48),
+          fontFamily: 'Open Sans Extra Bold',
+          fontSize: sizeWidth * 0.06,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      actions: [
+        Row(
+          children: [
+            Container(
+              height: sizeHeight * 0.062,
+              width: sizeWidth * 0.28,
+              margin: EdgeInsets.only(
+                  right: sizeWidth * 0.11, bottom: sizeHeight * 0.01),
+              child: RaisedButton(
+                splashColor: Color(0xfffab611),
+                color: Color.fromARGB(255, 93, 30, 132),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.black)),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  "Não",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Open Sans Extra Bold',
+                    fontSize: sizeWidth * 0.08,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              height: sizeHeight * 0.062,
+              width: sizeWidth * 0.28,
+              margin: EdgeInsets.only(
+                  right: sizeWidth * 0.04, bottom: sizeHeight * 0.01),
+              child: RaisedButton(
+                color: Color.fromARGB(255, 93, 30, 132),
+                splashColor: Color(0xfffab611),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.black)),
+                onPressed: () {
+                  FirebaseAuth auth = FirebaseAuth.instance;
+                  auth.signOut();
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => Autentication()));
+                },
+                child: Text(
+                  "Sim",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Open Sans Extra Bold',
+                    fontSize: sizeWidth * 0.08,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

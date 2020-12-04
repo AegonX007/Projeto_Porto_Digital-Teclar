@@ -33,7 +33,7 @@ class _BaixarApp_Texto_WhatsappState extends State<BaixarApp_Texto_Whatsapp> {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.14);
+    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.105);
 
     return Scaffold(
       appBar: PreferredSize(

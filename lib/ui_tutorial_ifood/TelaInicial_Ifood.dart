@@ -161,8 +161,8 @@ class TelaIfood extends StatelessWidget {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.26048) - (sizeHeight * 0.10);
-    var sizeCard2 = (sizeHeight * 0.5522);
+    var sizeCard = (sizeHeight * 0.2588) - (sizeHeight * 0.105);
+    var sizeCard2 = (sizeHeight * 0.5560);
     final _scrollController = ScrollController();
 
     return Scaffold(

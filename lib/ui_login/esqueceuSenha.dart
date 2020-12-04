@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:material_splash_screen/entity/usuario.dart';
 import 'package:material_splash_screen/ui_login/novaSenha.dart';
 
 class EsqueceuSenha extends StatefulWidget {
@@ -11,6 +13,22 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha> {
   TextEditingController nomeController = TextEditingController();
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  Future<Usuario> _recuperarDados() async {
+    Firestore db = Firestore.instance;
+
+    QuerySnapshot querySnapshot = await db
+        .collection("usuarios")
+        .where("cpf", isEqualTo: cpfController.text)
+        .where("nome", isEqualTo: nomeController.text)
+        .getDocuments();
+    for (DocumentSnapshot item in querySnapshot.documents) {
+      var dados = item.data;
+      Usuario usuario = new Usuario(false, dados["cpf"], dados["email"],
+          dados["nome"], 0, dados["senha"], dados["urlImagemPerfil"]);
+      return usuario;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

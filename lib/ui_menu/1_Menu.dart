@@ -15,8 +15,8 @@ class _MenuInicialState extends State<MenuInicial> {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.3248) - (sizeHeight * 0.105);
-    var sizeCard2 = (sizeHeight * 0.4922);
+    var sizeCard = (sizeHeight * 0.2548) - (sizeHeight * 0.105);
+    var sizeCard2 = (sizeHeight * 0.5562);
 
     return Scaffold(
       appBar: PreferredSize(
@@ -75,20 +75,14 @@ class _MenuInicialState extends State<MenuInicial> {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: sizeCard * 0.005),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: sizeCard * 0.21),
+                  margin: EdgeInsets.only(top: sizeCard * 0.24),
                   child: Text(
                     "O que você deseja aprender hoje?",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontFamily: 'Open Sans Extra Bold',
                         color: Color.fromARGB(255, 48, 48, 48),
-                        fontSize: sizeWidth * 0.098,
+                        fontSize: sizeWidth * 0.09,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -99,6 +93,7 @@ class _MenuInicialState extends State<MenuInicial> {
             height: sizeCard2,
             width: sizeWidth,
             color: Colors.white,
+            padding: EdgeInsets.only(top: sizeCard2 * 0.04),
             child: Scrollbar(
               thickness: sizeWidth * 0.02,
               controller: _scrollController,

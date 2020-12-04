@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:material_splash_screen/entity/usuario.dart';
 import 'package:material_splash_screen/ui_menu/alterar_dados/dadosAlterados.dart';
+import 'package:material_splash_screen/ui_menu/autentication.dart';
 
 class AlterarEmail extends StatefulWidget {
   @override
@@ -12,10 +13,8 @@ class AlterarEmail extends StatefulWidget {
 
 class _AlterarEmailState extends State<AlterarEmail> {
   TextEditingController emailController = TextEditingController();
-  Usuario usuarioLogado;
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   Future<Usuario> _recuperarDados() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     FirebaseUser usuarioAtual = await auth.currentUser();
@@ -55,18 +54,11 @@ class _AlterarEmailState extends State<AlterarEmail> {
     db.collection("usuarios").document(usuario.cpf).updateData(dadosAtualizar);
   }
 
-  /*@override
-  void initState() {
-    super.initState();
-    _recuperarDados();
-  }*/
-
   @override
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
     var sizeCard = sizeHeight * 0.867;
-
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 242, 178, 42),
       body: SingleChildScrollView(

@@ -87,7 +87,7 @@ class _BaixarAPP_Audio_FacebookState extends State<BaixarAPP_Audio_Facebook> {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.14);
+    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.105);
     bool x;
     _alterandoPontuacaoAudio(nome);
     Widget _retornarTempoMusica(Duration position) {

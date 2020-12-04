@@ -27,9 +27,9 @@ class _AlterarDadosState extends State<AlterarDados> {
     } else if (cont == 3) {
       Navigator.pushNamed(context, "/AlterarCpf");
     } else if (cont == 4) {
-      Navigator.pushNamed(context, "/AlterarEmail");
+      //Navigator.pushNamed(context, "/AlterarEmail");
     } else if (cont == 5) {
-      Navigator.pushNamed(context, "/AlterarSenha");
+      //Navigator.pushNamed(context, "/AlterarSenha");
     }
   }
 

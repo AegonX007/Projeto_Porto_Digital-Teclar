@@ -45,9 +45,23 @@ class _AlterarSenhaState extends State<AlterarSenha> {
     }
   }
 
-  void updateEmail(String n) async {
+  Future<Usuario> resetSenha(value) async {
+    var message;
+    FirebaseAuth auth = FirebaseAuth.instance;
+    FirebaseUser usuarioAtual = await auth.currentUser();
+    usuarioAtual
+        .updatePassword(value)
+        .then(
+          (value) => message = 'Success',
+        )
+        .catchError((onError) => message = 'error');
+    updateDados(value);
+    return message;
+  }
+
+  void updateDados(String senha) async {
     Usuario usuario = await _recuperarDados();
-    Map<String, dynamic> dadosAtualizar = {"senha": n};
+    Map<String, dynamic> dadosAtualizar = {"senha": senha};
     Firestore db = Firestore.instance;
     db.collection("usuarios").document(usuario.cpf).updateData(dadosAtualizar);
   }
@@ -236,13 +250,16 @@ class _AlterarSenhaState extends State<AlterarSenha> {
                       child: RaisedButton(
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => DadosAlterados(
-                                        "Sua senha foi alterada"),
-                                    settings: RouteSettings(
-                                        name: "/DadosAlterados")));
+                            if (_formKey.currentState.validate()) {
+                              resetSenha(senha2Controller.text);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DadosAlterados(
+                                          "Seu Email foi alterado"),
+                                      settings: RouteSettings(
+                                          name: "/DadosAlterados")));
+                            }
                           }
                         },
                         textColor: Colors.white,

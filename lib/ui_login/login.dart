@@ -188,10 +188,10 @@ class _LoginState extends State<Login> {
                                 width: sizeWidth * 0.75,
                                 child: RaisedButton(
                                   onPressed: () {
-                                    Navigator.of(context).push(
+                                    /*Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                EsqueceuSenha()));
+                                                EsqueceuSenha()));*/
                                   },
                                   color: Color.fromARGB(255, 93, 30, 132),
                                   splashColor: Color(0xfffab611),
@@ -264,16 +264,9 @@ class _LoginState extends State<Login> {
                                   email: emailController.text,
                                   password: senhaController.text)
                               .then((firebaseUser) {
-                            print("Logar usuário: sucesso! email:" +
-                                firebaseUser.email);
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => MenuInicial()));
-                          }).catchError((erro) {
-                            showDialog(
-                                context: context,
-                                builder: (_) =>
-                                    janelaPopUp(sizeWidth, sizeHeight));
-                          });
+                          }).catchError((erro) {});
                         }
                       },
                       textColor: Colors.white,
@@ -299,7 +292,7 @@ class _LoginState extends State<Login> {
     );
   }
 
-  AlertDialog janelaPopUp(double sizeWidth, double sizeHeight) {
+  AlertDialog janelaPopUp(context, double sizeWidth, double sizeHeight) {
     return AlertDialog(
       backgroundColor: Colors.white,
       elevation: 24,

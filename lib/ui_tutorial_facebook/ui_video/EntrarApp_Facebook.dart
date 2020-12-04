@@ -106,7 +106,7 @@ class _EntrarAPP_Video_FacebookState extends State<EntrarAPP_Video_Facebook> {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.14);
+    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.105);
 
     return FutureBuilder<Usuario>(
         future: _recuperarDados(),
