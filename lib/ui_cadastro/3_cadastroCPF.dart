@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cpfcnpj/cpfcnpj.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,6 +23,19 @@ class _CadastrarCPFState extends State<CadastrarCPF> {
   }
   TextEditingController cpfController = TextEditingController();
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  Future<bool> _recuperarDados() async {
+    Firestore db = Firestore.instance;
+
+    QuerySnapshot querySnapshot = await db
+        .collection("usuarios")
+        .where("cpf", isEqualTo: cpfController.text)
+        .getDocuments();
+    for (DocumentSnapshot item in querySnapshot.documents) {
+      return true;
+    }
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,8 +127,7 @@ class _CadastrarCPFState extends State<CadastrarCPF> {
                               validator: (value) {
                                 if (value.isEmpty) {
                                   return 'Insira o seu cpf!';
-                                }
-                                if (!CPF.isValid(value)) {
+                                } else if (!CPF.isValid(value)) {
                                   return "Este CPF é inválido.";
                                 }
                               },
@@ -165,11 +178,19 @@ class _CadastrarCPFState extends State<CadastrarCPF> {
                       height: sizeHeight * 0.082,
                       width: sizeWidth * 0.4,
                       child: RaisedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (_formKey.currentState.validate()) {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    CadastroEmail(nome, cpfController.text)));
+                            bool teste = await _recuperarDados();
+                            if (teste == false) {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      CadastroEmail(nome, cpfController.text)));
+                            } else {
+                              showDialog(
+                                  context: context,
+                                  builder: (_) =>
+                                      janelaPopUp(sizeWidth, sizeHeight));
+                            }
                           }
                         },
                         textColor: Colors.white,
@@ -193,6 +214,67 @@ class _CadastrarCPFState extends State<CadastrarCPF> {
           ],
         ),
       ),
+    );
+  }
+
+  AlertDialog janelaPopUp(double sizeWidth, double sizeHeight) {
+    return AlertDialog(
+      backgroundColor: Colors.white,
+      elevation: 24,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+          side: BorderSide(color: Colors.black)),
+      title: Text(
+        "Erro!",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Color.fromARGB(255, 93, 30, 132),
+          fontFamily: 'Open Sans Extra Bold',
+          fontSize: sizeWidth * 0.09,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      content: Text(
+        "Esta senha já está sendo usada!",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.red,
+          fontFamily: 'Open Sans Extra Bold',
+          fontSize: sizeWidth * 0.06,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      actions: [
+        Row(
+          children: [
+            Container(
+              height: sizeHeight * 0.062,
+              width: sizeWidth * 0.28,
+              margin: EdgeInsets.only(
+                  right: sizeWidth * 0.11, bottom: sizeHeight * 0.01),
+              child: RaisedButton(
+                splashColor: Color(0xfffab611),
+                color: Color.fromARGB(255, 93, 30, 132),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.black)),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  "Ok",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Open Sans Extra Bold',
+                    fontSize: sizeWidth * 0.08,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

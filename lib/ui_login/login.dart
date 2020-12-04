@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:material_splash_screen/entity/usuario.dart';
 import 'package:material_splash_screen/main.dart';
 import 'package:material_splash_screen/ui_menu/1_Menu.dart';
 import 'package:material_splash_screen/ui_login/esqueceuSenha.dart';
@@ -19,6 +21,20 @@ class _LoginState extends State<Login> {
   TextEditingController senhaController = TextEditingController();
 
   GlobalKey<FormState> _formKey1 = GlobalKey<FormState>();
+
+  Future<bool> _recuperarDados() async {
+    Firestore db = Firestore.instance;
+
+    QuerySnapshot querySnapshot = await db
+        .collection("usuarios")
+        .where("email", isEqualTo: emailController.text)
+        .where("senha", isEqualTo: senhaController.text)
+        .getDocuments();
+    for (DocumentSnapshot item in querySnapshot.documents) {
+      return true;
+    }
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -256,17 +272,25 @@ class _LoginState extends State<Login> {
                     height: sizeHeight * 0.082,
                     width: sizeWidth * 0.4,
                     child: RaisedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         if (_formKey1.currentState.validate()) {
-                          FirebaseAuth auth = FirebaseAuth.instance;
-                          auth
-                              .signInWithEmailAndPassword(
-                                  email: emailController.text,
-                                  password: senhaController.text)
-                              .then((firebaseUser) {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => MenuInicial()));
-                          }).catchError((erro) {});
+                          bool teste = await _recuperarDados();
+                          if (teste == true) {
+                            FirebaseAuth auth = FirebaseAuth.instance;
+                            auth
+                                .signInWithEmailAndPassword(
+                                    email: emailController.text,
+                                    password: senhaController.text)
+                                .then((firebaseUser) {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => MenuInicial()));
+                            }).catchError((erro) {});
+                          } else {
+                            showDialog(
+                                context: context,
+                                builder: (_) =>
+                                    janelaPopUp(sizeWidth, sizeHeight));
+                          }
                         }
                       },
                       textColor: Colors.white,
@@ -292,7 +316,7 @@ class _LoginState extends State<Login> {
     );
   }
 
-  AlertDialog janelaPopUp(context, double sizeWidth, double sizeHeight) {
+  AlertDialog janelaPopUp(double sizeWidth, double sizeHeight) {
     return AlertDialog(
       backgroundColor: Colors.white,
       elevation: 24,
@@ -320,32 +344,34 @@ class _LoginState extends State<Login> {
         ),
       ),
       actions: [
-        Container(
-          height: sizeHeight * 0.07,
-          width: sizeWidth * 0.65,
-          margin: EdgeInsets.only(
-              right: sizeWidth * 0.05, bottom: sizeHeight * 0.01),
-          child: Expanded(
-            child: RaisedButton(
-              splashColor: Color(0xfffab611),
-              color: Color.fromARGB(255, 93, 30, 132),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                  side: BorderSide(color: Colors.black)),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text(
-                "Entendi",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'Open Sans Extra Bold',
-                  fontSize: sizeWidth * 0.08,
-                  fontWeight: FontWeight.bold,
+        Row(
+          children: [
+            Container(
+              height: sizeHeight * 0.062,
+              width: sizeWidth * 0.28,
+              margin: EdgeInsets.only(
+                  right: sizeWidth * 0.11, bottom: sizeHeight * 0.01),
+              child: RaisedButton(
+                splashColor: Color(0xfffab611),
+                color: Color.fromARGB(255, 93, 30, 132),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.black)),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  "Ok",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Open Sans Extra Bold',
+                    fontSize: sizeWidth * 0.08,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
-          ),
+          ],
         )
       ],
     );
