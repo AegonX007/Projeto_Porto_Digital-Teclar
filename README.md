@@ -1,7 +1,6 @@
 # Projeto Teclar
 
 ![Capturar](https://user-images.githubusercontent.com/54815810/101265253-a8c81500-3723-11eb-88fd-7b2ce920407c.PNG)
-
 Telas do Aplicativo
 
 ## Sobre o Projeto
@@ -25,4 +24,6 @@ de comunicação. A teclar vem estreitar a relação entre os idosos e a tecnolo
 através de uma interface intuitiva e totalmente adaptada às necessidades e
 preferências dos usuários, garantindo um aprendizado diferenciado e divertido.
 
+## Por que foi desenvolvido?
 
+Este projeto foi desenvolvido por meio de um desafio proposto dentro de uma parceria entre a faculdade [UNIT](https://www.unit.br/) e o [Porto Digital](https://www.portodigital.org/home)(Parque tecnológico localizado na cidade pernambucana do Recife com atuação nas áreas de tecnologia da informação e comunicação), no qual recebemos o desafio da [Mulungu](http://www.mulungustudio.com/), que foi de criar uma solução mobile, para que possam fornecer os seus conteúdos aos seus alunos(os idosos), que por conta da pandemia tiveram suas aulas presenciais suspensas.
