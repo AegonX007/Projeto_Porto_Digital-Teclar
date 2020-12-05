@@ -191,7 +191,12 @@ class _AutenticationState extends State<Autentication> {
                               .then((firebaseUser) {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => AlterarDados()));
-                          }).catchError((erro) {});
+                          }).catchError((erro) {
+                            showDialog(
+                                context: context,
+                                builder: (_) =>
+                                    janelaPopUp(sizeWidth, sizeHeight));
+                          });
                         }
                       },
                       textColor: Colors.white,
@@ -245,33 +250,34 @@ class _AutenticationState extends State<Autentication> {
         ),
       ),
       actions: [
-        Container(
-          height: sizeHeight * 0.07,
-          width: sizeWidth * 0.65,
-          margin: EdgeInsets.only(
-              right: sizeWidth * 0.05, bottom: sizeHeight * 0.01),
-          child: Expanded(
-            child: RaisedButton(
-              splashColor: Color(0xfffab611),
-              color: Color.fromARGB(255, 93, 30, 132),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                  side: BorderSide(color: Colors.black)),
-              onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => Autentication()));
-              },
-              child: Text(
-                "Entendi",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'Open Sans Extra Bold',
-                  fontSize: sizeWidth * 0.08,
-                  fontWeight: FontWeight.bold,
+        Row(
+          children: [
+            Container(
+              height: sizeHeight * 0.062,
+              width: sizeWidth * 0.28,
+              margin: EdgeInsets.only(
+                  right: sizeWidth * 0.11, bottom: sizeHeight * 0.01),
+              child: RaisedButton(
+                splashColor: Color(0xfffab611),
+                color: Color.fromARGB(255, 93, 30, 132),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.black)),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  "Ok",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Open Sans Extra Bold',
+                    fontSize: sizeWidth * 0.08,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
-          ),
+          ],
         )
       ],
     );

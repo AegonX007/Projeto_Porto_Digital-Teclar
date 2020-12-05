@@ -128,7 +128,7 @@ class _CadastrarNomeState extends State<CadastrarNome> {
                           "VOLTAR",
                           style: TextStyle(
                             fontFamily: 'Open Sans Extra Bold',
-                            fontSize: (sizeWidth * 0.35) * 0.18,
+                            fontSize: (sizeWidth * 0.35) * 0.16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -143,12 +143,9 @@ class _CadastrarNomeState extends State<CadastrarNome> {
                       child: RaisedButton(
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
-                            Future.delayed(Duration(milliseconds: 200))
-                                .then((_) {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) =>
-                                      CadastrarCPF(nomeController.text)));
-                            });
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    CadastrarCPF(nomeController.text)));
                           }
                         },
                         textColor: Colors.white,
@@ -161,7 +158,7 @@ class _CadastrarNomeState extends State<CadastrarNome> {
                           "AVANÇAR",
                           style: TextStyle(
                             fontFamily: 'Open Sans Extra Bold',
-                            fontSize: (sizeWidth * 0.35) * 0.17,
+                            fontSize: (sizeWidth * 0.35) * 0.16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

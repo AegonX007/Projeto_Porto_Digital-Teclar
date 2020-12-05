@@ -151,7 +151,7 @@ class _AlterarNomeState extends State<AlterarNome> {
                           "VOLTAR",
                           style: TextStyle(
                             fontFamily: 'Open Sans Extra Bold',
-                            fontSize: (sizeWidth * 0.35) * 0.17,
+                            fontSize: (sizeWidth * 0.35) * 0.16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -186,7 +186,7 @@ class _AlterarNomeState extends State<AlterarNome> {
                           "AVANÇAR",
                           style: TextStyle(
                             fontFamily: 'Open Sans Extra Bold',
-                            fontSize: (sizeWidth * 0.35) * 0.17,
+                            fontSize: (sizeWidth * 0.35) * 0.16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

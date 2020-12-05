@@ -223,7 +223,7 @@ class _CadastrarSenhaState extends State<CadastrarSenha> {
                           "VOLTAR",
                           style: TextStyle(
                             fontFamily: 'Open Sans Extra Bold',
-                            fontSize: (sizeWidth * 0.35) * 0.18,
+                            fontSize: (sizeWidth * 0.35) * 0.16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -278,7 +278,7 @@ class _CadastrarSenhaState extends State<CadastrarSenha> {
                           "AVANÇAR",
                           style: TextStyle(
                             fontFamily: 'Open Sans Extra Bold',
-                            fontSize: (sizeWidth * 0.35) * 0.17,
+                            fontSize: (sizeWidth * 0.35) * 0.16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
