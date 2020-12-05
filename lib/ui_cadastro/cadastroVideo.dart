@@ -9,7 +9,7 @@ class Cadastrar1 extends StatefulWidget {
 }
 
 class _Cadastrar1State extends State<Cadastrar1> {
-  String videoURL = "https://www.youtube.com/watch?v=fUv9gO8t8b4";
+  String videoURL = "https://www.youtube.com/watch?v=HryFL3RjM_I";
   YoutubePlayerController _controller;
   @override
   void initState() {
