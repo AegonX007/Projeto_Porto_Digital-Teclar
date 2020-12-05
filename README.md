@@ -27,3 +27,10 @@ preferências dos usuários, garantindo um aprendizado diferenciado e divertido.
 ## Por que foi desenvolvido?
 
 Este projeto foi desenvolvido por meio de um desafio proposto dentro de uma parceria entre a faculdade [UNIT](https://www.unit.br/) e o [Porto Digital](https://www.portodigital.org/home)(Parque tecnológico localizado na cidade pernambucana do Recife com atuação nas áreas de tecnologia da informação e comunicação), no qual recebemos o desafio da [Mulungu](http://www.mulungustudio.com/), que foi de criar uma solução mobile, para que possam fornecer os seus conteúdos aos seus alunos(os idosos), que por conta da pandemia tiveram suas aulas presenciais suspensas.
+
+## Algumas observações sobre este APP
+
+**1** - Os conteúdos dos tutoriais dentro do app como vídeo, aúdio e texto são meramente ilustrativos.
+
+**2** - Por enquanto o aplicativo está rodando apenas para Android, nas próximas versões que estão por vir, estará funcionando para IOS também, fique de olho nas próximas atualizações.
+
