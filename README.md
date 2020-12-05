@@ -1,17 +1,28 @@
 # Projeto Teclar
 
 ![Capturar](https://user-images.githubusercontent.com/54815810/101265253-a8c81500-3723-11eb-88fd-7b2ce920407c.PNG)
+
 Telas do Aplicativo
 
-## Getting Started
+## Sobre o Projeto
 
-This project is a starting point for a Flutter application.
+**MVP**
 
-A few resources to get you started if this is your first Flutter project:
+Voltada para o grupo 60+, a plataforma Teclar visa proporcionar
+independência e inclusão social ao idoso, disponibilizando o ensino do uso de
+aplicativos através de tutoriais em áudio, vídeo e texto, num ambiente gamificado com
+pontuação e ranking.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+**Qual problema resolve?**
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Diante de uma pandemia causada pelo novo coronavírus, os idosos são o
+principal grupo de risco. E nesse momento de isolamento social, os principais
+problemas que esse grupo enfrenta tende a se agravar. Além disso, o produto com as
+aulas em domicílio resulta em um negócio difícil de escalar. Nesse contexto, a
+tecnologia surge, então, como forma de minimizar os efeitos do isolamento, no
+estímulo mental e no bem-estar da pessoa idosa, podendo também facilitar o processo
+de comunicação. A teclar vem estreitar a relação entre os idosos e a tecnologia,
+através de uma interface intuitiva e totalmente adaptada às necessidades e
+preferências dos usuários, garantindo um aprendizado diferenciado e divertido.
+
+
