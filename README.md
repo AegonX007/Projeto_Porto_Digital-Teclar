@@ -1,6 +1,7 @@
-# TECLAR
+# Projeto Teclar
 
 ![Capturar](https://user-images.githubusercontent.com/54815810/101265253-a8c81500-3723-11eb-88fd-7b2ce920407c.PNG)
+Telas do Aplicativo
 
 ## Getting Started
 
