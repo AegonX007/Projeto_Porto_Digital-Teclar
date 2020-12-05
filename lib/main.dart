@@ -227,8 +227,7 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
 
-    Future.delayed(Duration(seconds: 60)).then((_) async {
-      // 4
+    Future.delayed(Duration(seconds: 4)).then((_) async {
       FirebaseAuth auth = FirebaseAuth.instance;
       FirebaseUser usuarioAtual = await auth.currentUser();
       if (usuarioAtual != null) {
