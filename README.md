@@ -1,4 +1,4 @@
-# material_splash_screen
+# TECLAR
 
 A new Flutter application.
 
