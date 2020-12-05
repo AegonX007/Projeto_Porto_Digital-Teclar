@@ -82,7 +82,7 @@ class _MenuInicialState extends State<MenuInicial> {
                     style: TextStyle(
                         fontFamily: 'Open Sans Extra Bold',
                         color: Color.fromARGB(255, 48, 48, 48),
-                        fontSize: sizeWidth * 0.09,
+                        fontSize: sizeWidth * 0.075,
                         fontWeight: FontWeight.bold),
                   ),
                 ),

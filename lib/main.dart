@@ -171,7 +171,7 @@ class _SplashState extends State<Splash> {
           ),
           Container(
             padding:
-                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
+                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.07),
           ),
           Center(
             child: Container(
@@ -183,6 +183,41 @@ class _SplashState extends State<Splash> {
               ),
             ),
           ),
+          Container(
+              margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.04),
+              child: Column(
+                children: [
+                  Text(
+                    "from",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.width * 0.035,
+                        fontFamily: 'Open Sans Extra Bold',
+                        color: Color.fromARGB(255, 242, 178, 42),
+                        shadows: [
+                          Shadow(
+                            blurRadius: 3,
+                            color: Color.fromARGB(255, 242, 178, 42),
+                          )
+                        ]),
+                  ),
+                  Text(
+                    "WAKANDA",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.width * 0.04,
+                        fontFamily: 'Open Sans Extra Bold',
+                        color: Color.fromARGB(255, 242, 178, 42),
+                        shadows: [
+                          Shadow(
+                            blurRadius: 3,
+                            color: Color.fromARGB(255, 242, 178, 42),
+                          )
+                        ]),
+                  ),
+                ],
+              ))
         ],
       ),
     );
@@ -192,7 +227,8 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
 
-    Future.delayed(Duration(seconds: 4)).then((_) async {
+    Future.delayed(Duration(seconds: 60)).then((_) async {
+      // 4
       FirebaseAuth auth = FirebaseAuth.instance;
       FirebaseUser usuarioAtual = await auth.currentUser();
       if (usuarioAtual != null) {

@@ -227,7 +227,7 @@ class TelaUber extends StatelessWidget {
                               fontFamily: testeCor("ASSISTINDO")
                                   ? 'Open Sans Extra Bold'
                                   : 'Open Sans',
-                              fontSize: sizeWidth * 0.076,
+                              fontSize: sizeWidth * 0.065,
                               color: testeCor("ASSISTINDO")
                                   ? Color.fromARGB(255, 48, 48, 48)
                                   : Color.fromARGB(170, 48, 48, 48),
@@ -260,7 +260,7 @@ class TelaUber extends StatelessWidget {
                             fontFamily: testeCor("OUVINDO")
                                 ? 'Open Sans Extra Bold'
                                 : 'Open Sans',
-                            fontSize: sizeWidth * 0.076,
+                            fontSize: sizeWidth * 0.065,
                             color: testeCor("OUVINDO")
                                 ? Color.fromARGB(255, 48, 48, 48)
                                 : Color.fromARGB(170, 48, 48, 48),
@@ -292,7 +292,7 @@ class TelaUber extends StatelessWidget {
                             fontFamily: testeCor("LENDO")
                                 ? 'Open Sans Extra Bold'
                                 : 'Open Sans',
-                            fontSize: sizeWidth * 0.076,
+                            fontSize: sizeWidth * 0.065,
                             color: testeCor("LENDO")
                                 ? Color.fromARGB(255, 48, 48, 48)
                                 : Color.fromARGB(170, 48, 48, 48),
@@ -322,7 +322,7 @@ class TelaUber extends StatelessWidget {
                             fontFamily: 'Open Sans Extra Bold',
                             color: Color.fromARGB(255, 93, 30, 132),
                             fontStyle: FontStyle.italic,
-                            fontSize: sizeWidth * 0.1,
+                            fontSize: sizeWidth * 0.085,
                             fontWeight: FontWeight.bold),
                       ),
                       Container(
