@@ -12,7 +12,7 @@ class Ranking extends StatefulWidget {
 
 class _RankingState extends State<Ranking> {
   final _controller = StreamController<QuerySnapshot>.broadcast();
-  //ScrollController _scrollController = new ScrollController();
+  ScrollController _scrollController = new ScrollController();
   String emailUsuario;
   final Firestore db = Firestore.instance;
 
@@ -46,6 +46,9 @@ class _RankingState extends State<Ranking> {
 
     stream.listen((dados) {
       _controller.add(dados);
+      Timer(Duration(seconds: 1), () {
+        _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+      });
     });
   }
 
@@ -308,58 +311,71 @@ class _RankingState extends State<Ranking> {
                         );
                       }
 
-                      return Container(
-                        height: sizeCard2,
-                        width: sizeWidth,
-                        color: Colors.white,
-                        padding: EdgeInsets.only(bottom: sizeCard2 * 0.01),
+                      return Scrollbar(
+                        isAlwaysShown: true,
+                        thickness: sizeWidth * 0.02,
+                        controller: _scrollController,
                         child: Container(
-                            child: Column(children: [
-                          ListView.builder(
-                              //controller: _scrollController,
-                              shrinkWrap: true,
-                              itemCount: querySnapshot.documents.length,
-                              itemBuilder: (context, indice) {
-                                List<DocumentSnapshot> usuarios =
-                                    querySnapshot.documents.toList();
-                                DocumentSnapshot item = usuarios[indice];
-                                String cpf = item["cpf"];
-                                String email = item["email"];
-                                String nome = item["nome"];
-                                String senha = item["senha"];
-                                String urlImagem = item["urlImagemPerfil"];
-                                int pontuacao = item["pontuacao"];
+                          height: sizeCard2,
+                          width: sizeWidth,
+                          color: Colors.white,
+                          padding: EdgeInsets.only(bottom: sizeCard2 * 0.01),
+                          child: Container(
+                              child: Column(children: [
+                            Expanded(
+                              child: ListView.builder(
+                                  controller: _scrollController,
+                                  shrinkWrap: true,
+                                  itemCount: querySnapshot.documents.length,
+                                  itemBuilder: (context, indice) {
+                                    List<DocumentSnapshot> usuarios =
+                                        querySnapshot.documents.toList();
+                                    DocumentSnapshot item = usuarios[indice];
+                                    String cpf = item["cpf"];
+                                    String email = item["email"];
+                                    String nome = item["nome"];
+                                    String senha = item["senha"];
+                                    String urlImagem = item["urlImagemPerfil"];
+                                    int pontuacao = item["pontuacao"];
 
-                                Usuario usuario = new Usuario(false, cpf, email,
-                                    nome, pontuacao, senha, urlImagem);
+                                    Usuario usuario = new Usuario(
+                                        false,
+                                        cpf,
+                                        email,
+                                        nome,
+                                        pontuacao,
+                                        senha,
+                                        urlImagem);
 
-                                if (usuario.email == emailUsuario) {
-                                  return Container(
-                                    child: buildRanking(
-                                        context,
-                                        urlImagem,
-                                        (indice + 1).toString() + "º",
-                                        firstName(nome),
-                                        pontuacao.toString(),
-                                        sizeWidth,
-                                        sizeCard2,
-                                        true),
-                                  );
-                                } else {
-                                  return Container(
-                                    child: buildRanking(
-                                        context,
-                                        urlImagem,
-                                        (indice + 1).toString() + "º",
-                                        firstName(nome),
-                                        pontuacao.toString(),
-                                        sizeWidth,
-                                        sizeCard2,
-                                        false),
-                                  );
-                                }
-                              }),
-                        ])),
+                                    if (usuario.email == emailUsuario) {
+                                      return Container(
+                                        child: buildRanking(
+                                            context,
+                                            urlImagem,
+                                            (indice + 1).toString() + "º",
+                                            firstName(nome),
+                                            pontuacao.toString(),
+                                            sizeWidth,
+                                            sizeCard2,
+                                            true),
+                                      );
+                                    } else {
+                                      return Container(
+                                        child: buildRanking(
+                                            context,
+                                            urlImagem,
+                                            (indice + 1).toString() + "º",
+                                            firstName(nome),
+                                            pontuacao.toString(),
+                                            sizeWidth,
+                                            sizeCard2,
+                                            false),
+                                      );
+                                    }
+                                  }),
+                            ),
+                          ])),
+                        ),
                       );
                     }
                 }
@@ -425,7 +441,7 @@ Widget buildRanking(context, String imagem, String pos, String firstName,
       Column(
         children: [
           Container(
-            height: sizeCard * 0.048,
+            height: sizeCard * 0.058,
             margin: EdgeInsets.only(
                 left: sizeWidth * 0.05, right: sizeWidth * 0.05),
             padding: EdgeInsets.only(left: sizeWidth * 0.02),
@@ -438,7 +454,7 @@ Widget buildRanking(context, String imagem, String pos, String firstName,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontFamily: 'Open Sans Extra Bold',
-                      fontSize: sizeCard * 0.036,
+                      fontSize: sizeCard * 0.043,
                       color: foco ? Colors.green : Colors.white),
                 ),
                 Padding(
@@ -449,7 +465,7 @@ Widget buildRanking(context, String imagem, String pos, String firstName,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontFamily: 'Open Sans Extra Bold',
-                        fontSize: sizeCard * 0.036,
+                        fontSize: sizeCard * 0.043,
                         color: Color.fromARGB(255, 242, 178, 42)),
                   ),
                 ),
@@ -457,7 +473,7 @@ Widget buildRanking(context, String imagem, String pos, String firstName,
             ),
           ),
           Container(
-            height: sizeCard * 0.048,
+            height: sizeCard * 0.058,
             margin: EdgeInsets.only(
                 left: sizeWidth * 0.05, right: sizeWidth * 0.05),
             padding: EdgeInsets.only(right: sizeWidth * 0.02),
@@ -468,7 +484,7 @@ Widget buildRanking(context, String imagem, String pos, String firstName,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: 'Open Sans Extra Bold',
-                fontSize: sizeCard * 0.036,
+                fontSize: sizeCard * 0.043,
                 color: Color.fromARGB(255, 48, 48, 48),
               ),
             ),
@@ -476,7 +492,7 @@ Widget buildRanking(context, String imagem, String pos, String firstName,
         ],
       ),
       Container(
-        height: sizeCard * 0.085,
+        height: sizeCard * 0.106,
         width: sizeWidth * 0.23,
         margin: EdgeInsets.only(top: sizeCard * 0.008, left: sizeWidth * 0.13),
         decoration: BoxDecoration(

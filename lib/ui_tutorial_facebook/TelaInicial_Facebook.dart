@@ -173,7 +173,9 @@ class TelaFacebook extends StatelessWidget {
             ),
             iconSize: sizeWidth * 0.10,
             splashColor: Color(0xfffab611),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, "/Gaveta");
+            },
           ),
           actions: [
             Container(
