@@ -103,6 +103,7 @@ Se quiser testar o aplicativo, escolha um dos intaladores abaixo(Baixe sempre a 
 ## Contato
  
 Meu e-mail: lucasg2019@outlook.com
+
 Conecte-se comigo no [LinkedIn](https://www.linkedin.com/in/lucas-g-3a5854161/)
 
  
