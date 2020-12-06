@@ -99,7 +99,11 @@ Se quiser testar o aplicativo, escolha um dos intaladores abaixo(Baixe sempre a 
  - [Youtube_player_flutter](https://pub.dev/packages/youtube_player_flutter) - Reprodução de vídeos do Youtube
  - [Scoped_model](https://pub.dev/packages/scoped_model) - Um conjunto de utilitários que permitem que você passe facilmente um modelo de dados de um Widget pai até seus descendentese.
   - [Bloc_pattern](https://pub.dev/packages/bloc_pattern) - Para injeção de dependências
+  
+## Contato
  
- 
+Meu e-mail: lucasg2019@outlook.com
+Conecte-se comigo no [LinkedIn](https://www.linkedin.com/in/lucas-g-3a5854161/)
+
  
 
