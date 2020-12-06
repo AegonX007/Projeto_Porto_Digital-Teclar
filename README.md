@@ -46,8 +46,8 @@ Este projeto foi desenvolvido por meio de um desafio proposto dentro de uma parc
 Se quiser testar o aplicativo, escolha um dos intaladores abaixo(Baixe sempre a versão mais atual):
 
 **Instalador APK ANDROID:**
-  - [versão 1.1](https://drive.google.com/file/d/1o1HQB25hWaFwZ9IwRyNnXCqxz1_tYBNE/view?usp=sharing)
-  - [versão 1.0](https://drive.google.com/file/d/1yWlxYZtNVVa6iq55N1C6qNgbKHeQ2YVR/view?usp=sharing)
+  - [versão 1.1](https://drive.google.com/drive/folders/1Pjuae4QHbliznTziqkM4ehwQw-DPsxaw?usp=sharing)
+  - [versão 1.0](https://drive.google.com/drive/folders/1kho6T0YrtrlmhL2XCHDiLkRz-ngtbxD9?usp=sharing)
   
 **Instalador APK IOS:**
   - Indisponível
