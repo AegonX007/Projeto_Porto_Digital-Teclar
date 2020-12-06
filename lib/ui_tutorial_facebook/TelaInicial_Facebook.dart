@@ -462,7 +462,7 @@ class TelaFacebook extends StatelessWidget {
                   nome,
                   style: TextStyle(
                     fontFamily: 'Open Sans Extra Bold',
-                    fontSize: (sizeWidth * 0.35) * 0.18,
+                    fontSize: (sizeWidth * 0.35) * 0.16,
                     fontWeight: FontWeight.bold,
                   ),
                 )),
