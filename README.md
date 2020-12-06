@@ -43,7 +43,7 @@ Este projeto foi desenvolvido por meio de um desafio proposto dentro de uma parc
 
 ## Instalação
 
-Se quiser testar o aplicativo, escolha um dos intaladores abaixo(Baixe sempre a versão mais atual):
+Se quiser testar o aplicativo, escolha um dos instaladores abaixo(Baixe sempre a versão mais atual):
 
 **Instalador APK ANDROID:**
   - [versão 1.1](https://drive.google.com/drive/folders/1Pjuae4QHbliznTziqkM4ehwQw-DPsxaw?usp=sharing)
