@@ -26,7 +26,9 @@ preferências dos usuários, garantindo um aprendizado diferenciado e divertido.
 
 ## Por que foi desenvolvido?
 
-Este projeto foi desenvolvido por meio de um desafio proposto dentro de uma parceria entre a faculdade [UNIT](https://www.unit.br/) e o [Porto Digital](https://www.portodigital.org/home)(Parque tecnológico localizado na cidade pernambucana do Recife com atuação nas áreas de tecnologia da informação e comunicação), no qual recebemos o desafio da [Mulungu Studio](http://www.mulungustudio.com/), que foi de criar uma solução mobile, para que possam fornecer os seus conteúdos aos seus alunos(os idosos), que por conta da pandemia tiveram suas aulas presenciais suspensas.
+Este projeto foi desenvolvido por meio de um desafio proposto dentro de uma parceria entre a faculdade [UNIT](https://www.unit.br/) e o [Porto Digital](https://www.portodigital.org/home)(Parque tecnológico localizado na cidade pernambucana do Recife com atuação nas áreas de tecnologia da informação e comunicação).
+
+O nosso desafio foi dado pela [Mulungu Studio](http://www.mulungustudio.com/) e teve como cenário a pandemia da covid-19. A nossa missão foi a de desenvolver uma solução para que o nosso público-alvo, os idosos, que agora estavam reclusos em casa, pudessem continuar as suas aulas presenciais de maneira remota. Aulas que se faziam ainda mais necessárias em tempos de pandemia, pois são aulas que ensinam os idosos a atingirem a sua independência tecnológica, com o ensino do uso de apps como o ifood e o whatsapp.
 
 ## Algumas observações sobre a última versão do APP
 
