@@ -48,6 +48,7 @@ O nosso desafio foi dado pela [Mulungu Studio](http://www.mulungustudio.com/) e 
 Se quiser testar o aplicativo, escolha um dos instaladores abaixo(Baixe sempre a versão mais atual):
 
 **Instalador APK ANDROID:**
+  - [versão 1.2](https://drive.google.com/drive/folders/1klXuuRbjj7YTrzgO7C5G9EejjKfRlc2D?usp=sharing)
   - [versão 1.1](https://drive.google.com/drive/folders/1Pjuae4QHbliznTziqkM4ehwQw-DPsxaw?usp=sharing)
   - [versão 1.0](https://drive.google.com/drive/folders/1kho6T0YrtrlmhL2XCHDiLkRz-ngtbxD9?usp=sharing)
   
