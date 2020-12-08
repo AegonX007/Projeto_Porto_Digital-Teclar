@@ -100,7 +100,7 @@ Se quiser testar o aplicativo, escolha um dos instaladores abaixo(Baixe sempre a
  - [Audioplayers](https://pub.dev/packages/audioplayers) - Reprodução de arquivos de áudios
  - [RxDart](https://pub.dev/packages/rxdart) - adiciona recursos adicionais aos Fluxos do Dart e ao StreamControllers
  - [Youtube_player_flutter](https://pub.dev/packages/youtube_player_flutter) - Reprodução de vídeos do Youtube
- - [Scoped_model](https://pub.dev/packages/scoped_model) - Um conjunto de utilitários que permitem que você passe facilmente um modelo de dados de um Widget pai até seus descendentese.
+ - [Scoped_model](https://pub.dev/packages/scoped_model) - Um conjunto de utilitários que permitem que você passe facilmente um modelo de dados de um Widget pai até seus descendentes.
   - [Bloc_pattern](https://pub.dev/packages/bloc_pattern) - Para injeção de dependências
   
 ## Contato
