@@ -12,6 +12,7 @@ import 'package:material_splash_screen/ui_menu/alterar_dados/alterarNome.dart';
 import 'package:material_splash_screen/ui_menu/alterar_dados/alterarSenha.dart';
 import 'package:material_splash_screen/ui_menu/gaveta.dart';
 import 'package:material_splash_screen/ui_menu/meuPerfil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
   //Firestore db = Firestore.instance;
@@ -114,7 +115,9 @@ Future<void> main() async {
     arquivo.putFile(_imagem);
   }*/
 
-  runApp(
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(Iniciar()
+      /*
     MaterialApp(
         title: "Teclar",
         home: Splash(),
@@ -141,8 +144,46 @@ Future<void> main() async {
           "/AlterarSenha": (context) => AlterarSenha(),
           "/AlterarEmail": (context) => AlterarEmail(),
           "/AlterarFotoPerfil": (context) => AlterarFotoPerfil(),
-        }),
-  );
+        }),*/
+      );
+}
+
+class Iniciar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, constraints) {
+      ScreenUtil.init(constraints,
+          designSize: Size(392.72727272727275, 781.0909090909091),
+          allowFontScaling: false);
+      return MaterialApp(
+          title: "Teclar",
+          home: Splash(),
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+              hintColor: Color(0xff004349).withOpacity(0.90),
+              primaryColor: Colors.deepPurple,
+              inputDecorationTheme: InputDecorationTheme(
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.deepPurple)),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.orange)),
+                hintStyle: TextStyle(color: Colors.orange),
+              )),
+          initialRoute: "/",
+          routes: {
+            "/Home": (context) => Home(),
+            "/Login": (context) => Login(),
+            "/Menu": (context) => MenuInicial(),
+            "/Gaveta": (context) => GavetaMenu(),
+            "/MeuPerfil": (context) => MeuPerfil(),
+            "/AlterarDados": (context) => AlterarDados(),
+            "/AlterarNome": (context) => AlterarNome(),
+            "/AlterarSenha": (context) => AlterarSenha(),
+            "/AlterarEmail": (context) => AlterarEmail(),
+            "/AlterarFotoPerfil": (context) => AlterarFotoPerfil(),
+          });
+    });
+  }
 }
 
 class Splash extends StatefulWidget {
@@ -273,7 +314,7 @@ class _HomeState extends State<Home> {
                           child: Image.asset(
                             "images/LOGOTIPO.png",
                             fit: BoxFit.contain,
-                            height: sizeHeight * 0.15,
+                            height: 120.h,
                           ),
                         ),
                       ),
@@ -285,7 +326,7 @@ class _HomeState extends State<Home> {
                           style: TextStyle(
                               fontFamily: 'Open Sans Extra Bold',
                               color: Color.fromARGB(255, 93, 30, 132),
-                              fontSize: sizeWidth * 0.101,
+                              fontSize: 40.ssp,
                               fontStyle: FontStyle.italic,
                               fontWeight: FontWeight.bold),
                         ),
@@ -297,13 +338,13 @@ class _HomeState extends State<Home> {
                           //color: Color(0xff670099).withOpacity(0.69),
                           ),
                       Padding(
-                        padding: EdgeInsets.only(top: sizecard * 0.2),
+                        padding: EdgeInsets.only(top: 40.h),
                         child: Text(
                           "Você já possui",
                           style: TextStyle(
                               fontFamily: 'Open Sans Extra Bold',
                               color: Color.fromARGB(255, 48, 48, 48),
-                              fontSize: sizeWidth * 0.085,
+                              fontSize: 33.ssp,
                               fontStyle: FontStyle.italic,
                               fontWeight: FontWeight.bold),
                         ),
@@ -314,7 +355,7 @@ class _HomeState extends State<Home> {
                           style: TextStyle(
                               fontFamily: 'Open Sans Extra Bold',
                               color: Color.fromARGB(255, 48, 48, 48),
-                              fontSize: sizeWidth * 0.085,
+                              fontSize: 33.ssp,
                               fontStyle: FontStyle.italic,
                               fontWeight: FontWeight.bold),
                         ),
