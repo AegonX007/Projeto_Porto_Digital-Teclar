@@ -45,6 +45,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
+    var topo = MediaQuery.of(context).padding.top;
     var sizeCard = sizeHeight * 0.9;
 
     return Scaffold(
@@ -63,7 +64,7 @@ class _LoginState extends State<Login> {
               child: Column(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(top: 100.h, bottom: 30.h),
+                    margin: EdgeInsets.only(top: topo + 20.h, bottom: 30.h),
                     child: Center(
                       child: Image.asset(
                         "images/LOGOTIPO.png",
@@ -277,7 +278,7 @@ class _LoginState extends State<Login> {
                         )),
                   ),
                   Container(
-                    margin: EdgeInsets.only(bottom: 10.h),
+                    margin: EdgeInsets.only(bottom: 20.h),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -335,7 +336,7 @@ class _LoginState extends State<Login> {
                             style: TextStyle(
                               fontFamily: 'Open Sans Extra Bold',
                               color: Colors.white,
-                              fontSize: (sizeWidth * 0.65) * 0.07,
+                              fontSize: 19.ssp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -351,7 +352,7 @@ class _LoginState extends State<Login> {
 
           Center(
             child: Container(
-              margin: EdgeInsets.only(top: 15.h),
+              margin: EdgeInsets.only(top: sizeHeight * 0.019),
               child: TextButton(
                 child: Text(
                   "Ops! Ainda não tenho Cadastro!",
