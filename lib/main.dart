@@ -15,9 +15,9 @@ import 'package:material_splash_screen/ui_menu/alterar_dados/alterarSenha.dart';
 import 'package:material_splash_screen/ui_menu/gaveta.dart';
 import 'package:material_splash_screen/ui_menu/meuPerfil.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   //Firestore db = Firestore.instance;
   //db.collection("cursos").doc("Ifood").delete(); // ? Deletando dados
 
@@ -117,9 +117,50 @@ Future<void> main() async {
     //Fazer upload da imagem
     arquivo.putFile(_imagem);
   }*/
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(Iniciar());
+}
 
-  runApp(
-    MaterialApp(
+class Iniciar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, constraints) {
+      ScreenUtil.init(constraints,
+          designSize: Size(392.72727272727275, 781.0909090909091),
+          allowFontScaling: false);
+      return MaterialApp(
+          title: "Teclar",
+          home: Splash(),
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+              hintColor: Color(0xff004349).withOpacity(0.90),
+              primaryColor: Colors.deepPurple,
+              inputDecorationTheme: InputDecorationTheme(
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.deepPurple)),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.orange)),
+                hintStyle: TextStyle(color: Colors.orange),
+              )),
+          initialRoute: "/",
+          routes: {
+            "/Home": (context) => Home(),
+            "/Login": (context) => Login(),
+            "/Menu": (context) => MenuInicial(),
+            "/Gaveta": (context) => GavetaMenu(),
+            "/MeuPerfil": (context) => MeuPerfil(),
+            "/AlterarDados": (context) => AlterarDados(),
+            "/AlterarNome": (context) => AlterarNome(),
+            "/AlterarSenha": (context) => AlterarSenha(),
+            "/AlterarEmail": (context) => AlterarEmail(),
+            "/AlterarFotoPerfil": (context) => AlterarFotoPerfil(),
+          });
+    });
+  }
+}
+
+/*
+MaterialApp(
         title: "Teclar",
         home: Splash(),
         debugShowCheckedModeBanner: false,
@@ -146,8 +187,7 @@ Future<void> main() async {
           "/AlterarEmail": (context) => AlterarEmail(),
           "/AlterarFotoPerfil": (context) => AlterarFotoPerfil(),
         }),
-  );
-}
+*/
 
 class Splash extends StatefulWidget {
   @override
@@ -271,25 +311,23 @@ class _HomeState extends State<Home> {
                   child: Column(
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.only(
-                            top: sizecard * 0.12, bottom: sizecard * 0.04),
+                        padding: EdgeInsets.only(top: 100.h, bottom: 30.h),
                         child: Center(
                           child: Image.asset(
                             "images/LOGOTIPO.png",
                             fit: BoxFit.contain,
-                            height: sizeHeight * 0.15,
+                            height: 120.h,
                           ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(
-                            top: sizeWidth * 0.1, bottom: sizecard * 0.01),
+                        padding: EdgeInsets.only(top: 30.h, bottom: 15.h),
                         child: Text(
                           "Seja bem-vindo!",
                           style: TextStyle(
                               fontFamily: 'Open Sans Extra Bold',
                               color: Color.fromARGB(255, 93, 30, 132),
-                              fontSize: sizeWidth * 0.101,
+                              fontSize: 38.ssp,
                               fontStyle: FontStyle.italic,
                               fontWeight: FontWeight.bold),
                         ),
@@ -301,13 +339,13 @@ class _HomeState extends State<Home> {
                           //color: Color(0xff670099).withOpacity(0.69),
                           ),*/
                       Padding(
-                        padding: EdgeInsets.only(top: sizeWidth * 0.1),
+                        padding: EdgeInsets.only(top: 30.h),
                         child: Text(
                           "O que deseja fazer?",
                           style: TextStyle(
                               fontFamily: 'Open Sans Extra Bold',
                               color: Color.fromARGB(255, 48, 48, 48),
-                              fontSize: sizeWidth * 0.065,
+                              fontSize: 25.ssp,
                               fontStyle: FontStyle.italic,
                               fontWeight: FontWeight.bold),
                         ),
@@ -315,12 +353,10 @@ class _HomeState extends State<Home> {
                       //? BOTOES MEU LOGIN E NAO TENHO CADASTRO ---------------------
                       Padding(
                           padding: EdgeInsets.only(
-                              left: sizeWidth * 0.100,
-                              right: sizeWidth * 0.100,
-                              top: sizeWidth * 0.1),
+                              left: 40.w, right: 40.w, top: 35.h),
                           child: Container(
-                            height: sizeHeight * 0.065,
-                            width: sizeWidth * 0.90,
+                            height: 52.h,
+                            width: 320.w,
                             child: RaisedButton(
                               onPressed: () {
                                 Navigator.pushNamed(context, "/Login");
@@ -335,7 +371,7 @@ class _HomeState extends State<Home> {
                                 "MEU LOGIN",
                                 style: TextStyle(
                                   fontFamily: 'Open Sans Extra Bold',
-                                  fontSize: sizeWidth * 0.05,
+                                  fontSize: 18.ssp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -343,12 +379,10 @@ class _HomeState extends State<Home> {
                           )),
                       Padding(
                           padding: EdgeInsets.only(
-                              left: sizeWidth * 0.100,
-                              right: sizeWidth * 0.100,
-                              top: sizeWidth * 0.05),
+                              left: 40.w, right: 40.w, top: 20.h),
                           child: Container(
-                            height: sizeHeight * 0.065,
-                            width: sizeWidth * 0.90,
+                            height: 52.h,
+                            width: 320.w,
                             child: RaisedButton(
                               textColor: Colors.white,
                               splashColor: Color(0xfffab611),
@@ -368,7 +402,7 @@ class _HomeState extends State<Home> {
                                 "NÃO TENHO CADASTRO",
                                 style: TextStyle(
                                   fontFamily: 'Open Sans Extra Bold',
-                                  fontSize: sizeWidth * 0.05,
+                                  fontSize: 18.ssp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -391,47 +425,42 @@ class _HomeState extends State<Home> {
               //-------------------------------------------------------------
 
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: sizeWidth * 0.100,
-                        right: sizeWidth * 0.100,
-                        bottom: sizeWidth * 0.02),
+                  Container(
                     child: Container(
-                      child: Container(
-                        height: sizeHeight * 0.08,
-                        width: sizeWidth * 0.75,
-                        child: RaisedButton.icon(
-                          onPressed: () {
-                            final provider = Provider.of<GoogleSignInProvider>(
-                                context,
-                                listen: false);
-                            if (provider.isSigninIn) {
-                              return Center(child: CircularProgressIndicator());
-                            } else {
-                              return provider.login();
-                            }
-                          },
-                          color: Color.fromARGB(255, 93, 30, 132),
-                          splashColor: Color(0xfffab611),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              side: BorderSide(color: Colors.black)),
-                          icon: FaIcon(FontAwesomeIcons.google,
-                              color: Colors.yellow),
-                          label: Text(
-                            "ENTRAR COM GOOGLE",
-                            style: TextStyle(
-                              fontFamily: 'Open Sans Extra Bold',
-                              color: Colors.white,
-                              fontSize: (sizeWidth * 0.65) * 0.07,
-                              fontWeight: FontWeight.bold,
-                            ),
+                      height: 62.h,
+                      width: 320.w,
+                      child: RaisedButton.icon(
+                        onPressed: () {
+                          final provider = Provider.of<GoogleSignInProvider>(
+                              context,
+                              listen: false);
+                          if (provider.isSigninIn) {
+                            return Center(child: CircularProgressIndicator());
+                          } else {
+                            return provider.login();
+                          }
+                        },
+                        color: Color.fromARGB(255, 93, 30, 132),
+                        splashColor: Color(0xfffab611),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            side: BorderSide(color: Colors.black)),
+                        icon: FaIcon(FontAwesomeIcons.google,
+                            color: Colors.yellow),
+                        label: Text(
+                          "ENTRAR COM GOOGLE",
+                          style: TextStyle(
+                            fontFamily: 'Open Sans Extra Bold',
+                            color: Colors.white,
+                            fontSize: 18.ssp,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
-                      padding: EdgeInsets.only(top: sizecard * 0.03),
                     ),
+                    padding: EdgeInsets.only(top: 20.h),
                   ),
                 ],
               ),

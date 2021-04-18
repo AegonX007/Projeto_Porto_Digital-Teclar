@@ -11,6 +11,7 @@ import 'package:material_splash_screen/ui_login/esqueceuSenha.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -43,7 +44,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = sizeHeight * 0.930;
+    var sizeCard = sizeHeight * 0.9;
 
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 242, 178, 42),
@@ -60,28 +61,26 @@ class _LoginState extends State<Login> {
                   color: Colors.white),
               child: Column(
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: sizeCard * 0.12, bottom: sizeCard * 0.05),
+                  Container(
+                    margin: EdgeInsets.only(top: 100.h, bottom: 30.h),
                     child: Center(
                       child: Image.asset(
                         "images/LOGOTIPO.png",
                         fit: BoxFit.contain,
-                        height: sizeHeight * 0.08,
+                        height: 80.h,
                       ),
                     ),
                   ),
                   Center(
                     child: Padding(
-                      padding: EdgeInsets.only(
-                          right: sizeWidth * 0.40, bottom: sizeCard * 0.007),
+                      padding: EdgeInsets.only(right: 150.w, bottom: 8.h),
                       child: Text(
                         "Faça o seu login:",
                         style: TextStyle(
                             fontFamily: 'Open Sans Extra Bold',
                             color: Color.fromARGB(255, 48, 48, 48),
                             fontStyle: FontStyle.italic,
-                            fontSize: sizeWidth * 0.06,
+                            fontSize: 22.ssp,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -89,43 +88,38 @@ class _LoginState extends State<Login> {
                   Form(
                     key: _formKey1,
                     child: Padding(
-                        padding: EdgeInsets.only(
-                            top: sizeCard * 0.04,
-                            bottom: sizeCard * 0.01,
-                            left: sizeWidth * 0.03),
+                        padding: EdgeInsets.only(top: 30.h, right: 10.w),
                         child: Column(
                           children: <Widget>[
                             Padding(
-                              padding:
-                                  EdgeInsets.only(right: sizeWidth * 0.500),
+                              padding: EdgeInsets.only(right: 230.w),
                               child: Text(
                                 "SEU EMAIL:",
                                 style: TextStyle(
-                                    fontFamily: 'Open Sans Extra Bold',
+                                    fontFamily: 'Open Sans Bold',
                                     color: Color.fromARGB(210, 48, 48, 48),
-                                    fontSize: sizeWidth * 0.06,
+                                    fontSize: 19.ssp,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
                             Row(
                               children: <Widget>[
                                 Container(
-                                  margin: EdgeInsets.only(top: sizeCard * 0.02),
-                                  padding:
-                                      EdgeInsets.only(left: sizeWidth * 0.020),
-                                  height: sizeCard * 0.1,
-                                  width: sizeWidth * 0.900,
+                                  margin: EdgeInsets.only(top: 5.h),
+                                  padding: EdgeInsets.only(left: 25.w),
+                                  height: 55.h,
+                                  width: 365.w,
                                   child: TextFormField(
                                     keyboardType: TextInputType.text,
-                                    textAlign: TextAlign.center,
+                                    textAlign: TextAlign.start,
                                     controller: emailController,
                                     decoration: InputDecoration(
                                         border: OutlineInputBorder(),
-                                        hintText: "DIGITE AQUI",
+                                        hintText: "DIGITE AQUI...",
                                         hintStyle: TextStyle(
                                             fontFamily: 'Open Sans',
                                             fontStyle: FontStyle.italic,
-                                            fontSize: sizeWidth * 0.04,
+                                            fontSize: 19.ssp,
                                             color: Color.fromARGB(
                                                 180, 48, 48, 48))),
                                     validator: (value) {
@@ -138,47 +132,41 @@ class _LoginState extends State<Login> {
                                     },
                                   ),
                                 ),
-                                Container(
-                                  padding:
-                                      EdgeInsets.only(left: sizeCard * 0.01),
-                                ),
                               ],
                             ),
 
                             Container(
-                              padding: EdgeInsets.only(top: sizeCard * 0.01),
+                              padding: EdgeInsets.only(top: 20.h),
                             ), // ----------------------------------------------------
                             Padding(
-                              padding:
-                                  EdgeInsets.only(right: sizeWidth * 0.500),
+                              padding: EdgeInsets.only(right: 220.w),
                               child: Text(
                                 "SUA SENHA:",
                                 style: TextStyle(
-                                    fontFamily: 'Open Sans Extra Bold',
+                                    fontFamily: 'Open Sans Bold',
                                     color: Color.fromARGB(210, 48, 48, 48),
-                                    fontSize: sizeWidth * 0.06,
+                                    fontSize: 19.ssp,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
                             Row(
                               children: <Widget>[
                                 Container(
-                                  margin: EdgeInsets.only(top: sizeCard * 0.02),
-                                  padding:
-                                      EdgeInsets.only(left: sizeWidth * 0.020),
-                                  height: sizeCard * 0.1,
-                                  width: sizeWidth * 0.900,
+                                  margin: EdgeInsets.only(top: 5.h),
+                                  padding: EdgeInsets.only(left: 25.w),
+                                  height: 55.h,
+                                  width: 365.w,
                                   child: TextFormField(
                                     keyboardType: TextInputType.text,
-                                    textAlign: TextAlign.center,
+                                    textAlign: TextAlign.start,
                                     controller: senhaController,
                                     decoration: InputDecoration(
                                         border: OutlineInputBorder(),
-                                        hintText: "             DIGITE AQUI",
+                                        hintText: "DIGITE AQUI....",
                                         hintStyle: TextStyle(
                                             fontFamily: 'Open Sans',
                                             fontStyle: FontStyle.italic,
-                                            fontSize: sizeWidth * 0.04,
+                                            fontSize: 19.ssp,
                                             color: Color.fromARGB(
                                                 180, 48, 48, 48)),
                                         suffixIcon: GestureDetector(
@@ -209,13 +197,12 @@ class _LoginState extends State<Login> {
                             //?BOTAO DE ENTRAR
                             //-----------------------------------
                             Container(
-                                margin:
-                                    EdgeInsets.only(top: sizeHeight * 0.025),
+                                margin: EdgeInsets.only(top: 20.h),
                                 padding:
-                                    EdgeInsets.only(right: sizeWidth * 0.020),
+                                    EdgeInsets.only(left: 11.w, right: 5.w),
                                 child: Container(
-                                  height: sizeHeight * 0.072,
-                                  width: sizeWidth * 0.900,
+                                  height: 55.h,
+                                  width: 342.w,
                                   child: RaisedButton(
                                     onPressed: () async {
                                       if (_formKey1.currentState.validate()) {
@@ -247,13 +234,13 @@ class _LoginState extends State<Login> {
                                     color: Color.fromARGB(255, 93, 30, 132),
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
-                                            BorderRadius.circular(15.0),
+                                            BorderRadius.circular(10.0),
                                         side: BorderSide(color: Colors.black)),
                                     child: Text(
                                       "ENTRAR",
                                       style: TextStyle(
                                         fontFamily: 'Open Sans Extra Bold',
-                                        fontSize: (sizeWidth * 0.35) * 0.18,
+                                        fontSize: 22.ssp,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -262,27 +249,10 @@ class _LoginState extends State<Login> {
 
                             // ESQUECI A MINHA SENHA
                             // ---------------------------------------------
-
-                            Container(
+                            Center(
                               child: Container(
-                                height: sizeHeight * 0.08,
-                                width: sizeWidth * 0.75,
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                            color: Colors.amber, width: 1.0))),
-                                child: RaisedButton(
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                EsqueceuSenha()));
-                                  },
-                                  color: Colors.white,
-                                  splashColor: Color(0xfffab611),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15.0),
-                                      side: BorderSide(color: Colors.white)),
+                                margin: EdgeInsets.only(top: 15.h),
+                                child: TextButton(
                                   child: Text(
                                     "ESQUECEU A SENHA?",
                                     style: TextStyle(
@@ -293,9 +263,14 @@ class _LoginState extends State<Login> {
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                EsqueceuSenha()));
+                                  },
                                 ),
                               ),
-                              padding: EdgeInsets.only(top: sizeCard * 0.03),
                             ),
                           ],
                         )),
