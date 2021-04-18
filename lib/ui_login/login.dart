@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:material_splash_screen/entity/usuario.dart';
 import 'package:material_splash_screen/main.dart';
+import 'package:material_splash_screen/ui_cadastro/cadastroVideo.dart';
 import 'package:material_splash_screen/ui_login/google_auth.dart';
 import 'package:material_splash_screen/ui_menu/1_Menu.dart';
 import 'package:material_splash_screen/ui_login/esqueceuSenha.dart';
@@ -73,7 +74,7 @@ class _LoginState extends State<Login> {
                   ),
                   Center(
                     child: Padding(
-                      padding: EdgeInsets.only(right: 150.w, bottom: 8.h),
+                      padding: EdgeInsets.only(right: 150.w),
                       child: Text(
                         "Faça o seu login:",
                         style: TextStyle(
@@ -251,14 +252,14 @@ class _LoginState extends State<Login> {
                             // ---------------------------------------------
                             Center(
                               child: Container(
-                                margin: EdgeInsets.only(top: 15.h),
+                                margin: EdgeInsets.only(top: 10.h),
                                 child: TextButton(
                                   child: Text(
                                     "ESQUECEU A SENHA?",
                                     style: TextStyle(
                                       fontFamily: 'Open Sans Extra Bold',
                                       color: Color.fromARGB(255, 93, 30, 132),
-                                      fontSize: (sizeWidth * 0.75) * 0.07,
+                                      fontSize: 16.ssp,
                                       decoration: TextDecoration.underline,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -274,52 +275,100 @@ class _LoginState extends State<Login> {
                             ),
                           ],
                         )),
-                  )
-                ],
-              )),
-
-          // ? BOTÕES DE "VOLTAR" E "ENTRAR"
-          //------------------------------------------------------------------------
-
-          Row(
-            children: <Widget>[
-              //?BOTAO GOOGLE \/
-              Container(
-                child: Container(
-                  height: sizeHeight * 0.08,
-                  width: sizeWidth * 0.75,
-                  child: RaisedButton.icon(
-                    onPressed: () {
-                      final provider = Provider.of<GoogleSignInProvider>(
-                          context,
-                          listen: false);
-                      if (provider.isSigninIn) {
-                        return Center(child: CircularProgressIndicator());
-                      } else {
-                        return provider.login();
-                      }
-                    },
-                    color: Color.fromARGB(255, 93, 30, 132),
-                    splashColor: Color(0xfffab611),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                        side: BorderSide(color: Colors.black)),
-                    icon: FaIcon(FontAwesomeIcons.google, color: Colors.yellow),
-                    label: Text(
-                      "ENTRAR COM GOOGLE",
-                      style: TextStyle(
-                        fontFamily: 'Open Sans Extra Bold',
-                        color: Colors.white,
-                        fontSize: (sizeWidth * 0.65) * 0.07,
-                        fontWeight: FontWeight.bold,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 10.h),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(right: 20.w),
+                          height: 2.h,
+                          width: 132.w,
+                          color: Color.fromARGB(255, 93, 30, 132),
+                        ),
+                        Container(
+                          child: Text(
+                            "Ou",
+                            style: TextStyle(
+                              fontFamily: 'Open Sans Extra Bold',
+                              color: Color.fromARGB(255, 93, 30, 132),
+                              fontSize: 16.ssp,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 20.w),
+                          height: 2.h,
+                          width: 132.w,
+                          color: Color.fromARGB(255, 93, 30, 132),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      child: Container(
+                        height: 55.h,
+                        width: 342.w,
+                        child: RaisedButton.icon(
+                          onPressed: () {
+                            final provider = Provider.of<GoogleSignInProvider>(
+                                context,
+                                listen: false);
+                            if (provider.isSigninIn) {
+                              return Center(child: CircularProgressIndicator());
+                            } else {
+                              return provider.login();
+                            }
+                          },
+                          color: Colors.blueGrey,
+                          splashColor: Color(0xfffab611),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                              side: BorderSide(color: Colors.black)),
+                          icon: FaIcon(FontAwesomeIcons.google,
+                              color: Colors.yellow),
+                          label: Text(
+                            "ENTRAR COM GOOGLE",
+                            style: TextStyle(
+                              fontFamily: 'Open Sans Extra Bold',
+                              color: Colors.white,
+                              fontSize: (sizeWidth * 0.65) * 0.07,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
+                ],
+              )),
+
+          // ? NÃO TEM CADASTRO
+          //------------------------------------------------------------------------
+
+          Center(
+            child: Container(
+              margin: EdgeInsets.only(top: 15.h),
+              child: TextButton(
+                child: Text(
+                  "Ops! Ainda não tenho Cadastro!",
+                  style: TextStyle(
+                    fontFamily: 'Open Sans Extra Bold',
+                    color: Color.fromARGB(255, 93, 30, 132),
+                    fontSize: 19.ssp,
+                    decoration: TextDecoration.underline,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                padding: EdgeInsets.only(
-                    top: sizeCard * 0.01, left: sizeCard * 0.06),
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => Cadastrar1()));
+                },
               ),
-            ],
+            ),
           ),
         ],
       )),
