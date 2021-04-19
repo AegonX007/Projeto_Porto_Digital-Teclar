@@ -8,6 +8,7 @@ import 'package:material_splash_screen/main.dart';
 import 'package:material_splash_screen/ui_cadastro/cadastroVideo.dart';
 import 'package:material_splash_screen/ui_login/google_auth.dart';
 import 'package:material_splash_screen/ui_menu/1_Menu.dart';
+import 'package:material_splash_screen/ui_menu/Redes_Sociais.dart';
 import 'package:material_splash_screen/ui_login/esqueceuSenha.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
@@ -220,7 +221,7 @@ class _LoginState extends State<Login> {
                                             Navigator.of(context).push(
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        MenuInicial()));
+                                                        MenuGrid()));
                                           }).catchError((erro) {});
                                         } else {
                                           showDialog(

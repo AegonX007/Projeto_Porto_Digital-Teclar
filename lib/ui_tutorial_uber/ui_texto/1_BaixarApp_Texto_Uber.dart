@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_splash_screen/ui_menu/1_Menu.dart';
+import 'package:material_splash_screen/ui_menu/Redes_Sociais.dart';
 import 'package:material_splash_screen/ui_menu/2_Aprendizado.dart';
 
 class BaixarApp_Texto_Uber extends StatefulWidget {
@@ -71,7 +72,7 @@ class _BaixarApp_Texto_UberState extends State<BaixarApp_Texto_Uber> {
               child: IconButton(
                 onPressed: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => MenuInicial()));
+                      MaterialPageRoute(builder: (context) => MenuGrid()));
                 },
                 icon: Icon(
                   Icons.home,

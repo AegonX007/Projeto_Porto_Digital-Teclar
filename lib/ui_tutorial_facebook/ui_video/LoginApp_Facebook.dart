@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:material_splash_screen/entity/curso.dart';
 import 'package:material_splash_screen/entity/usuario.dart';
 import 'package:material_splash_screen/ui_menu/1_Menu.dart';
+import 'package:material_splash_screen/ui_menu/Redes_Sociais.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 // ignore: camel_case_types
@@ -165,7 +166,7 @@ class _LoginAPP_Video_FacebookState extends State<LoginAPP_Video_Facebook> {
                           onPressed: () {
                             _controller.pause();
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => MenuInicial()));
+                                builder: (context) => MenuGrid()));
                           },
                           icon: Icon(
                             Icons.home,

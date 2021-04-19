@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:material_splash_screen/entity/curso.dart';
 import 'package:material_splash_screen/entity/usuario.dart';
 import 'package:material_splash_screen/ui_menu/1_Menu.dart';
+import 'package:material_splash_screen/ui_menu/Redes_Sociais.dart';
 import 'package:material_splash_screen/ui_menu/2_Aprendizado.dart';
 import 'package:material_splash_screen/ui_tutorial_uber/ui_audio/BaixarApp_Audio_Uber.dart';
 import 'package:material_splash_screen/ui_tutorial_uber/ui_texto/1_BaixarApp_Texto_Uber.dart';
@@ -194,7 +195,7 @@ class TelaUber extends StatelessWidget {
               child: IconButton(
                 onPressed: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => MenuInicial()));
+                      MaterialPageRoute(builder: (context) => MenuGrid()));
                 },
                 icon: Icon(
                   Icons.home,
