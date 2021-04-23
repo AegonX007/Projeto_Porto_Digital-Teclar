@@ -155,7 +155,9 @@ class Iniciar extends StatelessWidget {
             "/AlterarSenha": (context) => AlterarSenha(),
             "/AlterarEmail": (context) => AlterarEmail(),
             "/AlterarFotoPerfil": (context) => AlterarFotoPerfil(),
-            "/Menu": (context) => MenuGrid()
+            "/Menu": (context) => MenuGrid(),
+            "/WidgetAuth": (context) => WidgetAuth(),
+            "/WidgetAuth2": (context) => WidgetAuth2()
           });
     });
   }
@@ -435,14 +437,7 @@ class _HomeState extends State<Home> {
                       width: 320.w,
                       child: RaisedButton.icon(
                         onPressed: () {
-                          final provider = Provider.of<GoogleSignInProvider>(
-                              context,
-                              listen: false);
-                          if (provider.isSigninIn) {
-                            return Center(child: CircularProgressIndicator());
-                          } else {
-                            return provider.login();
-                          }
+                          Navigator.pushNamed(context, "/WidgetAuth");
                         },
                         color: Color.fromARGB(255, 93, 30, 132),
                         splashColor: Color(0xfffab611),
@@ -644,3 +639,50 @@ child: Text("My Awesome Border", style: TextStyle(color: Colors.red),),
     );
   }
 }*/
+class WidgetAuth extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        body: ChangeNotifierProvider(
+          create: (context) => GoogleSignInProvider(),
+          child: StreamBuilder(
+            stream: FirebaseAuth.instance.onAuthStateChanged,
+            builder: (context, snapshot) {
+              final provider =
+                  Provider.of<GoogleSignInProvider>(context, listen: false);
+
+              if (provider.isSigninIn) {
+                return buildLoading();
+              } else if (snapshot.hasData) {
+                return MenuGrid();
+              }
+              return Login();
+            },
+          ),
+        ),
+      );
+  Widget buildLoading() => Center(child: CircularProgressIndicator());
+}
+
+class WidgetAuth2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        body: ChangeNotifierProvider(
+          create: (context) => GoogleSignInProvider(),
+          child: StreamBuilder(
+            stream: FirebaseAuth.instance.onAuthStateChanged,
+            builder: (context, snapshot) {
+              final provider =
+                  Provider.of<GoogleSignInProvider>(context, listen: false);
+
+              if (provider.isSigninIn) {
+                return buildLoading();
+              } else if (snapshot.hasData) {
+                return MenuGrid();
+              }
+              return Home();
+            },
+          ),
+        ),
+      );
+  Widget buildLoading() => Center(child: CircularProgressIndicator());
+}

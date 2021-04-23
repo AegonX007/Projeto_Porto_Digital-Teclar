@@ -3,6 +3,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:material_splash_screen/entity/usuario.dart';
 import 'package:material_splash_screen/main.dart';
 import 'package:material_splash_screen/ui_cadastro/cadastroVideo.dart';
@@ -22,7 +23,6 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool _exibirSenha = false;
-
   TextEditingController emailController = TextEditingController();
   TextEditingController senhaController = TextEditingController();
 
@@ -315,15 +315,11 @@ class _LoginState extends State<Login> {
                         height: 55.h,
                         width: 342.w,
                         child: RaisedButton.icon(
-                          onPressed: () {
+                          onPressed: () async {
                             final provider = Provider.of<GoogleSignInProvider>(
                                 context,
                                 listen: false);
-                            if (provider.isSigninIn) {
-                              return Center(child: CircularProgressIndicator());
-                            } else {
-                              return provider.login();
-                            }
+                            provider.login();
                           },
                           color: Colors.blueGrey,
                           splashColor: Color(0xfffab611),
