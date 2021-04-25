@@ -54,7 +54,10 @@ class _TrocandoDeSenhaState extends State<TrocandoDeSenha> {
   void updateDados(Usuario usuario) {
     Map<String, dynamic> dadosAtualizar = {"senha": senha2Controller.text};
     Firestore db = Firestore.instance;
-    db.collection("usuarios").document(usuario.cpf).updateData(dadosAtualizar);
+    db
+        .collection("usuarios")
+        .document(usuario.email)
+        .updateData(dadosAtualizar);
   }
 
   @override
@@ -195,7 +198,7 @@ class _TrocandoDeSenhaState extends State<TrocandoDeSenha> {
                                   _exibirSenha2 == false ? true : false,
                               validator: (value) {
                                 if (value.isEmpty) {
-                                  return 'Insira o seu cpf!';
+                                  return 'Insira o seu email!';
                                 } else if (teste() == false) {
                                   return 'As senhas não correspondem!';
                                 } else if (value.length < 6) {

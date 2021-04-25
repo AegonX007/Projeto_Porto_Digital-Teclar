@@ -54,8 +54,8 @@ class _CadastrarAPP_Video_UberState extends State<CadastrarAPP_Video_Uber> {
         .getDocuments();
     for (DocumentSnapshot item in querySnapshot.documents) {
       var dados = item.data;
-      Usuario usuario = new Usuario(false, dados["cpf"], dados["email"],
-          dados["nome"], 0, dados["senha"], dados["urlImagemPerfil"]);
+      Usuario usuario = new Usuario(false, dados["email"], dados["nome"], 0,
+          dados["senha"], dados["urlImagemPerfil"]);
       return usuario;
     }
   }
@@ -67,12 +67,12 @@ class _CadastrarAPP_Video_UberState extends State<CadastrarAPP_Video_Uber> {
 
     DocumentSnapshot snapshot = await db
         .collection("cursos")
-        .document("Uber" + "_" + nome + "_" + usuario.cpf)
+        .document("Uber" + "_" + nome + "_" + usuario.email)
         .get();
     var dados = snapshot.data;
     if (dados != null) {
-      Curso curso = new Curso(dados["cpf"], dados["pontuacao"], dados["audio"],
-          dados["video"], dados["texto"]);
+      Curso curso = new Curso(dados["email"], dados["pontuacao"],
+          dados["audio"], dados["video"], dados["texto"]);
       return curso;
     } else {
       return null;
@@ -87,7 +87,7 @@ class _CadastrarAPP_Video_UberState extends State<CadastrarAPP_Video_Uber> {
 
     QuerySnapshot querySnapshot = await db
         .collection("cursos")
-        .where("cpf", isEqualTo: usuario.cpf)
+        .where("email", isEqualTo: usuario.email)
         .getDocuments();
     for (DocumentSnapshot item in querySnapshot.documents) {
       var dados = item.data;
@@ -100,7 +100,10 @@ class _CadastrarAPP_Video_UberState extends State<CadastrarAPP_Video_Uber> {
     Usuario usuario = await _recuperarDados();
     Map<String, dynamic> dadosAtualizar = {"pontuacao": pontuacao};
     Firestore db = Firestore.instance;
-    db.collection("usuarios").document(usuario.cpf).updateData(dadosAtualizar);
+    db
+        .collection("usuarios")
+        .document(usuario.email)
+        .updateData(dadosAtualizar);
   }
 
   @override
@@ -232,7 +235,7 @@ class _CadastrarAPP_Video_UberState extends State<CadastrarAPP_Video_Uber> {
 
                                 Map<String, dynamic> toMapNull() {
                                   Map<String, dynamic> map = {
-                                    "cpf": usuario.cpf,
+                                    "email": usuario.email,
                                     "pontuacao": 20,
                                     "audio": false,
                                     "texto": false,
@@ -256,7 +259,7 @@ class _CadastrarAPP_Video_UberState extends State<CadastrarAPP_Video_Uber> {
                                             "_" +
                                             nome +
                                             "_" +
-                                            usuario.cpf)
+                                            usuario.email)
                                         .setData(toMapNull());
                                   } else {
                                     Firestore db = Firestore.instance;
@@ -266,7 +269,7 @@ class _CadastrarAPP_Video_UberState extends State<CadastrarAPP_Video_Uber> {
                                             "_" +
                                             nome +
                                             "_" +
-                                            usuario.cpf)
+                                            usuario.email)
                                         .updateData(toMapNotNull());
                                   }
                                 }

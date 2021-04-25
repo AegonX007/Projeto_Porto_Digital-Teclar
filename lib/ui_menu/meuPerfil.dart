@@ -186,21 +186,14 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                     List<DocumentSnapshot> usuarios =
                                         querySnapshot.documents.toList();
                                     DocumentSnapshot item = usuarios[indice];
-                                    String cpf = item["cpf"];
                                     String email = item["email"];
                                     String nome = item["nome"];
                                     String senha = item["senha"];
                                     String urlImagem = item["urlImagemPerfil"];
                                     int pontuacao = item["pontuacao"];
 
-                                    Usuario usuario = new Usuario(
-                                        false,
-                                        cpf,
-                                        email,
-                                        nome,
-                                        pontuacao,
-                                        senha,
-                                        urlImagem);
+                                    Usuario usuario = new Usuario(false, email,
+                                        nome, pontuacao, senha, urlImagem);
                                     if (usuario.email == usuarioAtual) {
                                       return Column(
                                         children: [
@@ -407,49 +400,6 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                                     Text(
                                                       nomeCompletoAlt(
                                                           usuario.email),
-                                                      style: TextStyle(
-                                                        color: Color.fromARGB(
-                                                            255, 48, 48, 48),
-                                                        fontFamily:
-                                                            'Open Sans Extra Bold',
-                                                        fontSize:
-                                                            (sizeWidth * 0.058),
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            padding: EdgeInsets.only(
-                                                left: sizeWidth * 0.06),
-                                            height: sizeCard * 0.14,
-                                            child: Column(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      "CPF",
-                                                      style: TextStyle(
-                                                        color: Color.fromARGB(
-                                                            255, 93, 30, 132),
-                                                        fontFamily:
-                                                            'Open Sans Extra Bold',
-                                                        fontSize:
-                                                            (sizeWidth * 0.07),
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      usuario.cpf,
                                                       style: TextStyle(
                                                         color: Color.fromARGB(
                                                             255, 48, 48, 48),

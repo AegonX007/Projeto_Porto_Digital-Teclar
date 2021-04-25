@@ -5,22 +5,18 @@ import 'package:material_splash_screen/ui_cadastro/5_cadastroSenha.dart';
 
 class CadastroEmail extends StatefulWidget {
   String nome;
-  String cpf;
 
-  CadastroEmail(String nome, String cpf) {
+  CadastroEmail(String nome) {
     this.nome = nome;
-    this.cpf = cpf;
   }
   @override
-  _CadastroEmailState createState() => _CadastroEmailState(nome, cpf);
+  _CadastroEmailState createState() => _CadastroEmailState(nome);
 }
 
 class _CadastroEmailState extends State<CadastroEmail> {
   String nome;
-  String cpf;
-  _CadastroEmailState(String nome, String cpf) {
+  _CadastroEmailState(String nome) {
     this.nome = nome;
-    this.cpf = cpf;
   }
   TextEditingController emailController = TextEditingController();
 
@@ -75,7 +71,7 @@ class _CadastroEmailState extends State<CadastroEmail> {
                     child: Padding(
                       padding: EdgeInsets.only(top: sizeCard * 0.04),
                       child: Text(
-                        "Caso tenha, digite",
+                        "Digite seu e-email",
                         style: TextStyle(
                             fontFamily: 'Open Sans Extra Bold',
                             color: Color.fromARGB(255, 48, 48, 48),
@@ -83,17 +79,6 @@ class _CadastroEmailState extends State<CadastroEmail> {
                             fontSize: sizeWidth * 0.090,
                             fontWeight: FontWeight.bold),
                       ),
-                    ),
-                  ),
-                  Center(
-                    child: Text(
-                      "seu e-mail",
-                      style: TextStyle(
-                          fontFamily: 'Open Sans Extra Bold',
-                          color: Color.fromARGB(255, 48, 48, 48),
-                          fontStyle: FontStyle.italic,
-                          fontSize: sizeWidth * 0.090,
-                          fontWeight: FontWeight.bold),
                     ),
                   ),
                   Form(
@@ -178,7 +163,7 @@ class _CadastroEmailState extends State<CadastroEmail> {
                             if (teste == false) {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => CadastrarSenha(
-                                      nome, cpf, emailController.text)));
+                                      nome, emailController.text)));
                             } else {
                               showDialog(
                                   context: context,

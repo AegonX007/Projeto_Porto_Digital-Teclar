@@ -26,8 +26,8 @@ class _AlterarEmailState extends State<AlterarEmail> {
         .getDocuments();
     for (DocumentSnapshot item in querySnapshot.documents) {
       var dados = item.data;
-      Usuario usuario = new Usuario(false, dados["cpf"], dados["email"],
-          dados["nome"], 0, dados["senha"], dados["urlImagemPerfil"]);
+      Usuario usuario = new Usuario(false, dados["email"], dados["nome"], 0,
+          dados["senha"], dados["urlImagemPerfil"]);
 
       return usuario;
     }
@@ -51,7 +51,10 @@ class _AlterarEmailState extends State<AlterarEmail> {
     Usuario usuario = await _recuperarDados();
     Map<String, dynamic> dadosAtualizar = {"email": email};
     Firestore db = Firestore.instance;
-    db.collection("usuarios").document(usuario.cpf).updateData(dadosAtualizar);
+    db
+        .collection("usuarios")
+        .document(usuario.email)
+        .updateData(dadosAtualizar);
   }
 
   @override

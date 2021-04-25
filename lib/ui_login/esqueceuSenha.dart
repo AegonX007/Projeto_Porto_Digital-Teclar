@@ -9,7 +9,7 @@ class EsqueceuSenha extends StatefulWidget {
 }
 
 class _EsqueceuSenhaState extends State<EsqueceuSenha> {
-  TextEditingController cpfController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController nomeController = TextEditingController();
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -19,19 +19,13 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha> {
 
     QuerySnapshot querySnapshot = await db
         .collection("usuarios")
-        .where("cpf", isEqualTo: cpfController.text)
+        .where("email", isEqualTo: emailController.text)
         .where("nome", isEqualTo: nomeController.text)
         .getDocuments();
     for (DocumentSnapshot item in querySnapshot.documents) {
       var dados = item.data;
-      Usuario usuario = new Usuario(
-          false,
-          dados["cpf"],
-          dados["email"],
-          dados["nome"],
-          dados["pontuacao"],
-          dados["senha"],
-          dados["urlImagemPerfil"]);
+      Usuario usuario = new Usuario(false, dados["email"], dados["nome"],
+          dados["pontuacao"], dados["senha"], dados["urlImagemPerfil"]);
       return usuario;
     }
     return null;
@@ -71,7 +65,7 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha> {
                   ),
                   Center(
                     child: Text(
-                      "Digite o seu CPF:",
+                      "Digite o seu E-mail:",
                       style: TextStyle(
                         fontFamily: 'Open Sans Extra Bold',
                         color: Color.fromARGB(255, 48, 48, 48),
@@ -96,7 +90,7 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha> {
                             child: TextFormField(
                               keyboardType: TextInputType.number,
                               textAlign: TextAlign.center,
-                              controller: cpfController,
+                              controller: emailController,
                               maxLength: 11,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(),
@@ -108,7 +102,7 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha> {
                                       color: Color.fromARGB(180, 48, 48, 48))),
                               validator: (value) {
                                 if (value.isEmpty) {
-                                  return 'Insira o seu cpf!';
+                                  return 'Insira o seu e-mail!';
                                 }
                               },
                             ),

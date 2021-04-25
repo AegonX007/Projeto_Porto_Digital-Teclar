@@ -6,29 +6,25 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class CadastrarSenha extends StatefulWidget {
   String nome;
-  String cpf;
   String email;
 
-  CadastrarSenha(String nome, String cpf, String email) {
+  CadastrarSenha(String nome, String email) {
     this.nome = nome;
-    this.cpf = cpf;
     this.email = email;
   }
   @override
-  _CadastrarSenhaState createState() => _CadastrarSenhaState(nome, cpf, email);
+  _CadastrarSenhaState createState() => _CadastrarSenhaState(nome, email);
 }
 
 class _CadastrarSenhaState extends State<CadastrarSenha> {
   bool _exibirSenha = false;
   bool _exibirSenha2 = false;
   String nome;
-  String cpf;
   String email;
   String senha;
 
-  _CadastrarSenhaState(String nome, String cpf, String email) {
+  _CadastrarSenhaState(String nome, String email) {
     this.nome = nome;
-    this.cpf = cpf;
     this.email = email;
   }
 
@@ -217,7 +213,7 @@ class _CadastrarSenhaState extends State<CadastrarSenha> {
                             side: BorderSide(color: Colors.black)),
                         onPressed: () {
                           Navigator.of(context).pop(MaterialPageRoute(
-                              builder: (context) => CadastroEmail(nome, cpf)));
+                              builder: (context) => CadastroEmail(nome)));
                         },
                         child: Text(
                           "VOLTAR",
@@ -253,9 +249,8 @@ class _CadastrarSenhaState extends State<CadastrarSenha> {
                             Firestore db = Firestore.instance;
                             db // ? O DocumentReferences foi utilizado nesse caso para obter o doc
                                 .collection("usuarios")
-                                .document(cpf)
+                                .document(email)
                                 .setData({
-                              "cpf": cpf,
                               "nome": nome,
                               "email": email,
                               "senha": senhaController.text,

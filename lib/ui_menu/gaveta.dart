@@ -182,21 +182,14 @@ class _GavetaMenuState extends State<GavetaMenu> {
                                     List<DocumentSnapshot> usuarios =
                                         querySnapshot.documents.toList();
                                     DocumentSnapshot item = usuarios[indice];
-                                    String cpf = item["cpf"];
                                     String email = item["email"];
                                     String nome = item["nome"];
                                     String senha = item["senha"];
                                     String urlImagem = item["urlImagemPerfil"];
                                     int pontuacao = item["pontuacao"];
 
-                                    Usuario usuario = new Usuario(
-                                        false,
-                                        cpf,
-                                        email,
-                                        nome,
-                                        pontuacao,
-                                        senha,
-                                        urlImagem);
+                                    Usuario usuario = new Usuario(false, email,
+                                        nome, pontuacao, senha, urlImagem);
 
                                     if (usuario.email == usuarioAtual) {
                                       return Row(

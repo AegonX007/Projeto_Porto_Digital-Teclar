@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:material_splash_screen/ui_cadastro/3_cadastroCPF.dart';
+import 'package:material_splash_screen/ui_cadastro/4_cadastroEmail.dart';
 import 'package:material_splash_screen/ui_cadastro/cadastroVideo.dart';
 
 class CadastrarNome extends StatefulWidget {
@@ -145,7 +145,7 @@ class _CadastrarNomeState extends State<CadastrarNome> {
                           if (_formKey.currentState.validate()) {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) =>
-                                    CadastrarCPF(nomeController.text)));
+                                    CadastroEmail(nomeController.text)));
                           }
                         },
                         textColor: Colors.white,

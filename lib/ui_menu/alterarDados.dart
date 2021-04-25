@@ -116,14 +116,8 @@ class _AlterarDadosState extends State<AlterarDados> {
         .getDocuments();
     for (DocumentSnapshot item in querySnapshot.documents) {
       var dados = item.data;
-      Usuario usuario = new Usuario(
-          false,
-          dados["cpf"],
-          dados["email"],
-          dados["nome"],
-          dados["pontuacao"],
-          dados["senha"],
-          dados["urlImagemPerfil"]);
+      Usuario usuario = new Usuario(false, dados["email"], dados["nome"],
+          dados["pontuacao"], dados["senha"], dados["urlImagemPerfil"]);
       return usuario;
     }
   }
@@ -131,14 +125,16 @@ class _AlterarDadosState extends State<AlterarDados> {
   void updateDados() async {
     Usuario usuario = await _recuperarDados();
     Map<String, dynamic> dadosAtualizar = {
-      "cpf": usuario.cpf,
       "nome": usuario.nome,
       "email": usuario.email,
       "senha": usuario.senha,
       "urlImagemPerfil": _urlImagemRecuperada
     };
     Firestore db = Firestore.instance;
-    db.collection("usuarios").document(usuario.cpf).updateData(dadosAtualizar);
+    db
+        .collection("usuarios")
+        .document(usuario.email)
+        .updateData(dadosAtualizar);
   }
 
   @override

@@ -1,16 +1,16 @@
 class Curso {
-  String _cpf;
+  String _email;
   int _pontuacao;
   bool _audio;
   bool _video;
   bool _texto;
 
-  Curso(this._cpf, this._pontuacao, this._audio, this._video, this._texto);
+  Curso(this._email, this._pontuacao, this._audio, this._video, this._texto);
 
-  String get categoria => _cpf;
+  String get categoria => _email;
 
   set categoria(String value) {
-    _cpf = value;
+    _email = value;
   }
 
   int get pontuacao => _pontuacao;

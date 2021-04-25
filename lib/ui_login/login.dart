@@ -7,7 +7,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:material_splash_screen/entity/usuario.dart';
 import 'package:material_splash_screen/main.dart';
 import 'package:material_splash_screen/ui_cadastro/cadastroVideo.dart';
-import 'package:material_splash_screen/ui_login/google_auth.dart';
 import 'package:material_splash_screen/ui_menu/1_Menu.dart';
 import 'package:material_splash_screen/ui_menu/Redes_Sociais.dart';
 import 'package:material_splash_screen/ui_login/esqueceuSenha.dart';
@@ -316,10 +315,41 @@ class _LoginState extends State<Login> {
                         width: 342.w,
                         child: RaisedButton.icon(
                           onPressed: () async {
-                            final provider = Provider.of<GoogleSignInProvider>(
-                                context,
-                                listen: false);
-                            provider.login();
+                            FirebaseAuth auth = FirebaseAuth.instance;
+                            final googleSignIn = GoogleSignIn();
+                            final user = await googleSignIn.signIn();
+                            bool verificador = true;
+                            try {
+                              auth
+                                  .signInWithEmailAndPassword(
+                                      email: user.email, password: user.id)
+                                  .then((firebaseUser) {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => MenuGrid()));
+                              });
+                            } catch (e) {
+                              auth
+                                  .createUserWithEmailAndPassword(
+                                      email: user.email, password: user.id)
+                                  .then((firebaseUser) {
+                                print("Novo usuário: sucesso! email:" +
+                                    firebaseUser.email);
+                              }).catchError((erro) {
+                                print("Novo usuário: erro " + erro.toString());
+                              });
+
+                              Firestore db = Firestore.instance;
+                              db // ? O DocumentReferences foi utilizado nesse caso para obter o doc
+                                  .collection("usuarios")
+                                  .document(user.email)
+                                  .setData({
+                                "nome": user.displayName,
+                                "email": user.email,
+                                "senha": user.id,
+                                "urlImagemPerfil": user.photoUrl,
+                                "pontuacao": 0
+                              });
+                            }
                           },
                           color: Colors.blueGrey,
                           splashColor: Color(0xfffab611),

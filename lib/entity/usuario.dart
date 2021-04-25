@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:material_splash_screen/entity/curso.dart';
 
 class Usuario {
-  String _cpf;
   String _nome;
   String _email;
   String _senha;
@@ -11,19 +10,13 @@ class Usuario {
   bool _adm;
   int _pontuacaoTotal;
 
-  Usuario(this._adm, this._cpf, this._email, this._nome, this._pontuacaoTotal,
-      this._senha, this._urlImagemPerfil);
+  Usuario(this._adm, this._email, this._nome, this._pontuacaoTotal, this._senha,
+      this._urlImagemPerfil);
 
   bool get adm => _adm;
 
   set adm(bool value) {
     _adm = value;
-  }
-
-  String get cpf => _cpf;
-
-  set cpf(String value) {
-    _cpf = value;
   }
 
   String get nome => _nome;

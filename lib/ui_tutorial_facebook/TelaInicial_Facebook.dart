@@ -112,7 +112,7 @@ class TelaFacebook extends StatelessWidget {
 
     Map<String, dynamic> toMapNull() {
       Map<String, dynamic> map = {
-        "cpf": usuario.cpf,
+        "email": usuario.email,
         "pontuacao": 20,
         "audio": false,
         "texto": true,
@@ -132,13 +132,13 @@ class TelaFacebook extends StatelessWidget {
       if (curso == null) {
         await db
             .collection("cursos")
-            .document("Facebook" + "_" + nome + "_" + usuario.cpf)
+            .document("Facebook" + "_" + nome + "_" + usuario.email)
             .setData(toMapNull());
       } else {
         Firestore db = Firestore.instance;
         await db
             .collection("cursos")
-            .document("Facebook" + "_" + nome + "_" + usuario.cpf)
+            .document("Facebook" + "_" + nome + "_" + usuario.email)
             .updateData(toMapNotNull());
       }
     }
@@ -492,8 +492,8 @@ Future<Usuario> _recuperarDados() async {
       .getDocuments();
   for (DocumentSnapshot item in querySnapshot.documents) {
     var dados = item.data;
-    Usuario usuario = new Usuario(false, dados["cpf"], dados["email"],
-        dados["nome"], 0, dados["senha"], dados["urlImagemPerfil"]);
+    Usuario usuario = new Usuario(false, dados["email"], dados["nome"], 0,
+        dados["senha"], dados["urlImagemPerfil"]);
     return usuario;
   }
 }
@@ -505,11 +505,11 @@ Future<Curso> _recuperarCurso(Usuario usuario, String nome) async {
 
   DocumentSnapshot snapshot = await db
       .collection("cursos")
-      .document("Ifood" + "_" + nome + "_" + usuario.cpf)
+      .document("Ifood" + "_" + nome + "_" + usuario.email)
       .get();
   var dados = snapshot.data;
   if (dados != null) {
-    Curso curso = new Curso(dados["cpf"], dados["pontuacao"], dados["audio"],
+    Curso curso = new Curso(dados["email"], dados["pontuacao"], dados["audio"],
         dados["video"], dados["texto"]);
     return curso;
   } else {
@@ -525,7 +525,7 @@ Future<int> totalPontos(Usuario usuario) async {
 
   QuerySnapshot querySnapshot = await db
       .collection("cursos")
-      .where("cpf", isEqualTo: usuario.cpf)
+      .where("email", isEqualTo: usuario.email)
       .getDocuments();
   for (DocumentSnapshot item in querySnapshot.documents) {
     var dados = item.data;
@@ -538,5 +538,5 @@ void updateDados(int pontuacao) async {
   Usuario usuario = await _recuperarDados();
   Map<String, dynamic> dadosAtualizar = {"pontuacao": pontuacao};
   Firestore db = Firestore.instance;
-  db.collection("usuarios").document(usuario.cpf).updateData(dadosAtualizar);
+  db.collection("usuarios").document(usuario.email).updateData(dadosAtualizar);
 }
