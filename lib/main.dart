@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:material_splash_screen/ui_login/login.dart';
 import 'package:material_splash_screen/ui_cadastro/cadastroVideo.dart';
 import 'package:material_splash_screen/ui_menu/1_Menu.dart';
@@ -433,8 +435,42 @@ class _HomeState extends State<Home> {
                       height: 62.h,
                       width: 320.w,
                       child: RaisedButton.icon(
-                        onPressed: () {
-                          Navigator.pushNamed(context, "/Login");
+                        onPressed: () async {
+                          FirebaseAuth auth = FirebaseAuth.instance;
+                          final googleSignIn = GoogleSignIn();
+                          final user = await googleSignIn.signIn();
+                          bool verificador = true;
+                          try {
+                            auth
+                                .signInWithEmailAndPassword(
+                                    email: user.email, password: user.id)
+                                .then((firebaseUser) {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => MenuGrid()));
+                            });
+                          } catch (e) {
+                            auth
+                                .createUserWithEmailAndPassword(
+                                    email: user.email, password: user.id)
+                                .then((firebaseUser) {
+                              print("Novo usuário: sucesso! email:" +
+                                  firebaseUser.email);
+                            }).catchError((erro) {
+                              print("Novo usuário: erro " + erro.toString());
+                            });
+
+                            Firestore db = Firestore.instance;
+                            db // ? O DocumentReferences foi utilizado nesse caso para obter o doc
+                                .collection("usuarios")
+                                .document(user.email)
+                                .setData({
+                              "nome": user.displayName,
+                              "email": user.email,
+                              "senha": user.id,
+                              "urlImagemPerfil": user.photoUrl,
+                              "pontuacao": 0
+                            });
+                          }
                         },
                         color: Color.fromARGB(255, 93, 30, 132),
                         splashColor: Color(0xfffab611),
