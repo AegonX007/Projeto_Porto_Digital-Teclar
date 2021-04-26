@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GridDash extends StatelessWidget {
   Item item1 = new Item(
@@ -40,20 +40,20 @@ class GridDash extends StatelessWidget {
               children: <Widget>[
                 Image.asset(
                   data.img,
-                  width: 70,
+                  width: 70.w,
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 30.h,
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      border: Border.all(width: 2, color: Colors.black38),
+                      border: Border.all(width: 2.w, color: Colors.black38),
                       color: Colors.yellow[800]),
                   child: Text(
                     data.title,
                     style: TextStyle(
                         color: Color.fromARGB(255, 93, 30, 132),
-                        fontSize: 22,
+                        fontSize: 22.ssp,
                         fontWeight: FontWeight.w600),
                   ),
                 ),
