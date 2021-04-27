@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:material_splash_screen/ui_menu/gridDashboard.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MenuGrid extends StatefulWidget {
   @override
@@ -15,26 +16,23 @@ class _MenuGridState extends State<MenuGrid> {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.2548) - (sizeHeight * 0.14);
-    var sizeCard2 = (sizeHeight * 0.5622);
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(sizeHeight * 0.08),
+        preferredSize: Size.fromHeight(60.h),
         child: AppBar(
           elevation: 6,
           backgroundColor: Color.fromARGB(255, 93, 30, 132),
           title: Text(
             "MENU",
-            style:
-                TextStyle(fontFamily: 'Open Sans', fontSize: sizeWidth * 0.08),
+            style: TextStyle(fontFamily: 'Open Sans', fontSize: 25.ssp),
           ),
           leading: IconButton(
             icon: Icon(
               Icons.dehaze,
               color: Colors.white,
             ),
-            iconSize: sizeWidth * 0.10,
+            iconSize: 40.h,
             splashColor: Color(0xfffab611),
             onPressed: () {
               Navigator.pushNamed(context, "/Gaveta");
@@ -47,10 +45,7 @@ class _MenuGridState extends State<MenuGrid> {
                   borderRadius:
                       const BorderRadius.all(const Radius.circular(30)),
                   color: Colors.white),
-              margin: EdgeInsets.only(
-                  right: sizeWidth * 0.03,
-                  top: sizeHeight * 0.008,
-                  bottom: sizeHeight * 0.005),
+              margin: EdgeInsets.only(right: 15.w, top: 4.h, bottom: 3.h),
               child: IconButton(
                 onPressed: () {
                   Navigator.pushNamed(context, "/Menu");
@@ -58,10 +53,10 @@ class _MenuGridState extends State<MenuGrid> {
                 icon: Icon(
                   Icons.home,
                   color: Color.fromARGB(255, 93, 30, 132),
-                  size: sizeWidth * 0.11,
+                  size: 45.ssp,
                 ),
                 splashColor: Color(0xfffab611),
-                padding: EdgeInsets.only(right: sizeWidth * 0.00001),
+                padding: EdgeInsets.only(right: 1.w),
               ),
             )
           ],
@@ -71,57 +66,35 @@ class _MenuGridState extends State<MenuGrid> {
       body: Column(
         children: [
           Container(
-            height: sizeCard,
+            height: 90.h,
             width: sizeWidth,
             color: Colors.white,
-            child: Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(top: sizeCard * 0.005),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(
-                      top: sizeHeight * 0.01,
-                      left: sizeWidth * 0.01,
-                      right: sizeWidth * 0.01),
-                  child: Text(
-                    "Qual tipo de APP você",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontFamily: 'Open Sans Extra Bold',
-                        color: Color.fromARGB(255, 48, 48, 48),
-                        fontSize: sizeCard * 0.33,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Text(
-                  "deseja aprender hoje?",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontFamily: 'Open Sans Extra Bold',
-                      color: Color.fromARGB(255, 48, 48, 48),
-                      fontSize: sizeCard * 0.33,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
+            child: Container(
+              margin: EdgeInsets.only(top: 7.h, left: 7.w, right: 7.w),
+              child: Text(
+                "Qual tipo de APP você deseja aprender hoje?",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontFamily: 'Open Sans Extra Bold',
+                    color: Color.fromARGB(255, 48, 48, 48),
+                    fontSize: 25.ssp,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
           ),
           Container(
-            height: sizeCard2 * 1.09,
+            height: 460.h,
             width: sizeWidth,
-            padding: EdgeInsets.only(top: sizeCard * 0.30),
+            padding: EdgeInsets.only(top: 5.h),
             color: Colors.white,
             child: Scrollbar(
                 isAlwaysShown: true,
-                thickness: sizeWidth * 0.02,
+                thickness: 7.w,
                 controller: _scrollController,
                 child: GridDash()),
           ),
           Container(
-            height: sizeCard2 * 0.098,
+            height: 20.h,
             width: sizeWidth,
             decoration: BoxDecoration(
                 border: Border.all(width: 1, color: Colors.transparent),
@@ -133,11 +106,10 @@ class _MenuGridState extends State<MenuGrid> {
           Row(
             children: [
               Container(
-                  margin: EdgeInsets.only(
-                      left: sizeWidth * 0.06, top: sizeHeight * 0.0145),
+                  margin: EdgeInsets.only(left: 15.w, top: 13.h),
                   child: Container(
-                    height: sizeHeight * 0.082,
-                    width: sizeWidth * 0.4,
+                    height: 62.h,
+                    width: 150.w,
                     child: RaisedButton(
                       textColor: Colors.white,
                       splashColor: Color(0xfffab611),
@@ -154,7 +126,7 @@ class _MenuGridState extends State<MenuGrid> {
                         "VOLTAR",
                         style: TextStyle(
                           fontFamily: 'Open Sans Extra Bold',
-                          fontSize: (sizeWidth * 0.35) * 0.18,
+                          fontSize: 23.ssp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

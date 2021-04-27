@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:material_splash_screen/entity/usuario.dart';
 import 'package:material_splash_screen/ui_menu/meusCursos.dart';
 import 'package:material_splash_screen/ui_menu/ranking.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GavetaMenu extends StatefulWidget {
   @override
@@ -71,21 +72,20 @@ class _GavetaMenuState extends State<GavetaMenu> {
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(sizeHeight * 0.08),
+        preferredSize: Size.fromHeight(60.h),
         child: AppBar(
           elevation: 6,
           backgroundColor: Color.fromARGB(255, 93, 30, 132),
           title: Text(
             "MENU",
-            style:
-                TextStyle(fontFamily: 'Open Sans', fontSize: sizeWidth * 0.08),
+            style: TextStyle(fontFamily: 'Open Sans', fontSize: 25.ssp),
           ),
           leading: IconButton(
             icon: Icon(
               Icons.dehaze,
               color: Colors.white,
             ),
-            iconSize: sizeWidth * 0.10,
+            iconSize: 40.h,
             splashColor: Color(0xfffab611),
             onPressed: () {},
           ),
@@ -96,10 +96,7 @@ class _GavetaMenuState extends State<GavetaMenu> {
                   borderRadius:
                       const BorderRadius.all(const Radius.circular(30)),
                   color: Colors.white),
-              margin: EdgeInsets.only(
-                  right: sizeWidth * 0.03,
-                  top: sizeHeight * 0.008,
-                  bottom: sizeHeight * 0.005),
+              margin: EdgeInsets.only(right: 15.w, top: 4.h, bottom: 3.h),
               child: IconButton(
                 onPressed: () {
                   Navigator.pushNamed(context, "/Menu");
@@ -107,10 +104,10 @@ class _GavetaMenuState extends State<GavetaMenu> {
                 icon: Icon(
                   Icons.home,
                   color: Color.fromARGB(255, 93, 30, 132),
-                  size: sizeWidth * 0.11,
+                  size: 45.ssp,
                 ),
                 splashColor: Color(0xfffab611),
-                padding: EdgeInsets.only(right: sizeWidth * 0.00001),
+                padding: EdgeInsets.only(right: 1.w),
               ),
             )
           ],
@@ -121,10 +118,10 @@ class _GavetaMenuState extends State<GavetaMenu> {
         children: [
           SingleChildScrollView(
             child: Container(
-              height: sizeCard,
+              height: 570.h,
               width: sizeWidth,
               decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black38),
+                  border: Border.all(width: 1.w, color: Colors.black38),
                   borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30)),
@@ -149,7 +146,7 @@ class _GavetaMenuState extends State<GavetaMenu> {
                                         fontFamily: 'Open Sans Extra Bold',
                                         color: Color.fromARGB(255, 48, 48, 48),
                                         fontStyle: FontStyle.italic,
-                                        fontSize: sizeWidth * 0.07,
+                                        fontSize: 25.ssp,
                                       ),
                                     ),
                                     CircularProgressIndicator()
@@ -170,7 +167,7 @@ class _GavetaMenuState extends State<GavetaMenu> {
                                   child: Text(
                                     "Sem Usuários!",
                                     style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 18.ssp,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 );
@@ -195,15 +192,14 @@ class _GavetaMenuState extends State<GavetaMenu> {
                                       return Row(
                                         children: [
                                           Container(
-                                            height: sizeCard * 0.19,
-                                            width: sizeWidth * 0.32,
+                                            height: 100.h,
+                                            width: 100.w,
                                             margin: EdgeInsets.only(
-                                                top: sizeHeight * 0.024,
-                                                left: sizeWidth * 0.017),
+                                                top: 18.h, left: 20.w),
                                             decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                               border: Border.all(
-                                                  width: sizeWidth * 0.005,
+                                                  width: 2.w,
                                                   color: Color.fromARGB(
                                                       255, 93, 30, 132)),
                                               image: DecorationImage(
@@ -214,15 +210,14 @@ class _GavetaMenuState extends State<GavetaMenu> {
                                           ),
                                           Container(
                                             margin: EdgeInsets.only(
-                                                top: sizeHeight * 0.024,
-                                                left: sizeWidth * 0.05),
+                                                top: 30.h, left: 15.w),
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Container(
                                                   margin: EdgeInsets.only(
-                                                      right: sizeWidth * 0.16),
+                                                      right: 10.w),
                                                   child: Text(
                                                     "Olá, " +
                                                         firstName(
@@ -235,14 +230,13 @@ class _GavetaMenuState extends State<GavetaMenu> {
                                                             255, 48, 48, 48),
                                                         fontStyle:
                                                             FontStyle.italic,
-                                                        fontSize:
-                                                            sizeWidth * 0.059,
+                                                        fontSize: 22.ssp,
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
                                                 ),
                                                 Container(
-                                                  height: sizeCard * 0.08,
+                                                  height: 48.h,
                                                   child: RaisedButton(
                                                     onPressed: () {
                                                       Navigator.pushNamed(
@@ -266,8 +260,7 @@ class _GavetaMenuState extends State<GavetaMenu> {
                                                               255, 93, 30, 132),
                                                           fontStyle:
                                                               FontStyle.italic,
-                                                          fontSize:
-                                                              sizeWidth * 0.052,
+                                                          fontSize: 21.ssp,
                                                           fontWeight:
                                                               FontWeight.bold),
                                                     ),
@@ -286,13 +279,13 @@ class _GavetaMenuState extends State<GavetaMenu> {
                         }
                       }),
                   Container(
-                    margin: EdgeInsets.only(top: sizeCard * 0.06),
-                    height: 3,
+                    margin: EdgeInsets.only(top: 25.h),
+                    height: 3.h,
                     width: sizeWidth * 0.87,
                     color: Color.fromARGB(50, 48, 48, 48),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: sizeCard * 0.05),
+                    margin: EdgeInsets.only(top: 15.h),
                     child: FlatButton(
                       splashColor: Color(0xfffab611),
                       onPressed: () {
@@ -302,8 +295,8 @@ class _GavetaMenuState extends State<GavetaMenu> {
                       child: Row(
                         children: [
                           Container(
-                            height: sizeCard * 0.14,
-                            width: sizeWidth * 0.25,
+                            height: 70.h,
+                            width: 100.w,
                             margin: EdgeInsets.only(),
                             decoration: BoxDecoration(
                                 image: DecorationImage(
@@ -311,15 +304,15 @@ class _GavetaMenuState extends State<GavetaMenu> {
                                         AssetImage("images/MeusCursos.png"))),
                           ),
                           Container(
-                            padding: EdgeInsets.only(left: sizeWidth * 0.06),
-                            height: sizeCard * 0.12,
+                            padding: EdgeInsets.only(left: 15.w),
+                            height: 45.h,
                             alignment: Alignment.center,
                             child: Text(
                               "Meus Cursos",
                               style: TextStyle(
                                 color: Color.fromARGB(255, 48, 48, 48),
                                 fontFamily: 'Open Sans Extra Bold',
-                                fontSize: sizeWidth * 0.08,
+                                fontSize: 30.ssp,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -329,7 +322,7 @@ class _GavetaMenuState extends State<GavetaMenu> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: sizeCard * 0.04),
+                    margin: EdgeInsets.only(top: 20.h),
                     child: FlatButton(
                       splashColor: Color(0xfffab611),
                       onPressed: () {
@@ -339,22 +332,22 @@ class _GavetaMenuState extends State<GavetaMenu> {
                       child: Row(
                         children: [
                           Container(
-                            height: sizeCard * 0.14,
-                            width: sizeWidth * 0.25,
+                            height: 70.h,
+                            width: 100.w,
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage("images/ranking.png"))),
                           ),
                           Container(
-                            padding: EdgeInsets.only(left: sizeWidth * 0.06),
-                            height: sizeWidth * 0.18,
+                            padding: EdgeInsets.only(left: 15.w),
+                            height: 45.h,
                             alignment: Alignment.center,
                             child: Text(
                               "Ranking",
                               style: TextStyle(
                                 color: Color.fromARGB(255, 48, 48, 48),
                                 fontFamily: 'Open Sans Extra Bold',
-                                fontSize: sizeWidth * 0.08,
+                                fontSize: 30.ssp,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -364,13 +357,13 @@ class _GavetaMenuState extends State<GavetaMenu> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: sizeCard * 0.06),
-                    height: 3,
+                    margin: EdgeInsets.only(top: 20.h),
+                    height: 3.h,
                     width: sizeWidth * 0.87,
                     color: Color.fromARGB(50, 48, 48, 48),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: sizeCard * 0.05),
+                    margin: EdgeInsets.only(top: 20.h),
                     child: FlatButton(
                       splashColor: Color(0xfffab611),
                       onPressed: () {
@@ -381,22 +374,22 @@ class _GavetaMenuState extends State<GavetaMenu> {
                       child: Row(
                         children: [
                           Container(
-                            height: sizeCard * 0.14,
-                            width: sizeWidth * 0.25,
+                            height: 70.h,
+                            width: 100.w,
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage("images/sair.png"))),
                           ),
                           Container(
-                            padding: EdgeInsets.only(left: sizeWidth * 0.06),
-                            height: sizeWidth * 0.18,
+                            padding: EdgeInsets.only(left: 15.w),
+                            height: 45.h,
                             alignment: Alignment.center,
                             child: Text(
                               "Sair do APP",
                               style: TextStyle(
                                 color: Color.fromARGB(255, 48, 48, 48),
                                 fontFamily: 'Open Sans Extra Bold',
-                                fontSize: sizeWidth * 0.08,
+                                fontSize: 30.ssp,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -412,11 +405,10 @@ class _GavetaMenuState extends State<GavetaMenu> {
           Row(
             children: [
               Container(
-                  margin: EdgeInsets.only(
-                      left: sizeWidth * 0.06, top: sizeHeight * 0.0165),
+                  margin: EdgeInsets.only(left: 15.w, top: 13.h),
                   child: Container(
-                    height: sizeHeight * 0.082,
-                    width: sizeWidth * 0.4,
+                    height: 62.h,
+                    width: 150.w,
                     child: RaisedButton(
                       textColor: Colors.white,
                       splashColor: Color(0xfffab611),
@@ -431,7 +423,7 @@ class _GavetaMenuState extends State<GavetaMenu> {
                         "VOLTAR",
                         style: TextStyle(
                           fontFamily: 'Open Sans Extra Bold',
-                          fontSize: (sizeWidth * 0.35) * 0.18,
+                          fontSize: 23.ssp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
