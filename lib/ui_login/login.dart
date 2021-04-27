@@ -315,19 +315,30 @@ class _LoginState extends State<Login> {
                         width: 342.w,
                         child: RaisedButton.icon(
                           onPressed: () async {
+                            bool verdade = true;
                             FirebaseAuth auth = FirebaseAuth.instance;
                             final googleSignIn = GoogleSignIn();
                             final user = await googleSignIn.signIn();
-                            bool verificador = true;
-                            try {
-                              auth
-                                  .signInWithEmailAndPassword(
-                                      email: user.email, password: user.id)
-                                  .then((firebaseUser) {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => MenuGrid()));
-                              });
-                            } catch (e) {
+                            final googleAuth = await user.authentication;
+                            final credential = GoogleAuthProvider.getCredential(
+                                idToken: googleAuth.idToken,
+                                accessToken: googleAuth.accessToken);
+                            Future<void> _recuperarDados() async {
+                              Firestore db = Firestore.instance;
+
+                              QuerySnapshot querySnapshot = await db
+                                  .collection("usuarios")
+                                  .where("email", isEqualTo: user.email)
+                                  .where("senha", isEqualTo: user.id)
+                                  .getDocuments();
+                              for (DocumentSnapshot item
+                                  in querySnapshot.documents) {
+                                return verdade = true;
+                              }
+                              return verdade = false;
+                            }
+
+                            if (verdade == false) {
                               auth
                                   .createUserWithEmailAndPassword(
                                       email: user.email, password: user.id)
@@ -348,7 +359,18 @@ class _LoginState extends State<Login> {
                                 "senha": user.id,
                                 "urlImagemPerfil": user.photoUrl,
                                 "pontuacao": 0
+                              }).catchError((err) {
+                                print("usuario já existe.");
                               });
+                              await FirebaseAuth.instance
+                                  .signInWithCredential(credential);
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => MenuGrid()));
+                            } else {
+                              await FirebaseAuth.instance
+                                  .signInWithCredential(credential);
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => MenuGrid()));
                             }
                           },
                           color: Colors.blueGrey,

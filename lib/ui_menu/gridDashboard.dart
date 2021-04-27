@@ -3,17 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class GridDash extends StatelessWidget {
-  Item item1 = new Item(
-      title: "FARMÁCIAS", img: "images/farmacia.png", caminho: "/Gaveta");
-  Item item2 = new Item(
-      title: "GASTRONOMIA", img: "images/farmacia.png", caminho: "/Gaveta");
-  Item item3 = new Item(
-      title: "REDES SOCIAIS",
-      img: "images/farmacia.png",
-      caminho: "/RedesSociais");
-  Item item4 = new Item(title: "TRANSPORTES", img: "images/farmacia.png");
-  Item item5 = new Item(title: "MERCADOS", img: "images/farmacia.png");
-  Item item6 = new Item(title: "BANCOS", img: "images/farmacia.png");
+  Item item1 = new Item(img: "images/farmacia.png", caminho: "/Gaveta");
+  Item item2 = new Item(img: "images/farmacia.png", caminho: "/Gaveta");
+  Item item3 = new Item(img: "images/farmacia.png", caminho: "/RedesSociais");
+  Item item4 = new Item(img: "images/farmacia.png");
+  Item item5 = new Item(img: "images/farmacia.png");
+  Item item6 = new Item(img: "images/farmacia.png");
   @override
   Widget build(BuildContext context) {
     List<Item> myList = [item1, item2, item3, item4, item5, item6];
@@ -33,29 +28,17 @@ class GridDash extends StatelessWidget {
           },
           child: Container(
             decoration: BoxDecoration(
-                color: Color.fromARGB(255, 93, 30, 132),
+                color: Color(0xfffab611),
                 borderRadius: BorderRadius.circular(10)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Image.asset(
                   data.img,
-                  width: 70,
+                  width: 150,
                 ),
                 SizedBox(
                   height: 30,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(width: 2, color: Colors.black38),
-                      color: Colors.yellow[800]),
-                  child: Text(
-                    data.title,
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 93, 30, 132),
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600),
-                  ),
                 ),
               ],
             ),
@@ -67,8 +50,7 @@ class GridDash extends StatelessWidget {
 }
 
 class Item {
-  String title;
   String img;
   String caminho;
-  Item({this.title, this.img, this.caminho});
+  Item({this.img, this.caminho});
 }
