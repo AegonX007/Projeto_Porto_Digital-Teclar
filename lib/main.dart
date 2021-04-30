@@ -494,13 +494,13 @@ class _HomeState extends State<Home> {
                                 builder: (context) => MenuGrid()));
                           }
                         },
-                        color: Color.fromARGB(255, 93, 30, 132),
-                        splashColor: Color(0xfffab611),
+                        color: Colors.grey[850],
+                        splashColor: Colors.purple[600],
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15.0),
-                            side: BorderSide(color: Colors.black)),
+                            side: BorderSide(color: Colors.grey[850])),
                         icon: FaIcon(FontAwesomeIcons.google,
-                            color: Colors.yellow),
+                            color: Colors.white),
                         label: Text(
                           "ENTRAR COM GOOGLE",
                           style: TextStyle(

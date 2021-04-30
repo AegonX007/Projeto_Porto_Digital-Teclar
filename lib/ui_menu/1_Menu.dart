@@ -86,7 +86,7 @@ class _MenuGridState extends State<MenuGrid> {
             height: 460.h,
             width: sizeWidth,
             padding: EdgeInsets.only(top: 5.h),
-            color: Colors.white,
+            color: Colors.grey[350],
             child: Scrollbar(
                 isAlwaysShown: true,
                 thickness: 7.w,

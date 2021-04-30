@@ -259,7 +259,7 @@ class _LoginState extends State<Login> {
                                     "ESQUECEU A SENHA?",
                                     style: TextStyle(
                                       fontFamily: 'Open Sans Extra Bold',
-                                      color: Color.fromARGB(255, 93, 30, 132),
+                                      color: Colors.grey[850],
                                       fontSize: 16.ssp,
                                       decoration: TextDecoration.underline,
                                       fontWeight: FontWeight.bold,
@@ -286,14 +286,14 @@ class _LoginState extends State<Login> {
                           margin: EdgeInsets.only(right: 20.w),
                           height: 2.h,
                           width: 132.w,
-                          color: Color.fromARGB(255, 93, 30, 132),
+                          color: Colors.grey[850],
                         ),
                         Container(
                           child: Text(
                             "Ou",
                             style: TextStyle(
                               fontFamily: 'Open Sans Extra Bold',
-                              color: Color.fromARGB(255, 93, 30, 132),
+                              color: Colors.grey[850],
                               fontSize: 16.ssp,
                               fontWeight: FontWeight.bold,
                             ),
@@ -303,7 +303,7 @@ class _LoginState extends State<Login> {
                           margin: EdgeInsets.only(left: 20.w),
                           height: 2.h,
                           width: 132.w,
-                          color: Color.fromARGB(255, 93, 30, 132),
+                          color: Colors.grey[850],
                         ),
                       ],
                     ),
@@ -373,13 +373,13 @@ class _LoginState extends State<Login> {
                                   builder: (context) => MenuGrid()));
                             }
                           },
-                          color: Colors.blueGrey,
+                          color: Colors.grey[850],
                           splashColor: Color(0xfffab611),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15.0),
                               side: BorderSide(color: Colors.black)),
                           icon: FaIcon(FontAwesomeIcons.google,
-                              color: Colors.yellow),
+                              color: Colors.white),
                           label: Text(
                             "ENTRAR COM GOOGLE",
                             style: TextStyle(
@@ -407,7 +407,7 @@ class _LoginState extends State<Login> {
                   "Ops! Ainda não tenho Cadastro!",
                   style: TextStyle(
                     fontFamily: 'Open Sans Extra Bold',
-                    color: Color.fromARGB(255, 93, 30, 132),
+                    color: Colors.grey[850],
                     fontSize: 19.ssp,
                     decoration: TextDecoration.underline,
                     fontWeight: FontWeight.bold,
