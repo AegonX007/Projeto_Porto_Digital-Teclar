@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:material_splash_screen/ui_menu/2_Aprendizado.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RedesSociais extends StatefulWidget {
   @override
@@ -55,7 +56,7 @@ class _RedesSociaisState extends State<RedesSociais> {
                 onPressed: () {},
                 icon: Icon(
                   Icons.home,
-                  color: Color.fromARGB(255, 93, 30, 132),
+                  color: Color.fromARGB(205, 93, 30, 132),
                   size: sizeWidth * 0.11,
                 ),
                 splashColor: Color(0xfffab611),
@@ -69,22 +70,15 @@ class _RedesSociaisState extends State<RedesSociais> {
       body: Column(
         children: [
           Container(
-            height: sizeCard,
-            width: sizeWidth,
-            color: Colors.white,
+            height: 153.h,
+            width: 522.w,
+            color: Color.fromARGB(255, 105, 36, 129),
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: sizeCard * 0.24),
-                  child: Text(
-                    "O que você deseja aprender hoje?",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontFamily: 'Open Sans Extra Bold',
-                        color: Color.fromARGB(255, 48, 48, 48),
-                        fontSize: sizeWidth * 0.075,
-                        fontWeight: FontWeight.bold),
-                  ),
+                  height: 140.h,
+                  margin: EdgeInsets.only(top: 5.h, left: 5.h),
+                  child: Image.asset(("images/logo_redesSociais.png")),
                 ),
               ],
             ),
@@ -93,7 +87,9 @@ class _RedesSociaisState extends State<RedesSociais> {
             height: sizeCard2,
             width: sizeWidth,
             color: Colors.white,
-            padding: EdgeInsets.only(top: sizeCard2 * 0.08),
+            padding: EdgeInsets.only(
+              top: sizeCard2 * 0.08,
+            ),
             child: Scrollbar(
               thickness: sizeWidth * 0.02,
               controller: _scrollController,
@@ -101,18 +97,6 @@ class _RedesSociaisState extends State<RedesSociais> {
                   controller: _scrollController,
                   child: Column(
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(
-                            left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton("images/ifood.png", "IFOOD", 1,
-                            sizeWidth, sizeCard2),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton(
-                            "images/uber.png", "UBER", 2, sizeWidth, sizeCard2),
-                      ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
@@ -136,7 +120,7 @@ class _RedesSociaisState extends State<RedesSociais> {
             ),
           ),
           Container(
-            height: sizeCard2 * 0.098,
+            height: 10.h,
             width: sizeWidth,
             decoration: BoxDecoration(
                 border: Border.all(width: 1, color: Colors.transparent),

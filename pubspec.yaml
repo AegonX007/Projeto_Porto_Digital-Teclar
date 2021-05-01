@@ -85,8 +85,10 @@ flutter:
     - images/ranking.png
     - images/sair.png
     - images/farmacia.png
-    
-
+    - images/redes_sociais.png
+    - images/transportes.png
+    - images/gastronomia.png
+    - images/logo_redesSociais.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

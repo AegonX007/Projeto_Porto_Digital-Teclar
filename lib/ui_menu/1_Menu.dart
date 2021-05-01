@@ -68,7 +68,7 @@ class _MenuGridState extends State<MenuGrid> {
           Container(
             height: 90.h,
             width: sizeWidth,
-            color: Colors.white,
+            color: Colors.grey[350],
             child: Container(
               margin: EdgeInsets.only(top: 7.h, left: 7.w, right: 7.w),
               child: Text(
@@ -94,7 +94,7 @@ class _MenuGridState extends State<MenuGrid> {
                 child: GridDash()),
           ),
           Container(
-            height: 20.h,
+            height: 25.h,
             width: sizeWidth,
             decoration: BoxDecoration(
                 border: Border.all(width: 1, color: Colors.transparent),
