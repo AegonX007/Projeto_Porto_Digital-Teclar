@@ -17,6 +17,7 @@ import 'package:material_splash_screen/ui_menu/alterar_dados/alterarEmail.dart';
 import 'package:material_splash_screen/ui_menu/alterar_dados/alterarFotoPerfil.dart';
 import 'package:material_splash_screen/ui_menu/alterar_dados/alterarNome.dart';
 import 'package:material_splash_screen/ui_menu/alterar_dados/alterarSenha.dart';
+import 'package:material_splash_screen/ui_menu/delivey.dart';
 import 'package:material_splash_screen/ui_menu/gaveta.dart';
 import 'package:material_splash_screen/ui_menu/meuPerfil.dart';
 import 'package:provider/provider.dart';
@@ -161,7 +162,8 @@ class Iniciar extends StatelessWidget {
             "/AlterarFotoPerfil": (context) => AlterarFotoPerfil(),
             "/Menu": (context) => MenuGrid(),
             "/Farmacias": (context) => Farmacias(),
-            "/Transportes": (context) => Transportes()
+            "/Transportes": (context) => Transportes(),
+            "/Delivey": (context) => Delivery(),
           });
     });
   }

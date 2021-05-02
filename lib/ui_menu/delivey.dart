@@ -1,40 +1,41 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:material_splash_screen/ui_menu/gridDashboard.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:material_splash_screen/ui_menu/2_Aprendizado.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MenuGrid extends StatefulWidget {
+class Delivery extends StatefulWidget {
   @override
-  _MenuGridState createState() => _MenuGridState();
+  _DeliveryState createState() => _DeliveryState();
 }
 
-class _MenuGridState extends State<MenuGrid> {
+class _DeliveryState extends State<Delivery> {
   final _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeTop = MediaQuery.of(context).padding.top;
-    var sizeBox = (sizeHeight - sizeTop) * 0.65;
+    var sizeCard = (sizeHeight * 0.2548) - (sizeHeight * 0.105);
+    var sizeCard2 = (sizeHeight * 0.5562);
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60.h),
+        preferredSize: Size.fromHeight(sizeHeight * 0.08),
         child: AppBar(
           elevation: 6,
           backgroundColor: Color.fromARGB(255, 93, 30, 132),
           title: Text(
             "MENU",
-            style: TextStyle(fontFamily: 'Open Sans', fontSize: 25.ssp),
+            style:
+                TextStyle(fontFamily: 'Open Sans', fontSize: sizeWidth * 0.08),
           ),
           leading: IconButton(
             icon: Icon(
               Icons.dehaze,
               color: Colors.white,
             ),
-            iconSize: 40.h,
+            iconSize: sizeWidth * 0.10,
             splashColor: Color(0xfffab611),
             onPressed: () {
               Navigator.pushNamed(context, "/Gaveta");
@@ -47,18 +48,19 @@ class _MenuGridState extends State<MenuGrid> {
                   borderRadius:
                       const BorderRadius.all(const Radius.circular(30)),
                   color: Colors.white),
-              margin: EdgeInsets.only(right: 15.w, top: 4.h, bottom: 3.h),
+              margin: EdgeInsets.only(
+                  right: sizeWidth * 0.03,
+                  top: sizeHeight * 0.008,
+                  bottom: sizeHeight * 0.005),
               child: IconButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, "/Menu");
-                },
+                onPressed: () {},
                 icon: Icon(
                   Icons.home,
-                  color: Color.fromARGB(255, 93, 30, 132),
-                  size: 45.ssp,
+                  color: Color.fromARGB(205, 93, 30, 132),
+                  size: sizeWidth * 0.11,
                 ),
                 splashColor: Color(0xfffab611),
-                padding: EdgeInsets.only(right: 1.w),
+                padding: EdgeInsets.only(right: sizeWidth * 0.00001),
               ),
             )
           ],
@@ -68,35 +70,69 @@ class _MenuGridState extends State<MenuGrid> {
       body: Column(
         children: [
           Container(
-            height: 90.h,
-            width: sizeWidth,
-            color: Colors.grey[350],
-            child: Container(
-              margin: EdgeInsets.only(top: 15.h, left: 7.w, right: 7.w),
-              child: Text(
-                "Qual tipo de APP você deseja aprender hoje?",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontFamily: 'Open Sans Extra Bold',
-                    color: Color.fromARGB(255, 48, 48, 48),
-                    fontSize: 25.ssp,
-                    fontWeight: FontWeight.bold),
-              ),
+            height: 153.h,
+            width: 522.w,
+            color: Color.fromARGB(255, 105, 36, 129),
+            child: Column(
+              children: [
+                Container(
+                  height: 140.h,
+                  margin: EdgeInsets.only(top: 5.h, left: 5.h),
+                  child: Image.asset(("images/logo_redesSociais.png")),
+                ),
+              ],
             ),
           ),
           Container(
-            height: sizeBox,
+            height: sizeCard2,
             width: sizeWidth,
-            padding: EdgeInsets.only(top: 5.h),
-            color: Colors.grey[350],
+            color: Colors.white,
+            padding: EdgeInsets.only(
+              top: sizeCard2 * 0.08,
+            ),
             child: Scrollbar(
-                isAlwaysShown: true,
-                thickness: 7.w,
-                controller: _scrollController,
-                child: GridDash()),
+              thickness: sizeWidth * 0.02,
+              controller: _scrollController,
+              child: SingleChildScrollView(
+                  controller: _scrollController,
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: sizeWidth * 0.06, right: sizeWidth * 0.06),
+                        child: buildRaiseButton("images/ifood.png", "IFOOD", 3,
+                            sizeWidth, sizeCard2),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: sizeWidth * 0.06, right: sizeWidth * 0.06),
+                        child: buildRaiseButton("images/rappi.png", "RAPPI", 4,
+                            sizeWidth, sizeCard2),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: sizeWidth * 0.06, right: sizeWidth * 0.06),
+                        child: buildRaiseButton("images/99food.jfif", "99 FOOD",
+                            5, sizeWidth, sizeCard2),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: sizeWidth * 0.06, right: sizeWidth * 0.06),
+                        child: buildRaiseButton("images/james.png", "JAMES",
+                            null, sizeWidth, sizeCard2),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: sizeWidth * 0.06, right: sizeWidth * 0.06),
+                        child: buildRaiseButton("images/uber_eats.png",
+                            "UBER EATS", null, sizeWidth, sizeCard2),
+                      ),
+                    ],
+                  )),
+            ),
           ),
           Container(
-            height: 25.h,
+            height: 10.h,
             width: sizeWidth,
             decoration: BoxDecoration(
                 border: Border.all(width: 1, color: Colors.transparent),
@@ -108,10 +144,11 @@ class _MenuGridState extends State<MenuGrid> {
           Row(
             children: [
               Container(
-                  margin: EdgeInsets.only(left: 15.w, top: 13.h),
+                  margin: EdgeInsets.only(
+                      left: sizeWidth * 0.06, top: sizeHeight * 0.0165),
                   child: Container(
-                    height: 62.h,
-                    width: 150.w,
+                    height: sizeHeight * 0.082,
+                    width: sizeWidth * 0.4,
                     child: RaisedButton(
                       textColor: Colors.white,
                       splashColor: Color(0xfffab611),
@@ -120,15 +157,13 @@ class _MenuGridState extends State<MenuGrid> {
                           borderRadius: BorderRadius.circular(15.0),
                           side: BorderSide(color: Colors.black)),
                       onPressed: () {
-                        showDialog(
-                            context: context,
-                            builder: (_) => janelaPopUp(sizeWidth, sizeHeight));
+                        Navigator.pushNamed(context, "/Menu");
                       },
                       child: Text(
                         "VOLTAR",
                         style: TextStyle(
                           fontFamily: 'Open Sans Extra Bold',
-                          fontSize: 23.ssp,
+                          fontSize: (sizeWidth * 0.35) * 0.18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -138,6 +173,52 @@ class _MenuGridState extends State<MenuGrid> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget buildRaiseButton(String imagem, String nome, int page,
+      double sizeWidth, double sizeHeight) {
+    return Row(
+      children: [
+        Container(
+          height: sizeWidth * 0.15,
+          width: sizeWidth * 0.15,
+          margin: EdgeInsets.only(top: sizeHeight * 0.024),
+          decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage(imagem)),
+              border: Border.all(color: Colors.black38),
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.white),
+        ),
+        Expanded(
+          child: Container(
+            margin: EdgeInsets.only(top: sizeHeight * 0.024),
+            padding: EdgeInsets.only(left: sizeWidth * 0.02),
+            height: sizeWidth * 0.15,
+            child: RaisedButton(
+                textColor: Colors.white,
+                splashColor: Color(0xfffab611),
+                color: Color.fromARGB(255, 93, 30, 132),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    side: BorderSide(color: Colors.black)),
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => TelaAprendizado(
+                            page: page,
+                          )));
+                },
+                child: Text(
+                  nome,
+                  style: TextStyle(
+                    fontFamily: 'Open Sans Extra Bold',
+                    fontSize: (sizeWidth * 0.35) * 0.18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )),
+          ),
+        )
+      ],
     );
   }
 
