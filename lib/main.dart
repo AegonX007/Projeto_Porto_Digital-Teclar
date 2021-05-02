@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:material_splash_screen/entity/usuario.dart';
 import 'package:material_splash_screen/ui_login/login.dart';
 import 'package:material_splash_screen/ui_cadastro/cadastroVideo.dart';
 import 'package:material_splash_screen/ui_menu/1_Menu.dart';
@@ -298,6 +299,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    String email1;
+    String email2;
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
     var sizecard = sizeHeight * 0.867;
@@ -440,7 +443,6 @@ class _HomeState extends State<Home> {
                       width: 320.w,
                       child: RaisedButton.icon(
                         onPressed: () async {
-                          bool verdade = true;
                           FirebaseAuth auth = FirebaseAuth.instance;
                           final googleSignIn = GoogleSignIn();
                           final user = await googleSignIn.signIn();
@@ -448,22 +450,21 @@ class _HomeState extends State<Home> {
                           final credential = GoogleAuthProvider.getCredential(
                               idToken: googleAuth.idToken,
                               accessToken: googleAuth.accessToken);
-                          Future<void> _recuperarDados() async {
-                            Firestore db = Firestore.instance;
+                          Firestore db = Firestore.instance;
 
-                            QuerySnapshot querySnapshot = await db
-                                .collection("usuarios")
-                                .where("email", isEqualTo: user.email)
-                                .where("senha", isEqualTo: user.id)
-                                .getDocuments();
-                            for (DocumentSnapshot item
-                                in querySnapshot.documents) {
-                              return verdade = true;
-                            }
-                            return verdade = false;
+                          QuerySnapshot querySnapshot = await db
+                              .collection("usuarios")
+                              .where("email", isEqualTo: user.email)
+                              .where("senha", isEqualTo: user.id)
+                              .getDocuments();
+                          for (DocumentSnapshot item
+                              in querySnapshot.documents) {
+                            var dados = item.data;
+                            email1 = dados["email"];
+                            email2 = user.email;
                           }
 
-                          if (verdade == false) {
+                          if (email1 == null) {
                             auth
                                 .createUserWithEmailAndPassword(
                                     email: user.email, password: user.id)

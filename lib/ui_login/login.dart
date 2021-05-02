@@ -21,6 +21,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  String email1;
+  String email2;
   bool _exibirSenha = false;
   TextEditingController emailController = TextEditingController();
   TextEditingController senhaController = TextEditingController();
@@ -315,7 +317,6 @@ class _LoginState extends State<Login> {
                         width: 342.w,
                         child: RaisedButton.icon(
                           onPressed: () async {
-                            bool verdade = true;
                             FirebaseAuth auth = FirebaseAuth.instance;
                             final googleSignIn = GoogleSignIn();
                             final user = await googleSignIn.signIn();
@@ -323,22 +324,21 @@ class _LoginState extends State<Login> {
                             final credential = GoogleAuthProvider.getCredential(
                                 idToken: googleAuth.idToken,
                                 accessToken: googleAuth.accessToken);
-                            Future<void> _recuperarDados() async {
-                              Firestore db = Firestore.instance;
+                            Firestore db = Firestore.instance;
 
-                              QuerySnapshot querySnapshot = await db
-                                  .collection("usuarios")
-                                  .where("email", isEqualTo: user.email)
-                                  .where("senha", isEqualTo: user.id)
-                                  .getDocuments();
-                              for (DocumentSnapshot item
-                                  in querySnapshot.documents) {
-                                return verdade = true;
-                              }
-                              return verdade = false;
+                            QuerySnapshot querySnapshot = await db
+                                .collection("usuarios")
+                                .where("email", isEqualTo: user.email)
+                                .where("senha", isEqualTo: user.id)
+                                .getDocuments();
+                            for (DocumentSnapshot item
+                                in querySnapshot.documents) {
+                              var dados = item.data;
+                              email1 = dados["email"];
+                              email2 = user.email;
                             }
 
-                            if (verdade == false) {
+                            if (email1 == null) {
                               auth
                                   .createUserWithEmailAndPassword(
                                       email: user.email, password: user.id)
