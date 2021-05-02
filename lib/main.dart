@@ -8,7 +8,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:material_splash_screen/ui_login/login.dart';
 import 'package:material_splash_screen/ui_cadastro/cadastroVideo.dart';
 import 'package:material_splash_screen/ui_menu/1_Menu.dart';
+import 'package:material_splash_screen/ui_menu/Farmacias.dart';
 import 'package:material_splash_screen/ui_menu/Redes_Sociais.dart';
+import 'package:material_splash_screen/ui_menu/Transportes.dart';
 import 'package:material_splash_screen/ui_menu/alterarDados.dart';
 import 'package:material_splash_screen/ui_menu/alterar_dados/alterarEmail.dart';
 import 'package:material_splash_screen/ui_menu/alterar_dados/alterarFotoPerfil.dart';
@@ -157,6 +159,8 @@ class Iniciar extends StatelessWidget {
             "/AlterarEmail": (context) => AlterarEmail(),
             "/AlterarFotoPerfil": (context) => AlterarFotoPerfil(),
             "/Menu": (context) => MenuGrid(),
+            "/Farmacias": (context) => Farmacias(),
+            "/Transportes": (context) => Transportes()
           });
     });
   }

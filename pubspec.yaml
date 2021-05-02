@@ -89,6 +89,14 @@ flutter:
     - images/transportes.png
     - images/gastronomia.png
     - images/logo_redesSociais.png
+    - images/telegram.png
+    - images/twitter.png
+    - images/99pop.png
+    - images/ladydriver.jpg
+    - images/indrive.png
+    - images/paguemenos.png
+    - images/drogasil.jpg
+    - images/extrafarma.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

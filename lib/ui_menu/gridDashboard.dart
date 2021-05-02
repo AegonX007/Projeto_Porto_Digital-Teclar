@@ -3,11 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class GridDash extends StatelessWidget {
-  Item item1 = new Item(img: "images/farmacia.png", caminho: "/Gaveta");
+  Item item1 = new Item(img: "images/farmacia.png", caminho: "/Farmacias");
   Item item2 = new Item(img: "images/gastronomia.png", caminho: "/Gaveta");
   Item item3 =
       new Item(img: "images/redes_sociais.png", caminho: "/RedesSociais");
-  Item item4 = new Item(img: "images/transportes.png");
+  Item item4 = new Item(img: "images/transportes.png", caminho: "/Transportes");
   Item item5 = new Item(img: "images/farmacia.png");
   Item item6 = new Item(img: "images/farmacia.png");
   @override

@@ -4,12 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:material_splash_screen/ui_menu/2_Aprendizado.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class RedesSociais extends StatefulWidget {
+class Transportes extends StatefulWidget {
   @override
-  _RedesSociaisState createState() => _RedesSociaisState();
+  _TransportesState createState() => _TransportesState();
 }
 
-class _RedesSociaisState extends State<RedesSociais> {
+class _TransportesState extends State<Transportes> {
   final _scrollController = ScrollController();
 
   @override
@@ -100,32 +100,26 @@ class _RedesSociaisState extends State<RedesSociais> {
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton("images/whatsapp.png",
-                            "WHATSAPP", 3, sizeWidth, sizeCard2),
+                        child: buildRaiseButton(
+                            "images/uber.png", "UBER", 2, sizeWidth, sizeCard2),
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton("images/facebook.png",
-                            "FACEBOOK", 4, sizeWidth, sizeCard2),
+                        child: buildRaiseButton("images/99pop.png", "99POP", 4,
+                            sizeWidth, sizeCard2),
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton("images/instagram.png",
-                            "INSTAGRAM", 5, sizeWidth, sizeCard2),
+                        child: buildRaiseButton("images/ladydriver.jpg",
+                            "Lady Driver", 5, sizeWidth, sizeCard2),
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton("images/twitter.png", "TWITER",
+                        child: buildRaiseButton("images/indrive.png", "inDrive",
                             null, sizeWidth, sizeCard2),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton("images/telegram.png",
-                            "TELEGRAM", null, sizeWidth, sizeCard2),
                       ),
                     ],
                   )),
