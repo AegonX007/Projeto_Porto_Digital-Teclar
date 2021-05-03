@@ -68,7 +68,8 @@ class _GavetaMenuState extends State<GavetaMenu> {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.867) - (sizeHeight * 0.105);
+    var sizeTop = MediaQuery.of(context).padding.top;
+    var sizeCard = (sizeHeight - sizeTop) * 0.8;
 
     return Scaffold(
       appBar: PreferredSize(
@@ -118,7 +119,7 @@ class _GavetaMenuState extends State<GavetaMenu> {
         children: [
           SingleChildScrollView(
             child: Container(
-              height: 570.h,
+              height: sizeCard,
               width: sizeWidth,
               decoration: BoxDecoration(
                   border: Border.all(width: 1.w, color: Colors.black38),
