@@ -9,7 +9,9 @@ import 'package:material_splash_screen/entity/usuario.dart';
 import 'package:material_splash_screen/ui_login/login.dart';
 import 'package:material_splash_screen/ui_cadastro/cadastroVideo.dart';
 import 'package:material_splash_screen/ui_menu/1_Menu.dart';
+import 'package:material_splash_screen/ui_menu/Ecommerce.dart';
 import 'package:material_splash_screen/ui_menu/Farmacias.dart';
+import 'package:material_splash_screen/ui_menu/Financeiros.dart';
 import 'package:material_splash_screen/ui_menu/Redes_Sociais.dart';
 import 'package:material_splash_screen/ui_menu/Transportes.dart';
 import 'package:material_splash_screen/ui_menu/alterarDados.dart';
@@ -164,6 +166,8 @@ class Iniciar extends StatelessWidget {
             "/Farmacias": (context) => Farmacias(),
             "/Transportes": (context) => Transportes(),
             "/Restaurantes": (context) => Restaurantes(),
+            "/Ecommerce": (context) => Ecommerce(),
+            "/Financeiros": (context) => Financeiros(),
           });
     });
   }
@@ -473,7 +477,6 @@ class _HomeState extends State<Home> {
                               }
 
                               if (email1 == null) {
-                                buildLoading();
                                 auth
                                     .createUserWithEmailAndPassword(
                                         email: user.email, password: user.id)
@@ -498,12 +501,17 @@ class _HomeState extends State<Home> {
                                 }).catchError((err) {
                                   print("usuario já existe.");
                                 });
+                                setState(() {
+                                  _exibirProgressBar = true;
+                                });
                                 await FirebaseAuth.instance
                                     .signInWithCredential(credential);
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => MenuGrid()));
                               } else {
-                                buildLoading();
+                                setState(() {
+                                  _exibirProgressBar = true;
+                                });
                                 await FirebaseAuth.instance
                                     .signInWithCredential(credential);
                                 Navigator.of(context).push(MaterialPageRoute(

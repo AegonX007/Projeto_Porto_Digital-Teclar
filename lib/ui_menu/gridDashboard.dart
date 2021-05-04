@@ -9,8 +9,8 @@ class GridDash extends StatelessWidget {
   Item item3 =
       new Item(img: "images/redes_sociais.png", caminho: "/RedesSociais");
   Item item4 = new Item(img: "images/transportes.png", caminho: "/Transportes");
-  Item item5 = new Item(img: "images/ecommerce.png");
-  Item item6 = new Item(img: "images/financeiro.png");
+  Item item5 = new Item(img: "images/ecommerce.png", caminho: "/Ecommerce");
+  Item item6 = new Item(img: "images/financeiro.png", caminho: "/Financeiros");
   @override
   Widget build(BuildContext context) {
     List<Item> myList = [item1, item2, item3, item4, item5, item6];
