@@ -303,6 +303,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     String email1;
     String email2;
+    bool _exibirProgressBar = false;
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
     var sizecard = sizeHeight * 0.867;
@@ -310,224 +311,249 @@ class _HomeState extends State<Home> {
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 242, 178, 42),
         body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Container(
-                  height: sizecard,
-                  decoration: BoxDecoration(
-                      border: Border.all(width: 1, color: Colors.black38),
-                      borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(30),
-                          bottomRight: Radius.circular(30)),
-                      color: Colors.white),
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.only(top: 100.h, bottom: 30.h),
-                        child: Center(
-                          child: Image.asset(
-                            "images/LOGOTIPO.png",
-                            fit: BoxFit.contain,
-                            height: 120.h,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 30.h, bottom: 15.h),
-                        child: Text(
-                          "Seja bem-vindo!",
-                          style: TextStyle(
-                              fontFamily: 'Open Sans Extra Bold',
-                              color: Color.fromARGB(255, 93, 30, 132),
-                              fontSize: 38.ssp,
-                              fontStyle: FontStyle.italic,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      /* Container(
-                          height: sizeHeight * 0.006,
-                          width: sizeWidth * 0.15,
-                          color: Color(0xfffab611)
-                          //color: Color(0xff670099).withOpacity(0.69),
-                          ),*/
-                      Padding(
-                        padding: EdgeInsets.only(top: 30.h),
-                        child: Text(
-                          "O que deseja fazer?",
-                          style: TextStyle(
-                              fontFamily: 'Open Sans Extra Bold',
-                              color: Color.fromARGB(255, 48, 48, 48),
-                              fontSize: 25.ssp,
-                              fontStyle: FontStyle.italic,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      //? BOTOES MEU LOGIN E NAO TENHO CADASTRO ---------------------
-                      Padding(
-                          padding: EdgeInsets.only(
-                              left: 40.w, right: 40.w, top: 35.h),
-                          child: Container(
-                            height: 52.h,
-                            width: 320.w,
-                            child: RaisedButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, "/Login");
-                              },
-                              textColor: Colors.white,
-                              splashColor: Color(0xfffab611),
-                              color: Color.fromARGB(255, 93, 30, 132),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  side: BorderSide(color: Colors.black)),
-                              child: Text(
-                                "MEU LOGIN",
-                                style: TextStyle(
-                                  fontFamily: 'Open Sans Extra Bold',
-                                  fontSize: 18.ssp,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              left: 40.w, right: 40.w, top: 20.h),
-                          child: Container(
-                            height: 52.h,
-                            width: 320.w,
-                            child: RaisedButton(
-                              textColor: Colors.white,
-                              splashColor: Color(0xfffab611),
-                              color: Color.fromARGB(255, 93, 30, 132),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  side: BorderSide(color: Colors.black)),
-                              onPressed: () {
-                                /*showDialog(
-                                context: context,
-                                builder: (_) =>
-                                    janelaPopUp(sizeWidth, sizeHeight));*/
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => Cadastrar1()));
-                              },
-                              child: Text(
-                                "NÃO TENHO CADASTRO",
-                                style: TextStyle(
-                                  fontFamily: 'Open Sans Extra Bold',
-                                  fontSize: 18.ssp,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          )),
-                      /*Center(
-                        child: Text(
-                          "cadastro?",
-                          style: TextStyle(
-                              fontFamily: 'Open Sans Extra Bold',
-                              color: Color.fromARGB(255, 48, 48, 48),
-                              fontSize: sizeWidth * 0.085,
-                              fontStyle: FontStyle.italic,
-                              fontWeight: FontWeight.bold),
-                        ),*/
-                    ],
-                  )),
-
-              //?BOTÃO DO GOOGLE---------------------------------------------
-              //-------------------------------------------------------------
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+          child: Stack(
+            children: [
+              Column(
                 children: <Widget>[
                   Container(
-                    child: Container(
-                      height: 62.h,
-                      width: 320.w,
-                      child: RaisedButton.icon(
-                        onPressed: () async {
-                          FirebaseAuth auth = FirebaseAuth.instance;
-                          final googleSignIn = GoogleSignIn();
-                          final user = await googleSignIn.signIn();
-                          final googleAuth = await user.authentication;
-                          final credential = GoogleAuthProvider.getCredential(
-                              idToken: googleAuth.idToken,
-                              accessToken: googleAuth.accessToken);
-                          Firestore db = Firestore.instance;
+                      height: sizecard,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 1, color: Colors.black38),
+                          borderRadius: const BorderRadius.only(
+                              bottomLeft: Radius.circular(30),
+                              bottomRight: Radius.circular(30)),
+                          color: Colors.white),
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.only(top: 100.h, bottom: 30.h),
+                            child: Center(
+                              child: Image.asset(
+                                "images/LOGOTIPO.png",
+                                fit: BoxFit.contain,
+                                height: 120.h,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 30.h, bottom: 15.h),
+                            child: Text(
+                              "Seja bem-vindo!",
+                              style: TextStyle(
+                                  fontFamily: 'Open Sans Extra Bold',
+                                  color: Color.fromARGB(255, 93, 30, 132),
+                                  fontSize: 38.ssp,
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          /* Container(
+                              height: sizeHeight * 0.006,
+                              width: sizeWidth * 0.15,
+                              color: Color(0xfffab611)
+                              //color: Color(0xff670099).withOpacity(0.69),
+                              ),*/
+                          Padding(
+                            padding: EdgeInsets.only(top: 30.h),
+                            child: Text(
+                              "O que deseja fazer?",
+                              style: TextStyle(
+                                  fontFamily: 'Open Sans Extra Bold',
+                                  color: Color.fromARGB(255, 48, 48, 48),
+                                  fontSize: 25.ssp,
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          //? BOTOES MEU LOGIN E NAO TENHO CADASTRO ---------------------
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 40.w, right: 40.w, top: 35.h),
+                              child: Container(
+                                height: 52.h,
+                                width: 320.w,
+                                child: RaisedButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, "/Login");
+                                  },
+                                  textColor: Colors.white,
+                                  splashColor: Color(0xfffab611),
+                                  color: Color.fromARGB(255, 93, 30, 132),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                      side: BorderSide(color: Colors.black)),
+                                  child: Text(
+                                    "MEU LOGIN",
+                                    style: TextStyle(
+                                      fontFamily: 'Open Sans Extra Bold',
+                                      fontSize: 18.ssp,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 40.w, right: 40.w, top: 20.h),
+                              child: Container(
+                                height: 52.h,
+                                width: 320.w,
+                                child: RaisedButton(
+                                  textColor: Colors.white,
+                                  splashColor: Color(0xfffab611),
+                                  color: Color.fromARGB(255, 93, 30, 132),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                      side: BorderSide(color: Colors.black)),
+                                  onPressed: () {
+                                    /*showDialog(
+                                    context: context,
+                                    builder: (_) =>
+                                        janelaPopUp(sizeWidth, sizeHeight));*/
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                Cadastrar1()));
+                                  },
+                                  child: Text(
+                                    "NÃO TENHO CADASTRO",
+                                    style: TextStyle(
+                                      fontFamily: 'Open Sans Extra Bold',
+                                      fontSize: 18.ssp,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              )),
+                          /*Center(
+                            child: Text(
+                              "cadastro?",
+                              style: TextStyle(
+                                  fontFamily: 'Open Sans Extra Bold',
+                                  color: Color.fromARGB(255, 48, 48, 48),
+                                  fontSize: sizeWidth * 0.085,
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.bold),
+                            ),*/
+                        ],
+                      )),
 
-                          QuerySnapshot querySnapshot = await db
-                              .collection("usuarios")
-                              .where("email", isEqualTo: user.email)
-                              .where("senha", isEqualTo: user.id)
-                              .getDocuments();
-                          for (DocumentSnapshot item
-                              in querySnapshot.documents) {
-                            var dados = item.data;
-                            email1 = dados["email"];
-                            email2 = user.email;
-                          }
+                  //?BOTÃO DO GOOGLE---------------------------------------------
+                  //-------------------------------------------------------------
 
-                          if (email1 == null) {
-                            buildLoading();
-                            auth
-                                .createUserWithEmailAndPassword(
-                                    email: user.email, password: user.id)
-                                .then((firebaseUser) {
-                              print("Novo usuário: sucesso! email:" +
-                                  firebaseUser.email);
-                            }).catchError((erro) {
-                              print("Novo usuário: erro " + erro.toString());
-                            });
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        child: Container(
+                          height: 62.h,
+                          width: 320.w,
+                          child: RaisedButton.icon(
+                            onPressed: () async {
+                              FirebaseAuth auth = FirebaseAuth.instance;
+                              final googleSignIn = GoogleSignIn();
+                              final user = await googleSignIn.signIn();
+                              final googleAuth = await user.authentication;
+                              final credential =
+                                  GoogleAuthProvider.getCredential(
+                                      idToken: googleAuth.idToken,
+                                      accessToken: googleAuth.accessToken);
+                              Firestore db = Firestore.instance;
 
-                            Firestore db = Firestore.instance;
-                            db // ? O DocumentReferences foi utilizado nesse caso para obter o doc
-                                .collection("usuarios")
-                                .document(user.email)
-                                .setData({
-                              "nome": user.displayName,
-                              "email": user.email,
-                              "senha": user.id,
-                              "urlImagemPerfil": user.photoUrl,
-                              "pontuacao": 0
-                            }).catchError((err) {
-                              print("usuario já existe.");
-                            });
-                            await FirebaseAuth.instance
-                                .signInWithCredential(credential);
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => MenuGrid()));
-                          } else {
-                            buildLoading();
-                            await FirebaseAuth.instance
-                                .signInWithCredential(credential);
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => MenuGrid()));
-                          }
-                        },
-                        color: Colors.grey[850],
-                        splashColor: Colors.purple[600],
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                            side: BorderSide(color: Colors.grey[850])),
-                        icon: FaIcon(FontAwesomeIcons.google,
-                            color: Colors.white),
-                        label: Text(
-                          "ENTRAR COM GOOGLE",
-                          style: TextStyle(
-                            fontFamily: 'Open Sans Extra Bold',
-                            color: Colors.white,
-                            fontSize: 18.ssp,
-                            fontWeight: FontWeight.bold,
+                              QuerySnapshot querySnapshot = await db
+                                  .collection("usuarios")
+                                  .where("email", isEqualTo: user.email)
+                                  .where("senha", isEqualTo: user.id)
+                                  .getDocuments();
+                              for (DocumentSnapshot item
+                                  in querySnapshot.documents) {
+                                var dados = item.data;
+                                email1 = dados["email"];
+                                email2 = user.email;
+                              }
+
+                              if (email1 == null) {
+                                buildLoading();
+                                auth
+                                    .createUserWithEmailAndPassword(
+                                        email: user.email, password: user.id)
+                                    .then((firebaseUser) {
+                                  print("Novo usuário: sucesso! email:" +
+                                      firebaseUser.email);
+                                }).catchError((erro) {
+                                  print(
+                                      "Novo usuário: erro " + erro.toString());
+                                });
+
+                                Firestore db = Firestore.instance;
+                                db // ? O DocumentReferences foi utilizado nesse caso para obter o doc
+                                    .collection("usuarios")
+                                    .document(user.email)
+                                    .setData({
+                                  "nome": user.displayName,
+                                  "email": user.email,
+                                  "senha": user.id,
+                                  "urlImagemPerfil": user.photoUrl,
+                                  "pontuacao": 0
+                                }).catchError((err) {
+                                  print("usuario já existe.");
+                                });
+                                await FirebaseAuth.instance
+                                    .signInWithCredential(credential);
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => MenuGrid()));
+                              } else {
+                                buildLoading();
+                                await FirebaseAuth.instance
+                                    .signInWithCredential(credential);
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => MenuGrid()));
+                              }
+                            },
+                            color: Colors.grey[850],
+                            splashColor: Colors.purple[600],
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                                side: BorderSide(color: Colors.grey[850])),
+                            icon: FaIcon(FontAwesomeIcons.google,
+                                color: Colors.white),
+                            label: Text(
+                              "ENTRAR COM GOOGLE",
+                              style: TextStyle(
+                                fontFamily: 'Open Sans Extra Bold',
+                                color: Colors.white,
+                                fontSize: 18.ssp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ),
+                        padding: EdgeInsets.only(top: 20.h),
                       ),
-                    ),
-                    padding: EdgeInsets.only(top: 20.h),
+                    ],
                   ),
                 ],
               ),
+              Container(
+                alignment: Alignment.center,
+                child: (_exibirProgressBar == true)
+                    ? showProgressBar(sizeHeight, sizeWidth)
+                    : Container(),
+              )
             ],
           ),
         ));
+  }
+
+  Widget showProgressBar(double sizeHeight, double sizeWidth) {
+    return Container(
+      margin: EdgeInsets.only(top: sizeHeight * 0.5),
+      height: sizeHeight * 0.15,
+      width: sizeWidth * 0.3,
+      child: CircularProgressIndicator(
+          valueColor:
+              AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 10, 238, 248))),
+    );
   }
 
   Widget buildLoading() => Center(child: CircularProgressIndicator());

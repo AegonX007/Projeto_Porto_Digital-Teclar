@@ -24,6 +24,7 @@ class _LoginState extends State<Login> {
   String email1;
   String email2;
   bool _exibirSenha = false;
+  bool _exibirProgressBar = false;
   TextEditingController emailController = TextEditingController();
   TextEditingController senhaController = TextEditingController();
 
@@ -55,346 +56,372 @@ class _LoginState extends State<Login> {
       body: SingleChildScrollView(
           child: Column(
         children: <Widget>[
-          Container(
-              height: sizeCard,
-              decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black38),
-                  borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(30),
-                      bottomRight: Radius.circular(30)),
-                  color: Colors.white),
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(top: topo + 20.h, bottom: 30.h),
-                    child: Center(
-                      child: Image.asset(
-                        "images/LOGOTIPO.png",
-                        fit: BoxFit.contain,
-                        height: 80.h,
+          Stack(
+            children: [
+              Container(
+                  height: sizeCard,
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 1, color: Colors.black38),
+                      borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(30),
+                          bottomRight: Radius.circular(30)),
+                      color: Colors.white),
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(top: topo + 20.h, bottom: 30.h),
+                        child: Center(
+                          child: Image.asset(
+                            "images/LOGOTIPO.png",
+                            fit: BoxFit.contain,
+                            height: 80.h,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 150.w),
-                      child: Text(
-                        "Faça o seu login:",
-                        style: TextStyle(
-                            fontFamily: 'Open Sans Extra Bold',
-                            color: Color.fromARGB(255, 48, 48, 48),
-                            fontStyle: FontStyle.italic,
-                            fontSize: 22.ssp,
-                            fontWeight: FontWeight.bold),
+                      Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(right: 150.w),
+                          child: Text(
+                            "Faça o seu login:",
+                            style: TextStyle(
+                                fontFamily: 'Open Sans Extra Bold',
+                                color: Color.fromARGB(255, 48, 48, 48),
+                                fontStyle: FontStyle.italic,
+                                fontSize: 22.ssp,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  Form(
-                    key: _formKey1,
-                    child: Padding(
-                        padding: EdgeInsets.only(top: 30.h, right: 10.w),
-                        child: Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.only(right: 230.w),
-                              child: Text(
-                                "SEU EMAIL:",
-                                style: TextStyle(
-                                    fontFamily: 'Open Sans Bold',
-                                    color: Color.fromARGB(210, 48, 48, 48),
-                                    fontSize: 19.ssp,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            Row(
+                      Form(
+                        key: _formKey1,
+                        child: Padding(
+                            padding: EdgeInsets.only(top: 30.h, right: 10.w),
+                            child: Column(
                               children: <Widget>[
-                                Container(
-                                  margin: EdgeInsets.only(top: 5.h),
-                                  padding: EdgeInsets.only(left: 25.w),
-                                  height: 55.h,
-                                  width: 365.w,
-                                  child: TextFormField(
-                                    keyboardType: TextInputType.text,
-                                    textAlign: TextAlign.start,
-                                    controller: emailController,
-                                    decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                        hintText: "DIGITE AQUI...",
-                                        hintStyle: TextStyle(
-                                            fontFamily: 'Open Sans',
-                                            fontStyle: FontStyle.italic,
-                                            fontSize: 19.ssp,
-                                            color: Color.fromARGB(
-                                                180, 48, 48, 48))),
-                                    validator: (value) {
-                                      if (value.isEmpty) {
-                                        return 'Insira o seu e-mail!';
-                                      }
-                                      if (!EmailValidator.validate(value)) {
-                                        return "E-mail inválido!";
-                                      }
-                                    },
+                                Padding(
+                                  padding: EdgeInsets.only(right: 230.w),
+                                  child: Text(
+                                    "SEU EMAIL:",
+                                    style: TextStyle(
+                                        fontFamily: 'Open Sans Bold',
+                                        color: Color.fromARGB(210, 48, 48, 48),
+                                        fontSize: 19.ssp,
+                                        fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                              ],
-                            ),
-
-                            Container(
-                              padding: EdgeInsets.only(top: 20.h),
-                            ), // ----------------------------------------------------
-                            Padding(
-                              padding: EdgeInsets.only(right: 220.w),
-                              child: Text(
-                                "SUA SENHA:",
-                                style: TextStyle(
-                                    fontFamily: 'Open Sans Bold',
-                                    color: Color.fromARGB(210, 48, 48, 48),
-                                    fontSize: 19.ssp,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Container(
-                                  margin: EdgeInsets.only(top: 5.h),
-                                  padding: EdgeInsets.only(left: 25.w),
-                                  height: 55.h,
-                                  width: 365.w,
-                                  child: TextFormField(
-                                    keyboardType: TextInputType.text,
-                                    textAlign: TextAlign.start,
-                                    controller: senhaController,
-                                    decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                        hintText: "DIGITE AQUI....",
-                                        hintStyle: TextStyle(
-                                            fontFamily: 'Open Sans',
-                                            fontStyle: FontStyle.italic,
-                                            fontSize: 19.ssp,
-                                            color: Color.fromARGB(
-                                                180, 48, 48, 48)),
-                                        suffixIcon: GestureDetector(
-                                          child: Icon(
-                                            _exibirSenha == false
-                                                ? Icons.visibility_off
-                                                : Icons.visibility,
-                                            color: Colors.grey,
-                                          ),
-                                          onTap: () {
-                                            setState(() {
-                                              _exibirSenha = !_exibirSenha;
-                                            });
-                                          },
-                                        )),
-                                    obscureText:
-                                        _exibirSenha == false ? true : false,
-                                    validator: (value) {
-                                      if (value.isEmpty) {
-                                        return 'Insira a sua Senha!';
-                                      }
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-
-                            //?BOTAO DE ENTRAR
-                            //-----------------------------------
-                            Container(
-                                margin: EdgeInsets.only(top: 20.h),
-                                padding:
-                                    EdgeInsets.only(left: 11.w, right: 5.w),
-                                child: Container(
-                                  height: 55.h,
-                                  width: 342.w,
-                                  child: RaisedButton(
-                                    onPressed: () async {
-                                      if (_formKey1.currentState.validate()) {
-                                        bool teste = await _recuperarDados();
-                                        if (teste == true) {
-                                          FirebaseAuth auth =
-                                              FirebaseAuth.instance;
-                                          auth
-                                              .signInWithEmailAndPassword(
-                                                  email: emailController.text,
-                                                  password:
-                                                      senhaController.text)
-                                              .then((firebaseUser) {
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        MenuGrid()));
-                                          }).catchError((erro) {});
-                                        } else {
-                                          showDialog(
-                                              context: context,
-                                              builder: (_) => janelaPopUp(
-                                                  sizeWidth, sizeHeight));
-                                        }
-                                      }
-                                    },
-                                    textColor: Colors.white,
-                                    splashColor: Color(0xfffab611),
-                                    color: Color.fromARGB(255, 93, 30, 132),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        side: BorderSide(color: Colors.black)),
-                                    child: Text(
-                                      "ENTRAR",
-                                      style: TextStyle(
-                                        fontFamily: 'Open Sans Extra Bold',
-                                        fontSize: 22.ssp,
-                                        fontWeight: FontWeight.bold,
+                                Row(
+                                  children: <Widget>[
+                                    Container(
+                                      margin: EdgeInsets.only(top: 5.h),
+                                      padding: EdgeInsets.only(left: 25.w),
+                                      height: 55.h,
+                                      width: 365.w,
+                                      child: TextFormField(
+                                        keyboardType: TextInputType.text,
+                                        textAlign: TextAlign.start,
+                                        controller: emailController,
+                                        decoration: InputDecoration(
+                                            border: OutlineInputBorder(),
+                                            hintText: "DIGITE AQUI...",
+                                            hintStyle: TextStyle(
+                                                fontFamily: 'Open Sans',
+                                                fontStyle: FontStyle.italic,
+                                                fontSize: 19.ssp,
+                                                color: Color.fromARGB(
+                                                    180, 48, 48, 48))),
+                                        validator: (value) {
+                                          if (value.isEmpty) {
+                                            return 'Insira o seu e-mail!';
+                                          }
+                                          if (!EmailValidator.validate(value)) {
+                                            return "E-mail inválido!";
+                                          }
+                                        },
                                       ),
                                     ),
-                                  ),
-                                )),
+                                  ],
+                                ),
 
-                            // ESQUECI A MINHA SENHA
-                            // ---------------------------------------------
-                            Center(
-                              child: Container(
-                                margin: EdgeInsets.only(top: 10.h),
-                                child: TextButton(
+                                Container(
+                                  padding: EdgeInsets.only(top: 20.h),
+                                ), // ----------------------------------------------------
+                                Padding(
+                                  padding: EdgeInsets.only(right: 220.w),
                                   child: Text(
-                                    "ESQUECEU A SENHA?",
+                                    "SUA SENHA:",
                                     style: TextStyle(
-                                      fontFamily: 'Open Sans Extra Bold',
-                                      color: Colors.grey[850],
-                                      fontSize: 16.ssp,
-                                      decoration: TextDecoration.underline,
-                                      fontWeight: FontWeight.bold,
+                                        fontFamily: 'Open Sans Bold',
+                                        color: Color.fromARGB(210, 48, 48, 48),
+                                        fontSize: 19.ssp,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    Container(
+                                      margin: EdgeInsets.only(top: 5.h),
+                                      padding: EdgeInsets.only(left: 25.w),
+                                      height: 55.h,
+                                      width: 365.w,
+                                      child: TextFormField(
+                                        keyboardType: TextInputType.text,
+                                        textAlign: TextAlign.start,
+                                        controller: senhaController,
+                                        decoration: InputDecoration(
+                                            border: OutlineInputBorder(),
+                                            hintText: "DIGITE AQUI....",
+                                            hintStyle: TextStyle(
+                                                fontFamily: 'Open Sans',
+                                                fontStyle: FontStyle.italic,
+                                                fontSize: 19.ssp,
+                                                color: Color.fromARGB(
+                                                    180, 48, 48, 48)),
+                                            suffixIcon: GestureDetector(
+                                              child: Icon(
+                                                _exibirSenha == false
+                                                    ? Icons.visibility_off
+                                                    : Icons.visibility,
+                                                color: Colors.grey,
+                                              ),
+                                              onTap: () {
+                                                setState(() {
+                                                  _exibirSenha = !_exibirSenha;
+                                                });
+                                              },
+                                            )),
+                                        obscureText: _exibirSenha == false
+                                            ? true
+                                            : false,
+                                        validator: (value) {
+                                          if (value.isEmpty) {
+                                            return 'Insira a sua Senha!';
+                                          }
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+
+                                //?BOTAO DE ENTRAR
+                                //-----------------------------------
+                                Container(
+                                    margin: EdgeInsets.only(top: 20.h),
+                                    padding:
+                                        EdgeInsets.only(left: 11.w, right: 5.w),
+                                    child: Container(
+                                      height: 55.h,
+                                      width: 342.w,
+                                      child: RaisedButton(
+                                        onPressed: () async {
+                                          setState(() {
+                                            _exibirProgressBar = true;
+                                          });
+                                          if (_formKey1.currentState
+                                              .validate()) {
+                                            bool teste =
+                                                await _recuperarDados();
+                                            if (teste == true) {
+                                              FirebaseAuth auth =
+                                                  FirebaseAuth.instance;
+                                              auth
+                                                  .signInWithEmailAndPassword(
+                                                      email:
+                                                          emailController.text,
+                                                      password:
+                                                          senhaController.text)
+                                                  .then((firebaseUser) {
+                                                Navigator.of(context).push(
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            MenuGrid()));
+                                              }).catchError((erro) {});
+                                            } else {
+                                              showDialog(
+                                                  context: context,
+                                                  builder: (_) => janelaPopUp(
+                                                      sizeWidth, sizeHeight));
+                                            }
+                                          }
+                                        },
+                                        textColor: Colors.white,
+                                        splashColor: Color(0xfffab611),
+                                        color: Color.fromARGB(255, 93, 30, 132),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                            side: BorderSide(
+                                                color: Colors.black)),
+                                        child: Text(
+                                          "ENTRAR",
+                                          style: TextStyle(
+                                            fontFamily: 'Open Sans Extra Bold',
+                                            fontSize: 22.ssp,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    )),
+
+                                // ESQUECI A MINHA SENHA
+                                // ---------------------------------------------
+                                Center(
+                                  child: Container(
+                                    margin: EdgeInsets.only(top: 10.h),
+                                    child: TextButton(
+                                      child: Text(
+                                        "ESQUECEU A SENHA?",
+                                        style: TextStyle(
+                                          fontFamily: 'Open Sans Extra Bold',
+                                          color: Colors.grey[850],
+                                          fontSize: 16.ssp,
+                                          decoration: TextDecoration.underline,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    EsqueceuSenha()));
+                                      },
                                     ),
                                   ),
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                EsqueceuSenha()));
-                                  },
+                                ),
+                              ],
+                            )),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(bottom: 20.h),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(right: 20.w),
+                              height: 2.h,
+                              width: 132.w,
+                              color: Colors.grey[850],
+                            ),
+                            Container(
+                              child: Text(
+                                "Ou",
+                                style: TextStyle(
+                                  fontFamily: 'Open Sans Extra Bold',
+                                  color: Colors.grey[850],
+                                  fontSize: 16.ssp,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
-                          ],
-                        )),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 20.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(right: 20.w),
-                          height: 2.h,
-                          width: 132.w,
-                          color: Colors.grey[850],
-                        ),
-                        Container(
-                          child: Text(
-                            "Ou",
-                            style: TextStyle(
-                              fontFamily: 'Open Sans Extra Bold',
+                            Container(
+                              margin: EdgeInsets.only(left: 20.w),
+                              height: 2.h,
+                              width: 132.w,
                               color: Colors.grey[850],
-                              fontSize: 16.ssp,
-                              fontWeight: FontWeight.bold,
                             ),
-                          ),
+                          ],
                         ),
-                        Container(
-                          margin: EdgeInsets.only(left: 20.w),
-                          height: 2.h,
-                          width: 132.w,
-                          color: Colors.grey[850],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Center(
-                    child: Container(
-                      child: Container(
-                        height: 55.h,
-                        width: 342.w,
-                        child: RaisedButton.icon(
-                          onPressed: () async {
-                            FirebaseAuth auth = FirebaseAuth.instance;
-                            final googleSignIn = GoogleSignIn();
-                            final user = await googleSignIn.signIn();
-                            final googleAuth = await user.authentication;
-                            final credential = GoogleAuthProvider.getCredential(
-                                idToken: googleAuth.idToken,
-                                accessToken: googleAuth.accessToken);
-                            Firestore db = Firestore.instance;
+                      ),
+                      Center(
+                        child: Container(
+                          child: Container(
+                            height: 55.h,
+                            width: 342.w,
+                            child: RaisedButton.icon(
+                              onPressed: () async {
+                                FirebaseAuth auth = FirebaseAuth.instance;
+                                final googleSignIn = GoogleSignIn();
+                                final user = await googleSignIn.signIn();
+                                final googleAuth = await user.authentication;
+                                final credential =
+                                    GoogleAuthProvider.getCredential(
+                                        idToken: googleAuth.idToken,
+                                        accessToken: googleAuth.accessToken);
+                                Firestore db = Firestore.instance;
 
-                            QuerySnapshot querySnapshot = await db
-                                .collection("usuarios")
-                                .where("email", isEqualTo: user.email)
-                                .where("senha", isEqualTo: user.id)
-                                .getDocuments();
-                            for (DocumentSnapshot item
-                                in querySnapshot.documents) {
-                              var dados = item.data;
-                              email1 = dados["email"];
-                              email2 = user.email;
-                            }
+                                QuerySnapshot querySnapshot = await db
+                                    .collection("usuarios")
+                                    .where("email", isEqualTo: user.email)
+                                    .where("senha", isEqualTo: user.id)
+                                    .getDocuments();
+                                for (DocumentSnapshot item
+                                    in querySnapshot.documents) {
+                                  var dados = item.data;
+                                  email1 = dados["email"];
+                                  email2 = user.email;
+                                }
 
-                            if (email1 == null) {
-                              auth
-                                  .createUserWithEmailAndPassword(
-                                      email: user.email, password: user.id)
-                                  .then((firebaseUser) {
-                                print("Novo usuário: sucesso! email:" +
-                                    firebaseUser.email);
-                              }).catchError((erro) {
-                                print("Novo usuário: erro " + erro.toString());
-                              });
+                                if (email1 == null) {
+                                  auth
+                                      .createUserWithEmailAndPassword(
+                                          email: user.email, password: user.id)
+                                      .then((firebaseUser) {
+                                    print("Novo usuário: sucesso! email:" +
+                                        firebaseUser.email);
+                                  }).catchError((erro) {
+                                    print("Novo usuário: erro " +
+                                        erro.toString());
+                                  });
 
-                              Firestore db = Firestore.instance;
-                              db // ? O DocumentReferences foi utilizado nesse caso para obter o doc
-                                  .collection("usuarios")
-                                  .document(user.email)
-                                  .setData({
-                                "nome": user.displayName,
-                                "email": user.email,
-                                "senha": user.id,
-                                "urlImagemPerfil": user.photoUrl,
-                                "pontuacao": 0
-                              }).catchError((err) {
-                                print("usuario já existe.");
-                              });
-                              await FirebaseAuth.instance
-                                  .signInWithCredential(credential);
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => MenuGrid()));
-                            } else {
-                              await FirebaseAuth.instance
-                                  .signInWithCredential(credential);
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => MenuGrid()));
-                            }
-                          },
-                          color: Colors.grey[850],
-                          splashColor: Color(0xfffab611),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              side: BorderSide(color: Colors.black)),
-                          icon: FaIcon(FontAwesomeIcons.google,
-                              color: Colors.white),
-                          label: Text(
-                            "ENTRAR COM GOOGLE",
-                            style: TextStyle(
-                              fontFamily: 'Open Sans Extra Bold',
-                              color: Colors.white,
-                              fontSize: 19.ssp,
-                              fontWeight: FontWeight.bold,
+                                  Firestore db = Firestore.instance;
+                                  db // ? O DocumentReferences foi utilizado nesse caso para obter o doc
+                                      .collection("usuarios")
+                                      .document(user.email)
+                                      .setData({
+                                    "nome": user.displayName,
+                                    "email": user.email,
+                                    "senha": user.id,
+                                    "urlImagemPerfil": user.photoUrl,
+                                    "pontuacao": 0
+                                  }).catchError((err) {
+                                    print("usuario já existe.");
+                                  });
+                                  setState(() {
+                                    _exibirProgressBar = true;
+                                  });
+                                  await FirebaseAuth.instance
+                                      .signInWithCredential(credential);
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => MenuGrid()));
+                                } else {
+                                  setState(() {
+                                    _exibirProgressBar = true;
+                                  });
+                                  await FirebaseAuth.instance
+                                      .signInWithCredential(credential);
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => MenuGrid()));
+                                }
+                              },
+                              color: Colors.grey[850],
+                              splashColor: Color(0xfffab611),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  side: BorderSide(color: Colors.black)),
+                              icon: FaIcon(FontAwesomeIcons.google,
+                                  color: Colors.white),
+                              label: Text(
+                                "ENTRAR COM GOOGLE",
+                                style: TextStyle(
+                                  fontFamily: 'Open Sans Extra Bold',
+                                  color: Colors.white,
+                                  fontSize: 19.ssp,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ),
-                ],
-              )),
+                    ],
+                  )),
+              Container(
+                alignment: Alignment.center,
+                child: (_exibirProgressBar == true)
+                    ? showProgressBar(sizeHeight, sizeWidth)
+                    : Container(),
+              )
+            ],
+          ),
 
           // ? NÃO TEM CADASTRO
           //------------------------------------------------------------------------
@@ -422,6 +449,17 @@ class _LoginState extends State<Login> {
           ),
         ],
       )),
+    );
+  }
+
+  Widget showProgressBar(double sizeHeight, double sizeWidth) {
+    return Container(
+      margin: EdgeInsets.only(top: sizeHeight * 0.5),
+      height: sizeHeight * 0.15,
+      width: sizeWidth * 0.3,
+      child: CircularProgressIndicator(
+          valueColor:
+              AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 10, 238, 248))),
     );
   }
 
