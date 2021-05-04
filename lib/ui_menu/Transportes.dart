@@ -78,7 +78,7 @@ class _TransportesState extends State<Transportes> {
                 Container(
                   height: 140.h,
                   margin: EdgeInsets.only(top: 5.h, left: 5.h),
-                  child: Image.asset(("images/logo_redesSociais.png")),
+                  child: Image.asset(("images/logo_transportes.png")),
                 ),
               ],
             ),

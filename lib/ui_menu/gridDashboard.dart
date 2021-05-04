@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 
 class GridDash extends StatelessWidget {
   Item item1 = new Item(img: "images/farmacia.png", caminho: "/Farmacias");
-  Item item2 = new Item(img: "images/gastronomia.png", caminho: "/Delivey");
+  Item item2 =
+      new Item(img: "images/gastronomia.png", caminho: "/Restaurantes");
   Item item3 =
       new Item(img: "images/redes_sociais.png", caminho: "/RedesSociais");
   Item item4 = new Item(img: "images/transportes.png", caminho: "/Transportes");
-  Item item5 = new Item(img: "images/farmacia.png");
-  Item item6 = new Item(img: "images/farmacia.png");
+  Item item5 = new Item(img: "images/ecommerce.png");
+  Item item6 = new Item(img: "images/financeiro.png");
   @override
   Widget build(BuildContext context) {
     List<Item> myList = [item1, item2, item3, item4, item5, item6];

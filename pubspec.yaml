@@ -101,6 +101,14 @@ flutter:
     - images/99food.jfif
     - images/rappi.png
     - images/uber_eats.png
+    - images/logo_ecommerce.jpeg
+    - images/logo_farmacias.jpeg
+    - images/logo_financeiro.jpeg
+    - images/logo_restaurantes.jpeg
+    - images/logo_financeiro.jpeg
+    - images/logo_transportes.png
+    - images/ecommerce.png
+    - images/financeiro.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

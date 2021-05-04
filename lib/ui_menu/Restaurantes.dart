@@ -4,12 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:material_splash_screen/ui_menu/2_Aprendizado.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Delivery extends StatefulWidget {
+class Restaurantes extends StatefulWidget {
   @override
-  _DeliveryState createState() => _DeliveryState();
+  _RestaurantesState createState() => _RestaurantesState();
 }
 
-class _DeliveryState extends State<Delivery> {
+class _RestaurantesState extends State<Restaurantes> {
   final _scrollController = ScrollController();
 
   @override
@@ -78,7 +78,7 @@ class _DeliveryState extends State<Delivery> {
                 Container(
                   height: 140.h,
                   margin: EdgeInsets.only(top: 5.h, left: 5.h),
-                  child: Image.asset(("images/logo_redesSociais.png")),
+                  child: Image.asset(("images/logo_restaurantes.jpeg")),
                 ),
               ],
             ),
