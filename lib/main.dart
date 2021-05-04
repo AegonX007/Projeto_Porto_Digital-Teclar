@@ -467,6 +467,7 @@ class _HomeState extends State<Home> {
                           }
 
                           if (email1 == null) {
+                            buildLoading();
                             auth
                                 .createUserWithEmailAndPassword(
                                     email: user.email, password: user.id)
@@ -495,6 +496,7 @@ class _HomeState extends State<Home> {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => MenuGrid()));
                           } else {
+                            buildLoading();
                             await FirebaseAuth.instance
                                 .signInWithCredential(credential);
                             Navigator.of(context).push(MaterialPageRoute(
@@ -528,6 +530,7 @@ class _HomeState extends State<Home> {
         ));
   }
 
+  Widget buildLoading() => Center(child: CircularProgressIndicator());
   /*AlertDialog janelaPopUp(double sizeWidth, double sizeHeight) {
     return AlertDialog(
       backgroundColor: Colors.white,
