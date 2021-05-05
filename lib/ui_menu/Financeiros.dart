@@ -16,8 +16,8 @@ class _FinanceirosState extends State<Financeiros> {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.2548) - (sizeHeight * 0.105);
-    var sizeCard2 = (sizeHeight * 0.5562);
+    var sizeTop = MediaQuery.of(context).padding.top;
+    var sizeCard = (sizeHeight - sizeTop) * 0.574;
 
     return Scaffold(
       appBar: PreferredSize(
@@ -84,11 +84,11 @@ class _FinanceirosState extends State<Financeiros> {
             ),
           ),
           Container(
-            height: sizeCard2,
+            height: sizeCard,
             width: sizeWidth,
             color: Colors.white,
             padding: EdgeInsets.only(
-              top: sizeCard2 * 0.08,
+              top: sizeCard * 0.08,
             ),
             child: Scrollbar(
               thickness: sizeWidth * 0.02,
@@ -101,31 +101,55 @@ class _FinanceirosState extends State<Financeiros> {
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
                         child: buildRaiseButton(
+<<<<<<< HEAD
                             "images/itau.png", "ITAÚ", 3, sizeWidth, sizeCard2),
+=======
+                            "images/ifood.png", "ITAÚ", 3, sizeWidth, sizeCard),
+>>>>>>> bc69d42d83aeea5e3fa0b9a2d865ab7f34cd4e9d
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
+<<<<<<< HEAD
                         child: buildRaiseButton("images/bancodobrasil.png",
                             "BANCO DO BRASIL", 4, sizeWidth, sizeCard2),
+=======
+                        child: buildRaiseButton("images/rappi.png",
+                            "BANCO DO BRASIL", 4, sizeWidth, sizeCard),
+>>>>>>> bc69d42d83aeea5e3fa0b9a2d865ab7f34cd4e9d
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
+<<<<<<< HEAD
                         child: buildRaiseButton("images/bradesco.png",
                             "BRADESCO", 5, sizeWidth, sizeCard2),
+=======
+                        child: buildRaiseButton("images/99food.jfif",
+                            "BRADESCO", 5, sizeWidth, sizeCard),
+>>>>>>> bc69d42d83aeea5e3fa0b9a2d865ab7f34cd4e9d
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
+<<<<<<< HEAD
                         child: buildRaiseButton("images/caixa.jpg", "CAIXA",
                             null, sizeWidth, sizeCard2),
+=======
+                        child: buildRaiseButton("images/james.png", "CAIXA",
+                            null, sizeWidth, sizeCard),
+>>>>>>> bc69d42d83aeea5e3fa0b9a2d865ab7f34cd4e9d
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
+<<<<<<< HEAD
                         child: buildRaiseButton("images/santander.jpg",
                             "SANTANDER", null, sizeWidth, sizeCard2),
+=======
+                        child: buildRaiseButton("images/uber_eats.png",
+                            "SANTANDER", null, sizeWidth, sizeCard),
+>>>>>>> bc69d42d83aeea5e3fa0b9a2d865ab7f34cd4e9d
                       ),
                     ],
                   )),
@@ -144,11 +168,10 @@ class _FinanceirosState extends State<Financeiros> {
           Row(
             children: [
               Container(
-                  margin: EdgeInsets.only(
-                      left: sizeWidth * 0.06, top: sizeHeight * 0.0165),
+                  margin: EdgeInsets.only(left: 22.w, top: 14.h),
                   child: Container(
-                    height: sizeHeight * 0.082,
-                    width: sizeWidth * 0.4,
+                    height: 62.h,
+                    width: 150.w,
                     child: RaisedButton(
                       textColor: Colors.white,
                       splashColor: Color(0xfffab611),
@@ -163,7 +186,7 @@ class _FinanceirosState extends State<Financeiros> {
                         "VOLTAR",
                         style: TextStyle(
                           fontFamily: 'Open Sans Extra Bold',
-                          fontSize: (sizeWidth * 0.35) * 0.18,
+                          fontSize: 23.ssp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
