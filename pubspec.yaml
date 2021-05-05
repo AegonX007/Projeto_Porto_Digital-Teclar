@@ -114,6 +114,10 @@ flutter:
     - images/bradesco.png
     - images/caixa.jpg
     - images/santander.jpg
+    - images/amazon.png
+    - images/olx.jfif
+    - images/mercado_livre.jfif
+    - images/americanas.jfif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

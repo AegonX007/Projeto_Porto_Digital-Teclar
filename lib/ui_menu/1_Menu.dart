@@ -108,7 +108,7 @@ class _MenuGridState extends State<MenuGrid> {
           Row(
             children: [
               Container(
-                  margin: EdgeInsets.only(left: 15.w, top: 13.h),
+                  margin: EdgeInsets.only(left: 15.w, top: 12.h),
                   child: Container(
                     height: 62.h,
                     width: 150.w,

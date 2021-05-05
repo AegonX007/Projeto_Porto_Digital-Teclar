@@ -16,8 +16,8 @@ class _FarmaciasState extends State<Farmacias> {
   Widget build(BuildContext context) {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
-    var sizeCard = (sizeHeight * 0.2548) - (sizeHeight * 0.105);
-    var sizeCard2 = (sizeHeight * 0.5562);
+    var sizeTop = MediaQuery.of(context).padding.top;
+    var sizeCard = (sizeHeight - sizeTop) * 0.574;
 
     return Scaffold(
       appBar: PreferredSize(
@@ -84,11 +84,11 @@ class _FarmaciasState extends State<Farmacias> {
             ),
           ),
           Container(
-            height: sizeCard2,
+            height: sizeCard,
             width: sizeWidth,
             color: Colors.white,
             padding: EdgeInsets.only(
-              top: sizeCard2 * 0.08,
+              top: sizeCard * 0.08,
             ),
             child: Scrollbar(
               thickness: sizeWidth * 0.02,
@@ -101,19 +101,19 @@ class _FarmaciasState extends State<Farmacias> {
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
                         child: buildRaiseButton("images/paguemenos.png",
-                            "PAGUEMENOS", 3, sizeWidth, sizeCard2),
+                            "PAGUEMENOS", 3, sizeWidth, sizeCard),
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
                         child: buildRaiseButton("images/drogasil.jpg",
-                            "DROGASIL", 4, sizeWidth, sizeCard2),
+                            "DROGASIL", 4, sizeWidth, sizeCard),
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
                         child: buildRaiseButton("images/extrafarma.png",
-                            "EXTRAFARMA", 5, sizeWidth, sizeCard2),
+                            "EXTRAFARMA", 5, sizeWidth, sizeCard),
                       ),
                     ],
                   )),
@@ -132,11 +132,10 @@ class _FarmaciasState extends State<Farmacias> {
           Row(
             children: [
               Container(
-                  margin: EdgeInsets.only(
-                      left: sizeWidth * 0.06, top: sizeHeight * 0.0165),
+                  margin: EdgeInsets.only(left: 22.w, top: 14.h),
                   child: Container(
-                    height: sizeHeight * 0.082,
-                    width: sizeWidth * 0.4,
+                    height: 62.h,
+                    width: 150.w,
                     child: RaisedButton(
                       textColor: Colors.white,
                       splashColor: Color(0xfffab611),
@@ -151,7 +150,7 @@ class _FarmaciasState extends State<Farmacias> {
                         "VOLTAR",
                         style: TextStyle(
                           fontFamily: 'Open Sans Extra Bold',
-                          fontSize: (sizeWidth * 0.35) * 0.18,
+                          fontSize: 23.ssp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
