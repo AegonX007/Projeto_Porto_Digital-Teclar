@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:material_splash_screen/entity/usuario.dart';
-import 'package:material_splash_screen/ui_menu/meusCursos.dart';
+import 'package:material_splash_screen/ui_menu/MeusCursos.dart';
 import 'package:material_splash_screen/ui_menu/ranking.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -115,178 +115,179 @@ class _GavetaMenuState extends State<GavetaMenu> {
         ),
       ),
       backgroundColor: Color.fromARGB(255, 242, 178, 42),
-      body: Column(
+      body: Stack(
         children: [
+          Container(
+            height: 300.h,
+            width: 600.w,
+            decoration: BoxDecoration(
+                border: Border.all(width: 1.w, color: Colors.black38),
+                borderRadius: const BorderRadius.only(),
+                color: Color.fromARGB(255, 105, 36, 129)),
+            child: StreamBuilder<QuerySnapshot>(
+                stream: _controller.stream,
+                builder: (context, snapshot) {
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.none:
+                    case ConnectionState.waiting:
+                      return Container(
+                        color: Color.fromARGB(255, 105, 36, 129),
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                "Carregando Dados",
+                                style: TextStyle(
+                                  fontFamily: 'Open Sans Extra Bold',
+                                  color: Color.fromARGB(255, 48, 48, 48),
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 25.ssp,
+                                ),
+                              ),
+                              CircularProgressIndicator()
+                            ],
+                          ),
+                        ),
+                      );
+                      break;
+                    case ConnectionState.active:
+                    case ConnectionState.done:
+                      if (snapshot.hasError) {
+                        return Text("Erro ao carregar os dados!");
+                      } else {
+                        QuerySnapshot querySnapshot = snapshot.data;
+
+                        if (querySnapshot.documents.length == 0) {
+                          return Center(
+                            child: Text(
+                              "Sem Usuários!",
+                              style: TextStyle(
+                                  fontSize: 18.ssp,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          );
+                        }
+                        return ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: querySnapshot.documents.length,
+                            itemBuilder: (context, indice) {
+                              List<DocumentSnapshot> usuarios =
+                                  querySnapshot.documents.toList();
+                              DocumentSnapshot item = usuarios[indice];
+                              String email = item["email"];
+                              String nome = item["nome"];
+                              String senha = item["senha"];
+                              String urlImagem = item["urlImagemPerfil"];
+                              int pontuacao = item["pontuacao"];
+
+                              Usuario usuario = new Usuario(false, email, nome,
+                                  pontuacao, senha, urlImagem);
+
+                              if (usuario.email == usuarioAtual) {
+                                return Column(
+                                  children: [
+                                    Container(
+                                      height: 100.h,
+                                      width: 100.w,
+                                      margin: EdgeInsets.only(top: 5.h),
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                            width: 2.w,
+                                            color: Color.fromARGB(
+                                                255, 93, 30, 132)),
+                                        image: DecorationImage(
+                                            image: NetworkImage(
+                                                usuario.urlImagemPerfil),
+                                            fit: BoxFit.fill),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin:
+                                          EdgeInsets.only(top: 5.h, left: 50.w),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.only(left: 30.w),
+                                            child: Text(
+                                              "Olá, " +
+                                                  firstName(usuario.nome) +
+                                                  "!",
+                                              style: TextStyle(
+                                                  fontFamily:
+                                                      'Open Sans Extra Bold',
+                                                  color: Colors.white,
+                                                  fontStyle: FontStyle.italic,
+                                                  fontSize: 22.ssp,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          Container(
+                                            margin:
+                                                EdgeInsets.only(right: 50.w),
+                                            height: 48.h,
+                                            child: RaisedButton(
+                                              onPressed: () {
+                                                Navigator.pushNamed(
+                                                    context, "/MeuPerfil");
+                                              },
+                                              color: Color.fromARGB(
+                                                  255, 105, 36, 129),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(30),
+                                                side: BorderSide(
+                                                    color: Color.fromARGB(
+                                                        255, 242, 178, 42),
+                                                    width: 2),
+                                              ),
+                                              child: Text(
+                                                "VER MEU PERFIL",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        'Open Sans Extra Bold',
+                                                    color: Color.fromARGB(
+                                                        255, 242, 178, 42),
+                                                    fontStyle: FontStyle.italic,
+                                                    fontSize: 21.ssp,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                );
+                              } else {
+                                return Container();
+                              }
+                            });
+                      }
+                  }
+                }),
+          ),
           SingleChildScrollView(
             child: Container(
-              height: sizeCard,
+              margin: EdgeInsets.only(top: 200.h),
+              height: sizeHeight * 0.5,
               width: sizeWidth,
               decoration: BoxDecoration(
                   border: Border.all(width: 1.w, color: Colors.black38),
                   borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(0),
+                      topRight: Radius.circular(80),
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30)),
                   color: Colors.white),
               child: Column(
                 children: [
-                  StreamBuilder<QuerySnapshot>(
-                      stream: _controller.stream,
-                      builder: (context, snapshot) {
-                        switch (snapshot.connectionState) {
-                          case ConnectionState.none:
-                          case ConnectionState.waiting:
-                            return Container(
-                              color: Colors.white,
-                              child: Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(
-                                      "Carregando Dados",
-                                      style: TextStyle(
-                                        fontFamily: 'Open Sans Extra Bold',
-                                        color: Color.fromARGB(255, 48, 48, 48),
-                                        fontStyle: FontStyle.italic,
-                                        fontSize: 25.ssp,
-                                      ),
-                                    ),
-                                    CircularProgressIndicator()
-                                  ],
-                                ),
-                              ),
-                            );
-                            break;
-                          case ConnectionState.active:
-                          case ConnectionState.done:
-                            if (snapshot.hasError) {
-                              return Text("Erro ao carregar os dados!");
-                            } else {
-                              QuerySnapshot querySnapshot = snapshot.data;
-
-                              if (querySnapshot.documents.length == 0) {
-                                return Center(
-                                  child: Text(
-                                    "Sem Usuários!",
-                                    style: TextStyle(
-                                        fontSize: 18.ssp,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                );
-                              }
-                              return ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount: querySnapshot.documents.length,
-                                  itemBuilder: (context, indice) {
-                                    List<DocumentSnapshot> usuarios =
-                                        querySnapshot.documents.toList();
-                                    DocumentSnapshot item = usuarios[indice];
-                                    String email = item["email"];
-                                    String nome = item["nome"];
-                                    String senha = item["senha"];
-                                    String urlImagem = item["urlImagemPerfil"];
-                                    int pontuacao = item["pontuacao"];
-
-                                    Usuario usuario = new Usuario(false, email,
-                                        nome, pontuacao, senha, urlImagem);
-
-                                    if (usuario.email == usuarioAtual) {
-                                      return Row(
-                                        children: [
-                                          Container(
-                                            height: 100.h,
-                                            width: 100.w,
-                                            margin: EdgeInsets.only(
-                                                top: 18.h, left: 20.w),
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              border: Border.all(
-                                                  width: 2.w,
-                                                  color: Color.fromARGB(
-                                                      255, 93, 30, 132)),
-                                              image: DecorationImage(
-                                                  image: NetworkImage(
-                                                      usuario.urlImagemPerfil),
-                                                  fit: BoxFit.fill),
-                                            ),
-                                          ),
-                                          Container(
-                                            margin: EdgeInsets.only(
-                                                top: 30.h, left: 15.w),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  margin: EdgeInsets.only(
-                                                      right: 10.w),
-                                                  child: Text(
-                                                    "Olá, " +
-                                                        firstName(
-                                                            usuario.nome) +
-                                                        "!",
-                                                    style: TextStyle(
-                                                        fontFamily:
-                                                            'Open Sans Extra Bold',
-                                                        color: Color.fromARGB(
-                                                            255, 48, 48, 48),
-                                                        fontStyle:
-                                                            FontStyle.italic,
-                                                        fontSize: 22.ssp,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  height: 48.h,
-                                                  child: RaisedButton(
-                                                    onPressed: () {
-                                                      Navigator.pushNamed(
-                                                          context,
-                                                          "/MeuPerfil");
-                                                    },
-                                                    color: Color.fromARGB(
-                                                        255, 242, 178, 42),
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.0),
-                                                    ),
-                                                    child: Text(
-                                                      "VER MEU PERFIL",
-                                                      style: TextStyle(
-                                                          fontFamily:
-                                                              'Open Sans Extra Bold',
-                                                          color: Color.fromARGB(
-                                                              255, 93, 30, 132),
-                                                          fontStyle:
-                                                              FontStyle.italic,
-                                                          fontSize: 21.ssp,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      );
-                                    } else {
-                                      return Container();
-                                    }
-                                  });
-                            }
-                        }
-                      }),
                   Container(
                     margin: EdgeInsets.only(top: 25.h),
-                    height: 3.h,
-                    width: sizeWidth * 0.87,
-                    color: Color.fromARGB(50, 48, 48, 48),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 15.h),
                     child: FlatButton(
                       splashColor: Color(0xfffab611),
                       onPressed: () {
@@ -352,7 +353,42 @@ class _GavetaMenuState extends State<GavetaMenu> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                          )
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 20.h),
+                    child: FlatButton(
+                      splashColor: Color(0xfffab611),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => Ranking()));
+                      },
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 70.h,
+                            width: 100.w,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage("images/premium.png"))),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(left: 15.w),
+                            height: 45.h,
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Seja Premium!",
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 48, 48, 48),
+                                fontFamily: 'Open Sans Extra Bold',
+                                fontSize: 30.ssp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -406,7 +442,7 @@ class _GavetaMenuState extends State<GavetaMenu> {
           Row(
             children: [
               Container(
-                  margin: EdgeInsets.only(left: 15.w, top: 13.h),
+                  margin: EdgeInsets.only(left: 15.w, top: 600.h),
                   child: Container(
                     height: 62.h,
                     width: 150.w,
@@ -415,7 +451,7 @@ class _GavetaMenuState extends State<GavetaMenu> {
                       splashColor: Color(0xfffab611),
                       color: Color.fromARGB(255, 93, 30, 132),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
+                          borderRadius: BorderRadius.circular(30.0),
                           side: BorderSide(color: Colors.black)),
                       onPressed: () {
                         Navigator.of(context).pop();
