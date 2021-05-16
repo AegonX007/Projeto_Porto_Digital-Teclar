@@ -132,7 +132,7 @@ class _FarmaciasState extends State<Farmacias> {
           Row(
             children: [
               Container(
-                  margin: EdgeInsets.only(left: 22.w, top: 14.h),
+                  margin: EdgeInsets.only(left: 22.w, top: 10.h),
                   child: Container(
                     height: 62.h,
                     width: 150.w,

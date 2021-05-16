@@ -8,6 +8,7 @@ import 'package:material_splash_screen/entity/usuario.dart';
 import 'package:material_splash_screen/ui_menu/MeusCursos.dart';
 import 'package:material_splash_screen/ui_menu/ranking.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:material_splash_screen/ui_menu/sejaPremium.dart';
 
 class GavetaMenu extends StatefulWidget {
   @override
@@ -363,8 +364,8 @@ class _GavetaMenuState extends State<GavetaMenu> {
                     child: FlatButton(
                       splashColor: Color(0xfffab611),
                       onPressed: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => Ranking()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => SejaPremium()));
                       },
                       child: Row(
                         children: [

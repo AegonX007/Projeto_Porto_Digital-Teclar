@@ -101,55 +101,31 @@ class _FinanceirosState extends State<Financeiros> {
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
                         child: buildRaiseButton(
-<<<<<<< HEAD
-                            "images/itau.png", "ITAÚ", 3, sizeWidth, sizeCard2),
-=======
-                            "images/ifood.png", "ITAÚ", 3, sizeWidth, sizeCard),
->>>>>>> bc69d42d83aeea5e3fa0b9a2d865ab7f34cd4e9d
+                            "images/itau.png", "ITAÚ", 3, sizeWidth, sizeCard),
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-<<<<<<< HEAD
-                        child: buildRaiseButton("images/bancodobrasil.png",
-                            "BANCO DO BRASIL", 4, sizeWidth, sizeCard2),
-=======
                         child: buildRaiseButton("images/rappi.png",
                             "BANCO DO BRASIL", 4, sizeWidth, sizeCard),
->>>>>>> bc69d42d83aeea5e3fa0b9a2d865ab7f34cd4e9d
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-<<<<<<< HEAD
-                        child: buildRaiseButton("images/bradesco.png",
-                            "BRADESCO", 5, sizeWidth, sizeCard2),
-=======
                         child: buildRaiseButton("images/99food.jfif",
                             "BRADESCO", 5, sizeWidth, sizeCard),
->>>>>>> bc69d42d83aeea5e3fa0b9a2d865ab7f34cd4e9d
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-<<<<<<< HEAD
-                        child: buildRaiseButton("images/caixa.jpg", "CAIXA",
-                            null, sizeWidth, sizeCard2),
-=======
                         child: buildRaiseButton("images/james.png", "CAIXA",
                             null, sizeWidth, sizeCard),
->>>>>>> bc69d42d83aeea5e3fa0b9a2d865ab7f34cd4e9d
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-<<<<<<< HEAD
-                        child: buildRaiseButton("images/santander.jpg",
-                            "SANTANDER", null, sizeWidth, sizeCard2),
-=======
                         child: buildRaiseButton("images/uber_eats.png",
                             "SANTANDER", null, sizeWidth, sizeCard),
->>>>>>> bc69d42d83aeea5e3fa0b9a2d865ab7f34cd4e9d
                       ),
                     ],
                   )),

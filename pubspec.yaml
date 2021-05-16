@@ -114,18 +114,16 @@ flutter:
     - images/bradesco.png
     - images/caixa.jpg
     - images/santander.jpg
-<<<<<<< HEAD
     - images/mercado_livre.jfif
     - images/olx.jfif
     - images/americanas.jfif
     - images/premium.png
-=======
     - images/amazon.png
     - images/olx.jfif
     - images/mercado_livre.jfif
     - images/americanas.jfif
->>>>>>> bc69d42d83aeea5e3fa0b9a2d865ab7f34cd4e9d
-
+    - images/premium.jpeg
+    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

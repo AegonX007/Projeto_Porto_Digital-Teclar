@@ -17,7 +17,7 @@ class _MenuGridState extends State<MenuGrid> {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
     var sizeTop = MediaQuery.of(context).padding.top;
-    var sizeBox = (sizeHeight - sizeTop) * 0.65;
+    var sizeBox = (sizeHeight - sizeTop) * 0.646;
 
     return Scaffold(
       appBar: PreferredSize(
@@ -108,7 +108,7 @@ class _MenuGridState extends State<MenuGrid> {
           Row(
             children: [
               Container(
-                  margin: EdgeInsets.only(left: 15.w, top: 12.h),
+                  margin: EdgeInsets.only(left: 15.w, top: 10.h),
                   child: Container(
                     height: 62.h,
                     width: 150.w,
