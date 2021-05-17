@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mercado_pago_mobile_checkout/mercado_pago_mobile_checkout.dart';
 
 class SejaPremium extends StatefulWidget {
   @override
@@ -174,6 +175,65 @@ class _SejaPremiumState extends State<SejaPremium> {
                 ),
               ],
             ),
+          ),
+          Row(
+            children: [
+              Container(
+                  margin: EdgeInsets.only(left: 22.w, top: 14.h),
+                  child: Container(
+                    height: 62.h,
+                    width: 150.w,
+                    child: RaisedButton(
+                      textColor: Colors.white,
+                      splashColor: Color(0xfffab611),
+                      color: Color.fromARGB(255, 93, 30, 132),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                          side: BorderSide(color: Colors.black)),
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/Menu");
+                      },
+                      child: Text(
+                        "VOLTAR",
+                        style: TextStyle(
+                          fontFamily: 'Open Sans Extra Bold',
+                          fontSize: 23.ssp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  )),
+              Container(
+                  margin: EdgeInsets.only(right: 22.w, top: 14.h),
+                  child: Container(
+                    height: 62.h,
+                    width: 150.w,
+                    child: RaisedButton(
+                      textColor: Colors.white,
+                      splashColor: Color(0xfffab611),
+                      color: Color.fromARGB(255, 93, 30, 132),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                          side: BorderSide(color: Colors.black)),
+                      onPressed: () async {
+                        PaymentResult result =
+                            await MercadoPagoMobileCheckout.startCheckout(
+                                "TEST-8b7dde5f-d871-460a-b0a6-4b71893c54d7",
+                                "677705713-da85e600-0358-4e22-b15b-35374589105c");
+                        print(result.toString());
+                      },
+                      child: Text(
+                        "ASSINAR",
+                        style: TextStyle(
+                          fontFamily: 'Open Sans Extra Bold',
+                          fontSize: 23.ssp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  )),
+                  
+            ],
           ),
         ],
       ),

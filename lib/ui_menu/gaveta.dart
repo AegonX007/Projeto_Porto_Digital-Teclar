@@ -230,7 +230,7 @@ class _GavetaMenuState extends State<GavetaMenu> {
                                             margin:
                                                 EdgeInsets.only(right: 50.w),
                                             height: 48.h,
-                                            child: RaisedButton(
+                                            child: FlatButton(
                                               onPressed: () {
                                                 Navigator.pushNamed(
                                                     context, "/MeuPerfil");
