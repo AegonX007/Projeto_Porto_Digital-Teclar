@@ -24,17 +24,25 @@ class GridDash extends StatelessWidget {
       crossAxisSpacing: 20,
       mainAxisSpacing: 20,
       children: myList.map((data) {
-        return RaisedButton(
-            splashColor: Color(0xfffab611),
-            color: Colors.white,
-            onPressed: () {
-              Navigator.pushNamed(context, data.caminho);
-            },
-            child: Stack(
-              children: <Widget>[
-                Image.asset(data.img, scale: 1),
-              ],
-            ));
+        return Container(
+          decoration: BoxDecoration(
+              border: Border.all(width: 1, color: Colors.transparent),
+              borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30)),
+              color: Colors.white),
+          child: RaisedButton(
+              splashColor: Color(0xfffab611),
+              color: Colors.white,
+              onPressed: () {
+                Navigator.pushNamed(context, data.caminho);
+              },
+              child: Stack(
+                children: <Widget>[
+                  Image.asset(data.img, scale: 1),
+                ],
+              )),
+        );
       }).toList(),
     ));
   }
