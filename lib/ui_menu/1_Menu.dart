@@ -17,7 +17,7 @@ class _MenuGridState extends State<MenuGrid> {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
     var sizeTop = MediaQuery.of(context).padding.top;
-    var sizeBox = (sizeHeight - sizeTop) * 0.646;
+    var sizeBox = (sizeHeight - sizeTop) * 0.654;
 
     return Scaffold(
       appBar: PreferredSize(
@@ -108,16 +108,16 @@ class _MenuGridState extends State<MenuGrid> {
           Row(
             children: [
               Container(
-                  margin: EdgeInsets.only(left: 15.w, top: 10.h),
+                  margin: EdgeInsets.only(left: 15.w, top: 12.h),
                   child: Container(
                     height: 62.h,
-                    width: 150.w,
+                    width: 130.w,
                     child: RaisedButton(
                       textColor: Colors.white,
                       splashColor: Color(0xfffab611),
                       color: Color.fromARGB(255, 93, 30, 132),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
+                          borderRadius: BorderRadius.circular(30.0),
                           side: BorderSide(color: Colors.black)),
                       onPressed: () {
                         showDialog(
@@ -128,7 +128,7 @@ class _MenuGridState extends State<MenuGrid> {
                         "VOLTAR",
                         style: TextStyle(
                           fontFamily: 'Open Sans Extra Bold',
-                          fontSize: 23.ssp,
+                          fontSize: 21.ssp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

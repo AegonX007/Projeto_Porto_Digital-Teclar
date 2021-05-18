@@ -17,7 +17,7 @@ class _RedesSociaisState extends State<RedesSociais> {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
     var sizeTop = MediaQuery.of(context).padding.top;
-    var sizeCard = (sizeHeight - sizeTop) * 0.574;
+    var sizeCard = (sizeHeight - sizeTop) * 0.586;
 
     return Scaffold(
       appBar: PreferredSize(
@@ -144,16 +144,16 @@ class _RedesSociaisState extends State<RedesSociais> {
           Row(
             children: [
               Container(
-                  margin: EdgeInsets.only(left: 22.w, top: 14.h),
+                  margin: EdgeInsets.only(left: 22.w, top: 12.h),
                   child: Container(
                     height: 62.h,
-                    width: 150.w,
+                    width: 130.w,
                     child: RaisedButton(
                       textColor: Colors.white,
                       splashColor: Color(0xfffab611),
                       color: Color.fromARGB(255, 93, 30, 132),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
+                          borderRadius: BorderRadius.circular(30.0),
                           side: BorderSide(color: Colors.black)),
                       onPressed: () {
                         Navigator.pushNamed(context, "/Menu");
@@ -162,7 +162,7 @@ class _RedesSociaisState extends State<RedesSociais> {
                         "VOLTAR",
                         style: TextStyle(
                           fontFamily: 'Open Sans Extra Bold',
-                          fontSize: 23.ssp,
+                          fontSize: 21.ssp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

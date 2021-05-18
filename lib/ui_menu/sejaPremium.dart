@@ -15,7 +15,7 @@ class _SejaPremiumState extends State<SejaPremium> {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
     var sizeTop = MediaQuery.of(context).padding.top;
-    var sizeCard = (sizeHeight - sizeTop) * 0.574;
+    var sizeCard = (sizeHeight - sizeTop) * 0.572;
 
     return Scaffold(
       appBar: PreferredSize(
@@ -179,17 +179,19 @@ class _SejaPremiumState extends State<SejaPremium> {
           Row(
             children: [
               Container(
-                  margin: EdgeInsets.only(left: 22.w, top: 14.h),
+                  margin: EdgeInsets.only(left: 22.w, top: 12.h),
                   child: Container(
                     height: 62.h,
-                    width: 150.w,
+                    width: 130.w,
                     child: RaisedButton(
-                      textColor: Colors.white,
+                      textColor: Color.fromARGB(255, 93, 30, 132),
                       splashColor: Color(0xfffab611),
-                      color: Color.fromARGB(255, 93, 30, 132),
+                      color: Color(0xfffab611),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                          side: BorderSide(color: Colors.black)),
+                          borderRadius: BorderRadius.circular(30.0),
+                          side: BorderSide(
+                              width: 2,
+                              color: Color.fromARGB(255, 93, 30, 132))),
                       onPressed: () {
                         Navigator.pushNamed(context, "/Menu");
                       },
@@ -197,24 +199,25 @@ class _SejaPremiumState extends State<SejaPremium> {
                         "VOLTAR",
                         style: TextStyle(
                           fontFamily: 'Open Sans Extra Bold',
-                          fontSize: 23.ssp,
+                          fontSize: 21.ssp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   )),
               Container(
-                  margin: EdgeInsets.only(right: 22.w, top: 14.h),
+                  margin: EdgeInsets.only(left: 82.w, top: 12.h),
                   child: Container(
                     height: 62.h,
-                    width: 150.w,
+                    width: 130.w,
                     child: RaisedButton(
                       textColor: Colors.white,
                       splashColor: Color(0xfffab611),
                       color: Color.fromARGB(255, 93, 30, 132),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                          side: BorderSide(color: Colors.black)),
+                          borderRadius: BorderRadius.circular(30.0),
+                          side: BorderSide(
+                              color: Color.fromARGB(255, 93, 30, 132))),
                       onPressed: () async {
                         PaymentResult result =
                             await MercadoPagoMobileCheckout.startCheckout(
@@ -226,13 +229,12 @@ class _SejaPremiumState extends State<SejaPremium> {
                         "ASSINAR",
                         style: TextStyle(
                           fontFamily: 'Open Sans Extra Bold',
-                          fontSize: 23.ssp,
+                          fontSize: 21.ssp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   )),
-                  
             ],
           ),
         ],
