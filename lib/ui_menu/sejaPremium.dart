@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mercado_pago_mobile_checkout/mercado_pago_mobile_checkout.dart';
+import 'package:material_splash_screen/ui_menu/pagamentoAprovado.dart';
 
 class SejaPremium extends StatefulWidget {
   @override
@@ -223,6 +226,30 @@ class _SejaPremiumState extends State<SejaPremium> {
                             await MercadoPagoMobileCheckout.startCheckout(
                                 "TEST-8b7dde5f-d871-460a-b0a6-4b71893c54d7",
                                 "677705713-da85e600-0358-4e22-b15b-35374589105c");
+                        if (result.status == "approved") {
+                          FirebaseAuth auth = FirebaseAuth.instance;
+                          FirebaseUser usuarioLogado = await auth.currentUser();
+                          Firestore db = Firestore.instance;
+                          QuerySnapshot querySnapshot = await db
+                              .collection("usuarios")
+                              .where("email", isEqualTo: usuarioLogado.email)
+                              .getDocuments();
+                          for (DocumentSnapshot item
+                              in querySnapshot.documents) {
+                            var dados = item.data;
+                            if (dados["premium"] == false) {
+                              Map<String, dynamic> dadosAtualizar = {
+                                "premium": true
+                              };
+                              db
+                                  .collection("usuarios")
+                                  .document(usuarioLogado.email)
+                                  .updateData(dadosAtualizar);
+                            }
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => PagamentoAprovado()));
+                          }
+                        }
                         print(result.toString());
                       },
                       child: Text(
