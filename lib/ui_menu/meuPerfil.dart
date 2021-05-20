@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:material_splash_screen/entity/usuario.dart';
 import 'package:material_splash_screen/ui_menu/autentication.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MeuPerfil extends StatefulWidget {
   @override
@@ -15,6 +16,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
   final Firestore db = Firestore.instance;
   final _controller = StreamController<QuerySnapshot>.broadcast();
   String usuarioAtual;
+  bool premium;
 
   Stream<QuerySnapshot> _adicionarDados() {
     Firestore db = Firestore.instance;
@@ -64,6 +66,21 @@ class _MeuPerfilState extends State<MeuPerfil> {
     usuarioAtual = usuarioLogado.email;
 
     _adicionarDados();
+  }
+
+  Future<Usuario> _recuperarPremium() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    FirebaseUser usuarioAtual = await auth.currentUser();
+    Firestore db = Firestore.instance;
+
+    QuerySnapshot querySnapshot = await db
+        .collection("usuarios")
+        .where("email", isEqualTo: usuarioAtual.email)
+        .getDocuments();
+    for (DocumentSnapshot item in querySnapshot.documents) {
+      var dados = item.data;
+      premium = dados["premium"];
+    }
   }
 
   Future<String> usuarioLogado() async {
@@ -191,9 +208,16 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                     String senha = item["senha"];
                                     String urlImagem = item["urlImagemPerfil"];
                                     int pontuacao = item["pontuacao"];
-
-                                    Usuario usuario = new Usuario(false, email,
-                                        nome, pontuacao, senha, urlImagem);
+                                    bool premium = item["premium"];
+                                    _recuperarPremium();
+                                    Usuario usuario = new Usuario(
+                                        false,
+                                        email,
+                                        nome,
+                                        pontuacao,
+                                        senha,
+                                        urlImagem,
+                                        premium);
                                     if (usuario.email == usuarioAtual) {
                                       return Column(
                                         children: [
@@ -461,6 +485,88 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                               ],
                                             ),
                                           ),
+                                          Container(
+                                            margin: EdgeInsets.only(left: 30.w),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  "PREMIUM",
+                                                  style: TextStyle(
+                                                    color: Color.fromARGB(
+                                                        255, 93, 30, 132),
+                                                    fontFamily:
+                                                        'Open Sans Extra Bold',
+                                                    fontSize:
+                                                        (sizeWidth * 0.07),
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                top: 10.h, left: 30.w),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  "NÃO",
+                                                  style: TextStyle(
+                                                    color: Color.fromARGB(
+                                                        255, 93, 30, 132),
+                                                    fontFamily:
+                                                        'Open Sans Extra Bold',
+                                                    fontSize:
+                                                        (sizeWidth * 0.05),
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      left: 30.w),
+                                                  child: Text(
+                                                    "SIM",
+                                                    style: TextStyle(
+                                                      color: Color.fromARGB(
+                                                          255, 93, 30, 132),
+                                                      fontFamily:
+                                                          'Open Sans Extra Bold',
+                                                      fontSize:
+                                                          (sizeWidth * 0.05),
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Stack(
+                                            children: [
+                                              Container(
+                                                  margin: EdgeInsets.only(
+                                                      left: 10.w),
+                                                  child: ListTile(
+                                                      leading: Checkbox(
+                                                    value:
+                                                        premium ? false : true,
+                                                    onChanged: null,
+                                                    autofocus: false,
+                                                    activeColor: Colors.white,
+                                                  ))),
+                                              Container(
+                                                  margin: EdgeInsets.only(
+                                                      left: 90.w),
+                                                  child: ListTile(
+                                                      leading: Checkbox(
+                                                    value:
+                                                        premium ? true : false,
+                                                    onChanged: null,
+                                                    autofocus: true,
+                                                    activeColor: Colors.white,
+                                                  )))
+                                            ],
+                                          )
                                         ],
                                       );
                                     } else {

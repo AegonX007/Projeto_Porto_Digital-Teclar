@@ -9,9 +9,14 @@ class Usuario {
   String _urlImagemPerfil;
   bool _adm;
   int _pontuacaoTotal;
+  bool _premium;
 
   Usuario(this._adm, this._email, this._nome, this._pontuacaoTotal, this._senha,
-      this._urlImagemPerfil);
+      this._urlImagemPerfil, this._premium);
+
+  bool get premium => this._premium;
+
+  set premium(bool value) => this._premium = value;
 
   bool get adm => _adm;
 

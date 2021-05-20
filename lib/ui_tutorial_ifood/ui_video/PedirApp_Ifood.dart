@@ -54,8 +54,14 @@ class _PedirAPP_Video_IfoodState extends State<PedirAPP_Video_Ifood> {
         .getDocuments();
     for (DocumentSnapshot item in querySnapshot.documents) {
       var dados = item.data;
-      Usuario usuario = new Usuario(false, dados["email"], dados["nome"],
-          dados["pontuacao"], dados["senha"], dados["urlImagemPerfil"]);
+      Usuario usuario = new Usuario(
+          false,
+          dados["email"],
+          dados["nome"],
+          dados["pontuacao"],
+          dados["senha"],
+          dados["urlImagemPerfil"],
+          dados["premium"]);
       return usuario;
     }
   }

@@ -256,7 +256,8 @@ class _CadastrarSenhaState extends State<CadastrarSenha> {
                               "senha": senhaController.text,
                               "urlImagemPerfil":
                                   "https://firebasestorage.googleapis.com/v0/b/teclarflutter-e3cc9.appspot.com/o/avatares%2Fna.jpg?alt=media&token=de0a506e-6878-4e3e-ad64-91710a8ebf40",
-                              "pontuacao": 0
+                              "pontuacao": 0,
+                              "premium": false
                             });
 
                             Navigator.of(context).push(MaterialPageRoute(

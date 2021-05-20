@@ -336,9 +336,15 @@ class _RankingState extends State<Ranking> {
                                     String senha = item["senha"];
                                     String urlImagem = item["urlImagemPerfil"];
                                     int pontuacao = item["pontuacao"];
-
-                                    Usuario usuario = new Usuario(false, email,
-                                        nome, pontuacao, senha, urlImagem);
+                                    bool premium = item["premium"];
+                                    Usuario usuario = new Usuario(
+                                        false,
+                                        email,
+                                        nome,
+                                        pontuacao,
+                                        senha,
+                                        urlImagem,
+                                        premium);
 
                                     if (usuario.email == emailUsuario) {
                                       return Container(

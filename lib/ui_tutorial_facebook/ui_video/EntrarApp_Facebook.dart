@@ -55,7 +55,7 @@ class _EntrarAPP_Video_FacebookState extends State<EntrarAPP_Video_Facebook> {
     for (DocumentSnapshot item in querySnapshot.documents) {
       var dados = item.data;
       Usuario usuario = new Usuario(false, dados["email"], dados["nome"], 0,
-          dados["senha"], dados["urlImagemPerfil"]);
+          dados["senha"], dados["urlImagemPerfil"], dados["premium"]);
       return usuario;
     }
   }

@@ -116,8 +116,14 @@ class _AlterarDadosState extends State<AlterarDados> {
         .getDocuments();
     for (DocumentSnapshot item in querySnapshot.documents) {
       var dados = item.data;
-      Usuario usuario = new Usuario(false, dados["email"], dados["nome"],
-          dados["pontuacao"], dados["senha"], dados["urlImagemPerfil"]);
+      Usuario usuario = new Usuario(
+          false,
+          dados["email"],
+          dados["nome"],
+          dados["pontuacao"],
+          dados["senha"],
+          dados["urlImagemPerfil"],
+          dados["premium"]);
       return usuario;
     }
   }

@@ -62,7 +62,7 @@ class _MeusCursosState extends State<MeusCursos> {
     for (DocumentSnapshot item in querySnapshot.documents) {
       var dados = item.data;
       Usuario usuario = new Usuario(false, dados["email"], dados["nome"], 0,
-          dados["senha"], dados["urlImagemPerfil"]);
+          dados["senha"], dados["urlImagemPerfil"], dados["premium"]);
 
       return usuario;
     }

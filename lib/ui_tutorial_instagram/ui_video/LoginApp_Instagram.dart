@@ -47,7 +47,7 @@ class _LoginAPP_Video_InstagramState extends State<LoginAPP_Video_Instagram> {
     for (DocumentSnapshot item in querySnapshot.documents) {
       var dados = item.data;
       Usuario usuario = new Usuario(false, dados["email"], dados["nome"], 0,
-          dados["senha"], dados["urlImagemPerfil"]);
+          dados["senha"], dados["urlImagemPerfil"], dados["premium"]);
       return usuario;
     }
   }
