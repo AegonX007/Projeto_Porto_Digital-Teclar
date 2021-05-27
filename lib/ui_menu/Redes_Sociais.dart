@@ -205,7 +205,7 @@ class _RedesSociaisState extends State<RedesSociais> {
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => TelaNiveis(
-                            page: page,
+                            page,
                           )));
                 },
                 child: Text(
