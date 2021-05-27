@@ -29,13 +29,8 @@ class _UltimaTelaCadastroState extends State<UltimaTelaCadastro> {
                   Padding(
                     padding: EdgeInsets.only(
                         top: sizeCard * 0.12, bottom: sizeCard * 0.04),
-                    child: Center(
-                      child: Image.network(
-                        "https://firebasestorage.googleapis.com/v0/b/teclarflutter-e3cc9.appspot.com/o/avatares%2Fidoso1.png?alt=media&token=84c75c97-8278-4c0e-969a-f90af6c0f593",
-                        fit: BoxFit.contain,
-                        height: sizeHeight * 0.4,
-                      ),
-                    ),
+                    child:
+                        Center(child: Image.asset("images/vovo_cadastro.png")),
                   ),
                   Padding(
                     padding: EdgeInsets.only(

@@ -125,7 +125,10 @@ flutter:
     - images/americanas.jfif
     - images/premium.jpeg
     - images/premium_pagamento.jpg
-    
+    - images/diamante_premium.png
+    - images/cadeado_premium.png
+    - images/basico_estrelas.png
+    - images/vovo_cadastro.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

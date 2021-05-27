@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:material_splash_screen/ui_menu/2_Aprendizado.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:material_splash_screen/ui_menu/Niveis.dart';
 
 class RedesSociais extends StatefulWidget {
   @override
@@ -203,7 +204,7 @@ class _RedesSociaisState extends State<RedesSociais> {
                     side: BorderSide(color: Colors.black)),
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => TelaAprendizado(
+                      builder: (context) => TelaNiveis(
                             page: page,
                           )));
                 },

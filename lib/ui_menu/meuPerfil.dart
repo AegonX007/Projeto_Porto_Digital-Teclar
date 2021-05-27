@@ -486,7 +486,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                             ),
                                           ),
                                           Container(
-                                            margin: EdgeInsets.only(left: 30.w),
+                                            margin: EdgeInsets.only(left: 20.w),
                                             child: Row(
                                               children: [
                                                 Text(
@@ -545,7 +545,7 @@ class _MeuPerfilState extends State<MeuPerfil> {
                                             children: [
                                               Container(
                                                   margin: EdgeInsets.only(
-                                                      left: 10.w),
+                                                      left: 20.w),
                                                   child: ListTile(
                                                       leading: Checkbox(
                                                     value:
