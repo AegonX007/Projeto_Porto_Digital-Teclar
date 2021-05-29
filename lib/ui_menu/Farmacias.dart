@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:material_splash_screen/ui_menu/2_Aprendizado.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:material_splash_screen/ui_menu/gridFarmacia.dart';
 
 class Farmacias extends StatefulWidget {
   @override
@@ -86,38 +87,12 @@ class _FarmaciasState extends State<Farmacias> {
           Container(
             height: sizeCard,
             width: sizeWidth,
-            color: Colors.white,
-            padding: EdgeInsets.only(
-              top: sizeCard * 0.08,
-            ),
+            color: Colors.grey[200],
             child: Scrollbar(
-              thickness: sizeWidth * 0.02,
-              controller: _scrollController,
-              child: SingleChildScrollView(
-                  controller: _scrollController,
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(
-                            left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton("images/paguemenos.png",
-                            "PAGUEMENOS", 3, sizeWidth, sizeCard),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton("images/drogasil.jpg",
-                            "DROGASIL", 4, sizeWidth, sizeCard),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton("images/extrafarma.png",
-                            "EXTRAFARMA", 5, sizeWidth, sizeCard),
-                      ),
-                    ],
-                  )),
-            ),
+                thickness: sizeWidth * 0.02,
+                controller: _scrollController,
+                isAlwaysShown: true,
+                child: GridFarmacia()),
           ),
           Container(
             height: 10.h,

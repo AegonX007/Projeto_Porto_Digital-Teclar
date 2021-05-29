@@ -106,25 +106,25 @@ class _FinanceirosState extends State<Financeiros> {
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton("images/rappi.png",
+                        child: buildRaiseButton("images/bancodobrasil.png",
                             "BANCO DO BRASIL", 4, sizeWidth, sizeCard),
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton("images/99food.jfif",
+                        child: buildRaiseButton("images/bradesco.png",
                             "BRADESCO", 5, sizeWidth, sizeCard),
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton("images/james.png", "CAIXA",
+                        child: buildRaiseButton("images/caixa.jpg", "CAIXA",
                             null, sizeWidth, sizeCard),
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton("images/uber_eats.png",
+                        child: buildRaiseButton("images/santander.jpg",
                             "SANTANDER", null, sizeWidth, sizeCard),
                       ),
                     ],

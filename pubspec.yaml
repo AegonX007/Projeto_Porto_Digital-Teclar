@@ -96,7 +96,7 @@ flutter:
     - images/ladydriver.jpg
     - images/indrive.png
     - images/paguemenos.png
-    - images/drogasil.jpg
+    - images/drogasil.png
     - images/extrafarma.png
     - images/james.png
     - images/99food.jfif
@@ -129,6 +129,9 @@ flutter:
     - images/cadeado_premium.png
     - images/basico_estrelas.png
     - images/vovo_cadastro.png
+    - images/drogariaSaoPaulo.jpg
+    - images/drogaraia.jpg
+    - images/farmacias-independente.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
