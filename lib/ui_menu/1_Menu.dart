@@ -17,7 +17,7 @@ class _MenuGridState extends State<MenuGrid> {
     var sizeWidth = MediaQuery.of(context).size.width;
     var sizeHeight = MediaQuery.of(context).size.height;
     var sizeTop = MediaQuery.of(context).padding.top;
-    var sizeBox = (sizeHeight - sizeTop) * 0.654;
+    var sizeBox = (sizeHeight - sizeTop) * 0.644;
 
     return Scaffold(
       appBar: PreferredSize(
@@ -103,7 +103,7 @@ class _MenuGridState extends State<MenuGrid> {
                 borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(30),
                     bottomRight: Radius.circular(30)),
-                color: Colors.white),
+                color: Colors.grey[350]),
           ),
           Row(
             children: [

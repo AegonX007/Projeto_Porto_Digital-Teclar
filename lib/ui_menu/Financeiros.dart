@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:material_splash_screen/ui_menu/2_Aprendizado.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:material_splash_screen/ui_menu/Niveis.dart';
 
 class Financeiros extends StatefulWidget {
   @override
@@ -100,20 +101,20 @@ class _FinanceirosState extends State<Financeiros> {
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton(
-                            "images/itau.png", "ITAÚ", 3, sizeWidth, sizeCard),
+                        child: buildRaiseButton("images/itau.png", "ITAÚ", null,
+                            sizeWidth, sizeCard),
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
                         child: buildRaiseButton("images/bancodobrasil.png",
-                            "BANCO DO BRASIL", 4, sizeWidth, sizeCard),
+                            "BANCO DO BRASIL", null, sizeWidth, sizeCard),
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
                         child: buildRaiseButton("images/bradesco.png",
-                            "BRADESCO", 5, sizeWidth, sizeCard),
+                            "BRADESCO", null, sizeWidth, sizeCard),
                       ),
                       Container(
                         margin: EdgeInsets.only(
@@ -203,8 +204,8 @@ class _FinanceirosState extends State<Financeiros> {
                     side: BorderSide(color: Colors.black)),
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => TelaAprendizado(
-                            page: page,
+                      builder: (context) => TelaNiveis(
+                            page,
                           )));
                 },
                 child: Text(
