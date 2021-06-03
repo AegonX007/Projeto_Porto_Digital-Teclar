@@ -202,7 +202,10 @@ class _OpcoesFarmaciaState extends State<OpcoesFarmacia> {
                                             BorderRadius.circular(10.0),
                                         side: BorderSide(color: Colors.black)),
                                     onPressed: () {
-                                      TelaAprendizadoFarmacia();
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  TelaAprendizadoFarmacia()));
                                     },
                                     child: Text(
                                       "SAÚDE & EXAMES",
@@ -246,7 +249,10 @@ class _OpcoesFarmaciaState extends State<OpcoesFarmacia> {
                                             BorderRadius.circular(10.0),
                                         side: BorderSide(color: Colors.black)),
                                     onPressed: () {
-                                      TelaAprendizadoFarmacia();
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  TelaAprendizadoFarmacia()));
                                     },
                                     child: Text(
                                       "ATIVIDADE FÍSICA",
@@ -290,7 +296,10 @@ class _OpcoesFarmaciaState extends State<OpcoesFarmacia> {
                                             BorderRadius.circular(10.0),
                                         side: BorderSide(color: Colors.black)),
                                     onPressed: () {
-                                      TelaAprendizadoFarmacia();
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  TelaAprendizadoFarmacia()));
                                     },
                                     child: Text(
                                       "ALIMENTAÇÃO",

@@ -371,7 +371,8 @@ class _LoginState extends State<Login> {
                                     "email": user.email,
                                     "senha": user.id,
                                     "urlImagemPerfil": user.photoUrl,
-                                    "pontuacao": 0
+                                    "pontuacao": 0,
+                                    "premium": false,
                                   }).catchError((err) {
                                     print("usuario já existe.");
                                   });
