@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:material_splash_screen/ui_menu/AprendizadoFarmacia.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OpcoesFarmacia extends StatefulWidget {
   @override
@@ -314,17 +315,16 @@ class _OpcoesFarmaciaState extends State<OpcoesFarmacia> {
           Row(
             children: [
               Padding(
-                  padding: EdgeInsets.only(
-                      left: sizeWidth * 0.06, top: sizeHeight * 0.0165),
+                  padding: EdgeInsets.only(left: 22.w, top: 12.h),
                   child: Container(
-                    height: sizeHeight * 0.082,
-                    width: sizeWidth * 0.4,
+                    height: 62.h,
+                    width: 130.w,
                     child: RaisedButton(
                       textColor: Colors.white,
                       splashColor: Color(0xfffab611),
                       color: Color.fromARGB(255, 93, 30, 132),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
+                          borderRadius: BorderRadius.circular(30.0),
                           side: BorderSide(color: Colors.black)),
                       onPressed: () {
                         Navigator.of(context).pop();
@@ -333,7 +333,7 @@ class _OpcoesFarmaciaState extends State<OpcoesFarmacia> {
                         "VOLTAR",
                         style: TextStyle(
                           fontFamily: 'Open Sans Extra Bold',
-                          fontSize: (sizeWidth * 0.35) * 0.18,
+                          fontSize: 21.ssp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
