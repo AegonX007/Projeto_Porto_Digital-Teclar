@@ -3,14 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 
 class GridFarmacia extends StatelessWidget {
-  Item item1 = new Item(img: "images/paguemenos.png", caminho: "/Farmacias");
-  Item item2 = new Item(img: "images/drogasil.png", caminho: "/Restaurantes");
-  Item item3 = new Item(img: "images/extrafarma.png", caminho: "/RedesSociais");
+  Item item1 =
+      new Item(img: "images/paguemenos.png", caminho: "/opcoesFarmacia");
+  Item item2 = new Item(img: "images/drogasil.png", caminho: "/opcoesFarmacia");
+  Item item3 =
+      new Item(img: "images/extrafarma.png", caminho: "/opcoesFarmacia");
   Item item4 =
-      new Item(img: "images/drogariaSaoPaulo.jpg", caminho: "/Transportes");
-  Item item5 =
-      new Item(img: "images/farmacias-independente.jpg", caminho: "/Ecommerce");
-  Item item6 = new Item(img: "images/drogaraia.jpg", caminho: "/Financeiros");
+      new Item(img: "images/drogariaSaoPaulo.jpg", caminho: "/opcoesFarmacia");
+  Item item5 = new Item(
+      img: "images/farmacias-independente.jpg", caminho: "/opcoesFarmacia");
+  Item item6 =
+      new Item(img: "images/drogaraia.jpg", caminho: "/opcoesFarmacia");
   @override
   Widget build(BuildContext context) {
     List<Item> myList = [item1, item2, item3, item4, item5, item6];

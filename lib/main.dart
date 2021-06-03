@@ -22,6 +22,7 @@ import 'package:material_splash_screen/ui_menu/alterar_dados/alterarSenha.dart';
 import 'package:material_splash_screen/ui_menu/Restaurantes.dart';
 import 'package:material_splash_screen/ui_menu/gaveta.dart';
 import 'package:material_splash_screen/ui_menu/meuPerfil.dart';
+import 'package:material_splash_screen/ui_menu/opcoesFarmacia.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -130,6 +131,7 @@ Future<void> main() async {
 }
 
 class Iniciar extends StatelessWidget {
+  OpcoesFarmacia opcoes;
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
@@ -168,6 +170,7 @@ class Iniciar extends StatelessWidget {
             "/Restaurantes": (context) => Restaurantes(),
             "/Ecommerce": (context) => Ecommerce(),
             "/Financeiros": (context) => Financeiros(),
+            "/opcoesFarmacia": (context) => OpcoesFarmacia(),
           });
     });
   }

@@ -132,6 +132,14 @@ flutter:
     - images/drogariaSaoPaulo.jpg
     - images/drogaraia.jpg
     - images/farmacias-independente.jpg
+    - images/alimentação.jpeg
+    - images/atvFisica.jpeg
+    - images/bemEstar.jpeg
+    - images/saude.jpeg
+    - images/saudeBranco.jpeg
+    - images/bemEstarBranco.jpeg
+    - images/atvFisicaBranco.jpeg
+    - images/alimentaçãoBranco.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
