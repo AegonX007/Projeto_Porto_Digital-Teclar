@@ -179,4 +179,4 @@ flutter:
 flutter_icons:
   android: true
   ios: true
-  image_path: "icons/wakanda2.png"
+  image_path: "images/LOGOTIPO_icon.png"
