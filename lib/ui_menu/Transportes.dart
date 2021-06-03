@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:material_splash_screen/ui_menu/2_Aprendizado.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:material_splash_screen/ui_menu/Niveis.dart';
 
 class Transportes extends StatefulWidget {
   @override
@@ -106,14 +107,14 @@ class _TransportesState extends State<Transportes> {
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton("images/99pop.png", "99POP", 4,
-                            sizeWidth, sizeCard),
+                        child: buildRaiseButton("images/99pop.png", "99POP",
+                            null, sizeWidth, sizeCard),
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
                         child: buildRaiseButton("images/ladydriver.jpg",
-                            "Lady Driver", 5, sizeWidth, sizeCard),
+                            "Lady Driver", null, sizeWidth, sizeCard),
                       ),
                       Container(
                         margin: EdgeInsets.only(
@@ -197,8 +198,8 @@ class _TransportesState extends State<Transportes> {
                     side: BorderSide(color: Colors.black)),
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => TelaAprendizado(
-                            page: page,
+                      builder: (context) => TelaNiveis(
+                            page,
                           )));
                 },
                 child: Text(

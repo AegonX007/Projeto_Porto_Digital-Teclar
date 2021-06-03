@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:material_splash_screen/entity/usuario.dart';
+import 'package:material_splash_screen/ui_menu/2_Aprendizado.dart';
+import 'package:material_splash_screen/ui_menu/desenvolvimento.dart';
 import 'package:material_splash_screen/ui_tutorial_facebook/TelaInicial_Facebook.dart';
 import 'package:material_splash_screen/ui_tutorial_ifood/TelaInicial_Ifood.dart';
 import 'package:material_splash_screen/ui_tutorial_instagram/TelaInicial_Instagram.dart';
@@ -25,25 +27,42 @@ class _TelaNiveisState extends State<TelaNiveis> {
   }
 
   void verificarTela(context, String nome, int nomeTipo) {
-    print("SEILAAAAAAAAAAAAAAAAAAAAAAAAA");
     if (page == 1) {
-      print("SEI JNAOOOOOOOOOOOOOOOOOOOOO");
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => TelaIfood(tipo: nome, nome: nomeTipo)));
+          builder: (context) => TelaAprendizado(
+                page: page,
+              )));
     } else if (page == 2) {
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => TelaUber(tipo: nome, nome: nomeTipo)));
+          builder: (context) => TelaAprendizado(
+                page: page,
+              )));
+      //Navigator.of(context).push(MaterialPageRoute(
+      //    builder: (context) => TelaUber(tipo: nome, nome: nomeTipo)));
     } else if (page == 3) {
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => TelaWhatsapp(tipo: nome, nome: nomeTipo)));
+          builder: (context) => TelaAprendizado(
+                page: page,
+              )));
+      //Navigator.of(context).push(MaterialPageRoute(
+      //   builder: (context) => TelaWhatsapp(tipo: nome, nome: nomeTipo)));
     } else if (page == 4) {
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => TelaFacebook(tipo: nome, nome: nomeTipo)));
+          builder: (context) => TelaAprendizado(
+                page: page,
+              )));
+      //Navigator.of(context).push(MaterialPageRoute(
+      //    builder: (context) => TelaFacebook(tipo: nome, nome: nomeTipo)));
     } else if (page == 5) {
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => TelaInstagram(tipo: nome, nome: nomeTipo)));
+          builder: (context) => TelaAprendizado(
+                page: page,
+              )));
+      // Navigator.of(context).push(MaterialPageRoute(
+      //    builder: (context) => TelaInstagram(tipo: nome, nome: nomeTipo)));
     } else {
-      return null;
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => Desenvolvimento()));
     }
   }
 
@@ -58,12 +77,8 @@ class _TelaNiveisState extends State<TelaNiveis> {
         .getDocuments();
     for (DocumentSnapshot item in querySnapshot.documents) {
       var dados = item.data;
-      print("KKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
-      premium = dados["premium"];
-
       setState(() {
         premium = dados["premium"];
-        print(premium);
       });
     }
   }

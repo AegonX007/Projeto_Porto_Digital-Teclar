@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:material_splash_screen/ui_menu/2_Aprendizado.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:material_splash_screen/ui_menu/Niveis.dart';
 
 class Restaurantes extends StatefulWidget {
   @override
@@ -100,20 +101,20 @@ class _RestaurantesState extends State<Restaurantes> {
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton("images/ifood.png", "IFOOD", 3,
+                        child: buildRaiseButton("images/ifood.png", "IFOOD", 1,
                             sizeWidth, sizeCard),
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
-                        child: buildRaiseButton("images/rappi.png", "RAPPI", 4,
-                            sizeWidth, sizeCard),
+                        child: buildRaiseButton("images/rappi.png", "RAPPI",
+                            null, sizeWidth, sizeCard),
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.06, right: sizeWidth * 0.06),
                         child: buildRaiseButton("images/99food.jfif", "99 FOOD",
-                            5, sizeWidth, sizeCard),
+                            null, sizeWidth, sizeCard),
                       ),
                       Container(
                         margin: EdgeInsets.only(
@@ -203,8 +204,8 @@ class _RestaurantesState extends State<Restaurantes> {
                     side: BorderSide(color: Colors.black)),
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => TelaAprendizado(
-                            page: page,
+                      builder: (context) => TelaNiveis(
+                            page,
                           )));
                 },
                 child: Text(

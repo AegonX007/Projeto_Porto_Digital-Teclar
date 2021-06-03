@@ -1,31 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:material_splash_screen/ui_tutorial_facebook/TelaInicial_Facebook.dart';
-import 'package:material_splash_screen/ui_tutorial_ifood/TelaInicial_Ifood.dart';
-import 'package:material_splash_screen/ui_tutorial_instagram/TelaInicial_Instagram.dart';
-import 'package:material_splash_screen/ui_tutorial_uber/TelaInicial_Uber.dart';
-import 'package:material_splash_screen/ui_tutorial_whatsapp/TelaInicial_Whatsapp.dart';
+import 'package:material_splash_screen/ui_menu/desenvolvimento.dart';
 
-class TelaAprendizado extends StatelessWidget {
+class TelaAprendizadoFarmacia extends StatelessWidget {
   final int page;
 
-  const TelaAprendizado({Key key, this.page}) : super(key: key);
+  const TelaAprendizadoFarmacia({Key key, this.page}) : super(key: key);
 
   void verificarTela(context, String nome, int nomeTipo) {
     if (page == 1) {
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => TelaIfood(tipo: nome, nome: nomeTipo)));
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => Desenvolvimento()));
     } else if (page == 2) {
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => TelaUber(tipo: nome, nome: nomeTipo)));
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => Desenvolvimento()));
     } else if (page == 3) {
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => TelaWhatsapp(tipo: nome, nome: nomeTipo)));
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => Desenvolvimento()));
     } else if (page == 4) {
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => TelaFacebook(tipo: nome, nome: nomeTipo)));
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => Desenvolvimento()));
     } else if (page == 5) {
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => TelaInstagram(tipo: nome, nome: nomeTipo)));
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => Desenvolvimento()));
     } else {
       return null;
     }
@@ -124,20 +120,140 @@ class TelaAprendizado extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.05, right: sizeWidth * 0.05),
-                        child: buildButton(context, "images/movie.png",
-                            "ASSISTINDO", 1, sizeWidth, sizeCard),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: sizeWidth * 0.17,
+                              width: sizeWidth * 0.18,
+                              margin: EdgeInsets.only(top: sizeHeight * 0.05),
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage("images/movie.png"))),
+                            ),
+                            Expanded(
+                              child: Container(
+                                margin: EdgeInsets.only(top: sizeHeight * 0.05),
+                                padding:
+                                    EdgeInsets.only(left: sizeWidth * 0.02),
+                                height: sizeWidth * 0.18,
+                                child: RaisedButton(
+                                    textColor: Colors.white,
+                                    splashColor: Color(0xfffab611),
+                                    color: Color.fromARGB(255, 93, 30, 132),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                        side: BorderSide(color: Colors.black)),
+                                    onPressed: () {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Desenvolvimento()));
+                                    },
+                                    child: Text(
+                                      "ASSISTINDO",
+                                      style: TextStyle(
+                                        fontFamily: 'Open Sans Extra Bold',
+                                        fontSize: (sizeWidth * 0.35) * 0.18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    )),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.05, right: sizeWidth * 0.05),
-                        child: buildButton(context, "images/audio.png",
-                            "OUVINDO", 2, sizeWidth, sizeCard),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: sizeWidth * 0.17,
+                              width: sizeWidth * 0.18,
+                              margin: EdgeInsets.only(top: sizeHeight * 0.05),
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage("images/audio.png"))),
+                            ),
+                            Expanded(
+                              child: Container(
+                                margin: EdgeInsets.only(top: sizeHeight * 0.05),
+                                padding:
+                                    EdgeInsets.only(left: sizeWidth * 0.02),
+                                height: sizeWidth * 0.18,
+                                child: RaisedButton(
+                                    textColor: Colors.white,
+                                    splashColor: Color(0xfffab611),
+                                    color: Color.fromARGB(255, 93, 30, 132),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                        side: BorderSide(color: Colors.black)),
+                                    onPressed: () {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Desenvolvimento()));
+                                    },
+                                    child: Text(
+                                      "OUVINDO",
+                                      style: TextStyle(
+                                        fontFamily: 'Open Sans Extra Bold',
+                                        fontSize: (sizeWidth * 0.35) * 0.18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    )),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                       Container(
                         margin: EdgeInsets.only(
                             left: sizeWidth * 0.05, right: sizeWidth * 0.05),
-                        child: buildButton(context, "images/book.png", "LENDO",
-                            3, sizeWidth, sizeCard),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: sizeWidth * 0.17,
+                              width: sizeWidth * 0.18,
+                              margin: EdgeInsets.only(top: sizeHeight * 0.05),
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage("images/book.png"))),
+                            ),
+                            Expanded(
+                              child: Container(
+                                margin: EdgeInsets.only(top: sizeHeight * 0.05),
+                                padding:
+                                    EdgeInsets.only(left: sizeWidth * 0.02),
+                                height: sizeWidth * 0.18,
+                                child: RaisedButton(
+                                    textColor: Colors.white,
+                                    splashColor: Color(0xfffab611),
+                                    color: Color.fromARGB(255, 93, 30, 132),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                        side: BorderSide(color: Colors.black)),
+                                    onPressed: () {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Desenvolvimento()));
+                                    },
+                                    child: Text(
+                                      "LENDO",
+                                      style: TextStyle(
+                                        fontFamily: 'Open Sans Extra Bold',
+                                        fontSize: (sizeWidth * 0.35) * 0.18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    )),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -177,46 +293,6 @@ class TelaAprendizado extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget buildButton(context, String imagem, String nome, int nomeTipo,
-      double sizeWidth, double sizeHeight) {
-    return Row(
-      children: [
-        Container(
-          height: sizeWidth * 0.17,
-          width: sizeWidth * 0.18,
-          margin: EdgeInsets.only(top: sizeHeight * 0.05),
-          decoration:
-              BoxDecoration(image: DecorationImage(image: AssetImage(imagem))),
-        ),
-        Expanded(
-          child: Container(
-            margin: EdgeInsets.only(top: sizeHeight * 0.05),
-            padding: EdgeInsets.only(left: sizeWidth * 0.02),
-            height: sizeWidth * 0.18,
-            child: RaisedButton(
-                textColor: Colors.white,
-                splashColor: Color(0xfffab611),
-                color: Color.fromARGB(255, 93, 30, 132),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    side: BorderSide(color: Colors.black)),
-                onPressed: () {
-                  verificarTela(context, nome, nomeTipo);
-                },
-                child: Text(
-                  nome,
-                  style: TextStyle(
-                    fontFamily: 'Open Sans Extra Bold',
-                    fontSize: (sizeWidth * 0.35) * 0.18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )),
-          ),
-        )
-      ],
     );
   }
 }
